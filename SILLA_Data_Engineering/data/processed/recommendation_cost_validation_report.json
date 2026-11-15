@@ -1,0 +1,385 @@
+{
+  "report_title": "SILLA Recommendation Engine, Cost Calculation & Smart Cart Validation Report",
+  "generation_date": "2026-11-15T18:10:24.615415",
+  "production_database_integrity": {
+    "path": "SILLA_Data_Engineering/database/silla.db",
+    "sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+    "status": "UNTOUCHED_AND_VERIFIED"
+  },
+  "staging_database": {
+    "path": "SILLA_Data_Engineering/database/silla_staging.db",
+    "total_recipes": 185,
+    "total_canonical_ingredients": 71,
+    "total_recipe_ingredients_links": 1388,
+    "total_products": 265,
+    "total_stores": 8,
+    "ingredients_with_products": 49,
+    "ingredients_without_products": 22,
+    "unpriced_ingredients_catalog": [
+      {
+        "id": "ING0004",
+        "name_en": "Basmati Rice",
+        "name_ar": "أرز بسمتي"
+      },
+      {
+        "id": "ING0007",
+        "name_en": "Beef Tenderloin",
+        "name_ar": "فيليه بتلو بقري"
+      },
+      {
+        "id": "ING0013",
+        "name_en": "Canned Chickpeas",
+        "name_ar": "حمص معلب"
+      },
+      {
+        "id": "ING0014",
+        "name_en": "Canned Fava Beans",
+        "name_ar": "فول مدمس معلب"
+      },
+      {
+        "id": "ING0016",
+        "name_en": "Carrot",
+        "name_ar": "جزر"
+      },
+      {
+        "id": "ING0020",
+        "name_en": "Chili Pepper Powder",
+        "name_ar": "شطة حمراء مطحونة"
+      },
+      {
+        "id": "ING0021",
+        "name_en": "Coriander",
+        "name_ar": "كزبرة مطحونة"
+      },
+      {
+        "id": "ING0024",
+        "name_en": "Dried Mint",
+        "name_ar": "نعناع مجفف"
+      },
+      {
+        "id": "ING0030",
+        "name_en": "Egyptian Rice",
+        "name_ar": "ارز مصري"
+      },
+      {
+        "id": "ING0035",
+        "name_en": "Fresh Dill",
+        "name_ar": "شبت طازج"
+      },
+      {
+        "id": "ING0037",
+        "name_en": "Fresh Parsley",
+        "name_ar": "بقدونس طازج"
+      },
+      {
+        "id": "ING0044",
+        "name_en": "Lamb Shoulder",
+        "name_ar": "كتف ضأن"
+      },
+      {
+        "id": "ING0045",
+        "name_en": "Lasagna Pasta Sheets",
+        "name_ar": "شرائح لازانيا"
+      },
+      {
+        "id": "ING0048",
+        "name_en": "Nutmeg",
+        "name_ar": "جوزة الطيب"
+      },
+      {
+        "id": "ING0051",
+        "name_en": "Parmesan Cheese",
+        "name_ar": "جبنة بارميزان"
+      },
+      {
+        "id": "ING0055",
+        "name_en": "Red Split Lentils",
+        "name_ar": "عدس أصفر"
+      },
+      {
+        "id": "ING0057",
+        "name_en": "Salt",
+        "name_ar": "ملح طعام"
+      },
+      {
+        "id": "ING0061",
+        "name_en": "Tilapia Fillet",
+        "name_ar": "فيليه سمك بلطي"
+      },
+      {
+        "id": "ING0063",
+        "name_en": "Tomato Sauce",
+        "name_ar": "صلصة طماطم"
+      },
+      {
+        "id": "ING0065",
+        "name_en": "Vegetable Oil",
+        "name_ar": "زيت نباتي"
+      },
+      {
+        "id": "ING0068",
+        "name_en": "White Vinegar",
+        "name_ar": "خل أبيض"
+      },
+      {
+        "id": "ING0070",
+        "name_en": "Whole Milk",
+        "name_ar": "حليب كامل الدسم"
+      }
+    ]
+  },
+  "unit_conversion_framework": {
+    "physics_and_culinary_standards": "100% of distinct database unit pairs convert deterministically",
+    "supported_conversions_count": 25,
+    "piece_weight_reference": "Egyptian agricultural & supermarket average produce weights (e.g. Onion 125g, Potato 150g, Lemon 60g, Tomato 120g)"
+  },
+  "cost_calculation_benchmarks": [
+    {
+      "recipe_id": "R0001",
+      "recipe_name_ar": "مكرونة بشاميل",
+      "recipe_name_en": "Macaroni Béchamel",
+      "base_servings": 6.0,
+      "net_recipe_cost_egp": 185.12,
+      "net_cost_per_serving_egp": 30.85,
+      "grocery_procurement_cost_egp": 452.0,
+      "procurement_cost_per_serving_egp": 75.33,
+      "price_completeness_ratio": 0.6667,
+      "priced_ingredients_count": 8,
+      "unpriced_ingredients_count": 4,
+      "unpriced_ingredients_sample": [
+        "حليب كامل الدسم",
+        "جوزة الطيب",
+        "ملح طعام",
+        "زيت نباتي"
+      ]
+    },
+    {
+      "recipe_id": "R0002",
+      "recipe_name_ar": "كشري مصري",
+      "recipe_name_en": "Koshari",
+      "base_servings": 6.0,
+      "net_recipe_cost_egp": 56.58,
+      "net_cost_per_serving_egp": 9.43,
+      "grocery_procurement_cost_egp": 358.0,
+      "procurement_cost_per_serving_egp": 59.67,
+      "price_completeness_ratio": 0.5,
+      "priced_ingredients_count": 7,
+      "unpriced_ingredients_count": 7,
+      "unpriced_ingredients_sample": [
+        "حمص معلب",
+        "صلصة طماطم",
+        "خل أبيض",
+        "كزبرة مطحونة"
+      ]
+    },
+    {
+      "recipe_id": "R0004",
+      "recipe_name_ar": "محشي مشكل",
+      "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+      "base_servings": 6.0,
+      "net_recipe_cost_egp": 84.48,
+      "net_cost_per_serving_egp": 14.08,
+      "grocery_procurement_cost_egp": 501.0,
+      "procurement_cost_per_serving_egp": 83.5,
+      "price_completeness_ratio": 0.6429,
+      "priced_ingredients_count": 9,
+      "unpriced_ingredients_count": 5,
+      "unpriced_ingredients_sample": [
+        "صلصة طماطم",
+        "شبت طازج",
+        "بقدونس طازج",
+        "نعناع مجفف"
+      ]
+    },
+    {
+      "recipe_id": "R0007",
+      "recipe_name_ar": "كفتة الحاتي المشوية",
+      "recipe_name_en": "Egyptian Kofta Mashweya",
+      "base_servings": 4.0,
+      "net_recipe_cost_egp": 213.8,
+      "net_cost_per_serving_egp": 53.45,
+      "grocery_procurement_cost_egp": 348.5,
+      "procurement_cost_per_serving_egp": 87.12,
+      "price_completeness_ratio": 0.75,
+      "priced_ingredients_count": 6,
+      "unpriced_ingredients_count": 2,
+      "unpriced_ingredients_sample": [
+        "بقدونس طازج",
+        "ملح طعام"
+      ]
+    },
+    {
+      "recipe_id": "R0013",
+      "recipe_name_ar": "لازانيا ايطالية كلاسيكية باللحم",
+      "recipe_name_en": "Classic Italian Lasagna",
+      "base_servings": 6.0,
+      "net_recipe_cost_egp": 204.26,
+      "net_cost_per_serving_egp": 34.04,
+      "grocery_procurement_cost_egp": 440.0,
+      "procurement_cost_per_serving_egp": 73.33,
+      "price_completeness_ratio": 0.5455,
+      "priced_ingredients_count": 6,
+      "unpriced_ingredients_count": 5,
+      "unpriced_ingredients_sample": [
+        "شرائح لازانيا",
+        "صلصة طماطم",
+        "حليب كامل الدسم",
+        "جبنة بارميزان"
+      ]
+    }
+  ],
+  "smart_cart_benchmarks": {
+    "case_1_dual_recipes": {
+      "recipes": [
+        "R0001 (مكرونة بشاميل)",
+        "R0007 (كفتة مشوية)"
+      ],
+      "separate_carts_total_egp": 800.5,
+      "smart_cart_total_egp": 625.5,
+      "total_savings_egp": 175.0,
+      "savings_percentage": 21.86,
+      "shared_ingredients_count": 3,
+      "shared_items": [
+        {
+          "name_ar": "لحم بقري مفروم",
+          "total_needed": "1200.0 g",
+          "smart_packages": 3,
+          "separate_packages": 4,
+          "savings_egp": 115.0
+        },
+        {
+          "name_ar": "فلفل أسود",
+          "total_needed": "10.0 g",
+          "smart_packages": 1,
+          "separate_packages": 2,
+          "savings_egp": 42.0
+        },
+        {
+          "name_ar": "بصل أصفر",
+          "total_needed": "500.0 g",
+          "smart_packages": 1,
+          "separate_packages": 2,
+          "savings_egp": 18.0
+        }
+      ]
+    },
+    "case_2_triple_recipes": {
+      "recipes": [
+        "R0001 (بشاميل)",
+        "R0002 (كشري)",
+        "R0007 (كفتة)"
+      ],
+      "separate_carts_total_egp": 1158.5,
+      "smart_cart_total_egp": 965.5,
+      "total_savings_egp": 193.0,
+      "savings_percentage": 16.66,
+      "shared_ingredients_count": 3
+    },
+    "case_3_single_recipe_baseline": {
+      "recipes": [
+        "R0001 (بشاميل)"
+      ],
+      "separate_carts_total_egp": 452.0,
+      "smart_cart_total_egp": 452.0,
+      "total_savings_egp": 0.0,
+      "savings_percentage": 0.0
+    }
+  },
+  "recommendation_benchmarks": [
+    {
+      "query": "مكرونة بشاميل",
+      "category": "POSITIVE",
+      "status": "SUCCESS",
+      "guard_triggered": false,
+      "total_recommendations": 3,
+      "top_1_recipe_id": "R0001",
+      "top_1_recipe_name": "مكرونة بشاميل",
+      "top_1_score": 0.4193,
+      "top_1_feasibility": "MODERATE_FEASIBILITY"
+    },
+    {
+      "query": "كفتة مشوية",
+      "category": "POSITIVE",
+      "status": "SUCCESS",
+      "guard_triggered": false,
+      "total_recommendations": 3,
+      "top_1_recipe_id": "R0007",
+      "top_1_recipe_name": "كفتة الحاتي المشوية",
+      "top_1_score": 0.3613,
+      "top_1_feasibility": "HIGH_FEASIBILITY"
+    },
+    {
+      "query": "عايز كشري مصري",
+      "category": "POSITIVE",
+      "status": "SUCCESS",
+      "guard_triggered": false,
+      "total_recommendations": 3,
+      "top_1_recipe_id": "R0002",
+      "top_1_recipe_name": "كشري مصري",
+      "top_1_score": 0.5937,
+      "top_1_feasibility": "MODERATE_FEASIBILITY"
+    },
+    {
+      "query": "Egyptian Koshari",
+      "category": "POSITIVE_EN",
+      "status": "SUCCESS",
+      "guard_triggered": false,
+      "total_recommendations": 3,
+      "top_1_recipe_id": "R0002",
+      "top_1_recipe_name": "كشري مصري",
+      "top_1_score": 0.4086,
+      "top_1_feasibility": "MODERATE_FEASIBILITY"
+    },
+    {
+      "query": "عايز شاحن ايفون سريع",
+      "category": "NEGATIVE_OUT_OF_DOMAIN",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "guard_triggered": true,
+      "total_recommendations": 0,
+      "top_1_recipe_id": null,
+      "top_1_recipe_name": null,
+      "top_1_score": null,
+      "top_1_feasibility": null
+    },
+    {
+      "query": "حلويات شرقية بسبوسة",
+      "category": "NEGATIVE_OUT_OF_CATALOG",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "guard_triggered": true,
+      "total_recommendations": 0,
+      "top_1_recipe_id": null,
+      "top_1_recipe_name": null,
+      "top_1_score": null,
+      "top_1_feasibility": null
+    },
+    {
+      "query": "كشري بالسمك",
+      "category": "NEGATIVE_CONTRADICTORY",
+      "status": "REJECTED_CONTRADICTORY",
+      "guard_triggered": true,
+      "total_recommendations": 0,
+      "top_1_recipe_id": null,
+      "top_1_recipe_name": null,
+      "top_1_score": null,
+      "top_1_feasibility": null
+    },
+    {
+      "query": "اكل",
+      "category": "VAGUE_CLARIFICATION",
+      "status": "REQUEST_CLARIFICATION",
+      "guard_triggered": true,
+      "total_recommendations": 0,
+      "top_1_recipe_id": null,
+      "top_1_recipe_name": null,
+      "top_1_score": null,
+      "top_1_feasibility": null
+    }
+  ],
+  "test_suite_summary": {
+    "recommendation_and_cost_tests_passed": 31,
+    "recommendation_and_cost_tests_failed": 0,
+    "nlp_engine_tests_passed": 26,
+    "nlp_engine_tests_failed": 0,
+    "overall_status": "ALL_TESTS_PASSING"
+  }
+}

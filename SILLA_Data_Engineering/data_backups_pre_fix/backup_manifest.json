@@ -1,0 +1,208 @@
+{
+  "created_at": "2026-11-15T14:28:13.818986+00:00",
+  "total_files": 18,
+  "successfully_backed_up": 18,
+  "failed_copies": [],
+  "hash_mismatches": [],
+  "all_originals_unmodified": true,
+  "files": [
+    {
+      "relative_path": "data/raw/recipes_raw.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\raw\\recipes_raw.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\raw\\recipes_raw.csv",
+      "size_bytes": 106175,
+      "original_sha256": "113766fb709117e8db93b3fa9031f60a303da6090f249494917904c1d5751e5f",
+      "backup_sha256": "113766fb709117e8db93b3fa9031f60a303da6090f249494917904c1d5751e5f",
+      "baseline_sha256": "113766fb709117e8db93b3fa9031f60a303da6090f249494917904c1d5751e5f",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/raw/recipe_ingredients_raw.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\raw\\recipe_ingredients_raw.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\raw\\recipe_ingredients_raw.csv",
+      "size_bytes": 105036,
+      "original_sha256": "dc369bf9735d5dda18cf76d33fd08cfc90ca89287c678f716ccf3a2c4b351ec4",
+      "backup_sha256": "dc369bf9735d5dda18cf76d33fd08cfc90ca89287c678f716ccf3a2c4b351ec4",
+      "baseline_sha256": "dc369bf9735d5dda18cf76d33fd08cfc90ca89287c678f716ccf3a2c4b351ec4",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/raw/products_raw.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\raw\\products_raw.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\raw\\products_raw.csv",
+      "size_bytes": 101816,
+      "original_sha256": "224acf45474b9c3f2bc9abdb924acec5a5b489526067b43596097b023a328cc7",
+      "backup_sha256": "224acf45474b9c3f2bc9abdb924acec5a5b489526067b43596097b023a328cc7",
+      "baseline_sha256": "224acf45474b9c3f2bc9abdb924acec5a5b489526067b43596097b023a328cc7",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/processed/recipes_clean.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\processed\\recipes_clean.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\processed\\recipes_clean.csv",
+      "size_bytes": 106175,
+      "original_sha256": "ddaeae7074753e0d04a135dcd78ca76be08639a1d151c35a77d90178c9733865",
+      "backup_sha256": "ddaeae7074753e0d04a135dcd78ca76be08639a1d151c35a77d90178c9733865",
+      "baseline_sha256": "ddaeae7074753e0d04a135dcd78ca76be08639a1d151c35a77d90178c9733865",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/processed/ingredients_master.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\processed\\ingredients_master.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\processed\\ingredients_master.csv",
+      "size_bytes": 10538,
+      "original_sha256": "f8c014c67b6f60a99690493e95f164754b760f9722e0a13af57119742b77fdd0",
+      "backup_sha256": "f8c014c67b6f60a99690493e95f164754b760f9722e0a13af57119742b77fdd0",
+      "baseline_sha256": "f8c014c67b6f60a99690493e95f164754b760f9722e0a13af57119742b77fdd0",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/processed/recipe_ingredients_clean.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\processed\\recipe_ingredients_clean.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\processed\\recipe_ingredients_clean.csv",
+      "size_bytes": 113422,
+      "original_sha256": "13c977484178a73c8d041e095a785dd6b858476527b24f431162c9df498a4417",
+      "backup_sha256": "13c977484178a73c8d041e095a785dd6b858476527b24f431162c9df498a4417",
+      "baseline_sha256": "13c977484178a73c8d041e095a785dd6b858476527b24f431162c9df498a4417",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/processed/products_clean.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\processed\\products_clean.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\processed\\products_clean.csv",
+      "size_bytes": 104005,
+      "original_sha256": "acbca15614346543462ec6bf7c4eb2ded24e360b4aa9b4f4517baba494862ac4",
+      "backup_sha256": "acbca15614346543462ec6bf7c4eb2ded24e360b4aa9b4f4517baba494862ac4",
+      "baseline_sha256": "acbca15614346543462ec6bf7c4eb2ded24e360b4aa9b4f4517baba494862ac4",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "data/processed/data_quality_report.csv",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data\\processed\\data_quality_report.csv",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\data\\processed\\data_quality_report.csv",
+      "size_bytes": 555,
+      "original_sha256": "bb027a6f4e24f328b6dad37dce6c2f974c4c151445222d4c4cd94b83b4050e8a",
+      "backup_sha256": "bb027a6f4e24f328b6dad37dce6c2f974c4c151445222d4c4cd94b83b4050e8a",
+      "baseline_sha256": "bb027a6f4e24f328b6dad37dce6c2f974c4c151445222d4c4cd94b83b4050e8a",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "database/silla.db",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\silla.db",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\database\\silla.db",
+      "size_bytes": 573440,
+      "original_sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+      "backup_sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+      "baseline_sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "database/schema.sql",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\schema.sql",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\database\\schema.sql",
+      "size_bytes": 5867,
+      "original_sha256": "442edde5457eafa9b16b8760c6be492cc881e481bee94863a9bc499449d757be",
+      "backup_sha256": "442edde5457eafa9b16b8760c6be492cc881e481bee94863a9bc499449d757be",
+      "baseline_sha256": "442edde5457eafa9b16b8760c6be492cc881e481bee94863a9bc499449d757be",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "database/import_data.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\import_data.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\database\\import_data.py",
+      "size_bytes": 9282,
+      "original_sha256": "d156a1699c410d3dfb068caad12081d7f8ad5e91605c0e308e63308c4f6f015c",
+      "backup_sha256": "d156a1699c410d3dfb068caad12081d7f8ad5e91605c0e308e63308c4f6f015c",
+      "baseline_sha256": "d156a1699c410d3dfb068caad12081d7f8ad5e91605c0e308e63308c4f6f015c",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "preprocessing/clean_recipes.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\preprocessing\\clean_recipes.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\preprocessing\\clean_recipes.py",
+      "size_bytes": 4207,
+      "original_sha256": "b1fccf2da7f32e8ded11c67b6d4943341c15d8820cc50f2ddfda73f39f539aac",
+      "backup_sha256": "b1fccf2da7f32e8ded11c67b6d4943341c15d8820cc50f2ddfda73f39f539aac",
+      "baseline_sha256": "b1fccf2da7f32e8ded11c67b6d4943341c15d8820cc50f2ddfda73f39f539aac",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "preprocessing/clean_ingredients.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\preprocessing\\clean_ingredients.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\preprocessing\\clean_ingredients.py",
+      "size_bytes": 17379,
+      "original_sha256": "8a73c3bb8c1c834e56132ffd6f96741257ef687257103d493fbbb3d476d30440",
+      "backup_sha256": "8a73c3bb8c1c834e56132ffd6f96741257ef687257103d493fbbb3d476d30440",
+      "baseline_sha256": "8a73c3bb8c1c834e56132ffd6f96741257ef687257103d493fbbb3d476d30440",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "preprocessing/normalize_arabic.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\preprocessing\\normalize_arabic.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\preprocessing\\normalize_arabic.py",
+      "size_bytes": 3398,
+      "original_sha256": "fdacf229d2658d33f2f40c042702d0ce27f3ad9a83df05761b8ca6374e550c93",
+      "backup_sha256": "fdacf229d2658d33f2f40c042702d0ce27f3ad9a83df05761b8ca6374e550c93",
+      "baseline_sha256": "fdacf229d2658d33f2f40c042702d0ce27f3ad9a83df05761b8ca6374e550c93",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "tests/test_cleaning.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\tests\\test_cleaning.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\tests\\test_cleaning.py",
+      "size_bytes": 4291,
+      "original_sha256": "52330eec0b7d3c7b3fbec131b55b0e3715bc00b44f50812979f4b9807d4a525c",
+      "backup_sha256": "52330eec0b7d3c7b3fbec131b55b0e3715bc00b44f50812979f4b9807d4a525c",
+      "baseline_sha256": "52330eec0b7d3c7b3fbec131b55b0e3715bc00b44f50812979f4b9807d4a525c",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "tests/test_database.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\tests\\test_database.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\tests\\test_database.py",
+      "size_bytes": 3597,
+      "original_sha256": "aa4215ff0caab4d96bcda5775fbe1ef2b17d0958e38523ee17efa6b3665430a7",
+      "backup_sha256": "aa4215ff0caab4d96bcda5775fbe1ef2b17d0958e38523ee17efa6b3665430a7",
+      "baseline_sha256": "aa4215ff0caab4d96bcda5775fbe1ef2b17d0958e38523ee17efa6b3665430a7",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "tests/test_relationships.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\tests\\test_relationships.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\tests\\test_relationships.py",
+      "size_bytes": 2828,
+      "original_sha256": "7a75d6501fae1a346468fa4b3f7bcafabdbba7e697923f361e1f9d55aa781fbf",
+      "backup_sha256": "7a75d6501fae1a346468fa4b3f7bcafabdbba7e697923f361e1f9d55aa781fbf",
+      "baseline_sha256": "7a75d6501fae1a346468fa4b3f7bcafabdbba7e697923f361e1f9d55aa781fbf",
+      "exact_match": true,
+      "original_unmodified": true
+    },
+    {
+      "relative_path": "tests/test_units.py",
+      "source_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\tests\\test_units.py",
+      "backup_path": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\data_backups_pre_fix\\tests\\test_units.py",
+      "size_bytes": 3946,
+      "original_sha256": "04935fd71dc4fb894cc58bb10f6754379e820c64b89807c598061cb80cc7a214",
+      "backup_sha256": "04935fd71dc4fb894cc58bb10f6754379e820c64b89807c598061cb80cc7a214",
+      "baseline_sha256": "04935fd71dc4fb894cc58bb10f6754379e820c64b89807c598061cb80cc7a214",
+      "exact_match": true,
+      "original_unmodified": true
+    }
+  ]
+}

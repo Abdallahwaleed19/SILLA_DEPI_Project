@@ -1,0 +1,1000 @@
+{
+  "1. Arabic Language": [
+    {
+      "query": "عايز أكلة بالفراخ",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "عايز أكلة بالفراخ",
+        "normalized_query": "عايز اكله بدجاج",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.1891,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أقراص محضرة من الفول المدشوش المنقوع والمطحون مع البصل والثوم والأعشاب الخضراء كالشبت والكزبرة مع توابل الكمون والكزبرة الجافة، ومقلية في الزيت حتى القرمشة.",
+            "description_en": "Authentic Egyptian green patties made with soaked split dried fava beans, fresh leeks, coriander, dill, coated in sesame seeds and fried crispy."
+          },
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.1854,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبق الكشري المصري التقليدي المكون من طبقات الأرز بالشعرية والعدس البني والمكرونة المقصوصة والحمص المسلوق، يعلوه البصل المحمر المقرمش مع صلصة الطماطم ودقة الخل والثوم.",
+            "description_en": "Egypt's national street food dish combining rice, brown lentils, macaroni, chickpeas, tangy tomato vinegar sauce, and crispy caramelized onions."
+          },
+          {
+            "recipe_id": "R0008",
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "recipe_name_en": "Egyptian Yellow Lentil Soup (Shorbet Ads)",
+            "cuisine": "Egyptian",
+            "category": "Soup",
+            "similarity_score": 0.1825,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "شوربة عدس مجروش مسلوق ومهروس مع الجزر والطماطم والبصل والثوم، متبلة بالكمون والكركم، ومضاف إليها الشعرية المحمرة بالزبدة وتقدم مع الليمون.",
+            "description_en": "Heartwarming winter soup made from red lentils simmered with carrots, tomatoes, onions, garlic, and cumin, finished with golden vermicelli."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 38.06
+      },
+      "sparse_top": {
+        "recipe_id": "R0003",
+        "name_ar": "ملوخية بالفراخ",
+        "name_en": "Molokhia With Chicken",
+        "score": 0.137
+      },
+      "dense_top": {
+        "recipe_id": "R0011",
+        "name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+        "name_en": "Egyptian Taameya (Falafel)",
+        "score": 0.5445
+      }
+    },
+    {
+      "query": "طريقة عمل كشري مصري",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "طريقة عمل كشري مصري",
+        "normalized_query": "كشري مصري",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.6299,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: كشري, مصري | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبق الكشري المصري التقليدي المكون من طبقات الأرز بالشعرية والعدس البني والمكرونة المقصوصة والحمص المسلوق، يعلوه البصل المحمر المقرمش مع صلصة الطماطم ودقة الخل والثوم.",
+            "description_en": "Egypt's national street food dish combining rice, brown lentils, macaroni, chickpeas, tangy tomato vinegar sauce, and crispy caramelized onions."
+          },
+          {
+            "recipe_id": "R0005",
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "recipe_name_en": "Egyptian Fattah",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.4037,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+            "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+          },
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.3938,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "فول مدمس مهروس ومتبل بالطحينة وعصير الليمون والثوم المفروم والكمون وزيت الزيتون، ممزوج مع مكعبات الطماطم الطازجة والبقدونس المفروم.",
+            "description_en": "Slow-cooked fava beans tossed Alexandria-style with tahini, crushed garlic, chopped tomatoes, cumin, lemon juice, and pure olive oil."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 9.77
+      },
+      "sparse_top": {
+        "recipe_id": "R0002",
+        "name_ar": "كشري مصري",
+        "name_en": "Koshari",
+        "score": 0.2149
+      },
+      "dense_top": {
+        "recipe_id": "R0010",
+        "name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+        "name_en": "Egyptian Ful Medames Iskandarani",
+        "score": 0.5998
+      }
+    },
+    {
+      "query": "وصفة بالبطاطس والطماطم",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "وصفة بالبطاطس والطماطم",
+        "normalized_query": "وصفه بالبطاطس والطماطم",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0164",
+            "recipe_name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew Potatoes",
+            "cuisine": "Spanish",
+            "category": "Vegetables",
+            "similarity_score": 0.3718,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإسباني يحضر من بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Spanish culinary preparation of potatoes spicy tomato stew with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0165",
+            "recipe_name_ar": "بطاطس محمرة بالفرن بصلصة الكريمة والاعشاب العطرية",
+            "recipe_name_en": "Creamy Herb Sauce Potatoes",
+            "cuisine": "Indian",
+            "category": "Vegetables",
+            "similarity_score": 0.3445,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الهندي يحضر من بطاطس محمرة بالفرن بصلصة الكريمة والاعشاب العطرية مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Indian culinary preparation of potatoes creamy herb sauce with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0161",
+            "recipe_name_ar": "بطاطس محمرة بالفرن مشوي على الفحم بالبهارات",
+            "recipe_name_en": "Charcoal Grilled Potatoes",
+            "cuisine": "Greek",
+            "category": "Vegetables",
+            "similarity_score": 0.34,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ اليوناني يحضر من بطاطس محمرة بالفرن مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Greek culinary preparation of potatoes charcoal grilled with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 7.77
+      },
+      "sparse_top": {
+        "recipe_id": "R0008",
+        "name_ar": "شوربة عدس اصفر مصرية",
+        "name_en": "Egyptian Yellow Lentil Soup (Shorbet Ads)",
+        "score": 0.0642
+      },
+      "dense_top": {
+        "recipe_id": "R0164",
+        "name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+        "name_en": "Spicy Tomato Stew Potatoes",
+        "score": 0.7603
+      }
+    }
+  ],
+  "2. English Language": [
+    {
+      "query": "Egyptian koshari recipe",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "Egyptian koshari recipe",
+        "normalized_query": "Egyptian koshari recipe",
+        "language": "en",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.5633,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: koshari | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبق الكشري المصري التقليدي المكون من طبقات الأرز بالشعرية والعدس البني والمكرونة المقصوصة والحمص المسلوق، يعلوه البصل المحمر المقرمش مع صلصة الطماطم ودقة الخل والثوم.",
+            "description_en": "Egypt's national street food dish combining rice, brown lentils, macaroni, chickpeas, tangy tomato vinegar sauce, and crispy caramelized onions."
+          },
+          {
+            "recipe_id": "R0009",
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "recipe_name_en": "Shakshuka Egyptian Style",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.4659,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "بيض طازج مطهو على نار هادئة داخل صلصة الطماطم المسبكة مع البصل والفلفل الأخضر والثوم وزيت الزيتون، والمتبلة بالكمون والبابريكا مع البقدونس.",
+            "description_en": "Eggs poached gently in a bubbling, spiced sauce of tomatoes, bell peppers, sautéed onions, garlic, and fresh herbs."
+          },
+          {
+            "recipe_id": "R0004",
+            "recipe_name_ar": "محشي مشكل",
+            "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.4492,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+            "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 20.97
+      },
+      "sparse_top": {
+        "recipe_id": "R0002",
+        "name_ar": "كشري مصري",
+        "name_en": "Koshari",
+        "score": 0.1402
+      },
+      "dense_top": {
+        "recipe_id": "R0002",
+        "name_ar": "كشري مصري",
+        "name_en": "Koshari",
+        "score": 0.7094
+      }
+    },
+    {
+      "query": "Chicken recipe",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "Chicken recipe",
+        "normalized_query": "Chicken recipe",
+        "language": "en",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0046",
+            "recipe_name_ar": "اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+            "recipe_name_en": "Crispy Breaded Pan-Fried Chicken Thighs",
+            "cuisine": "French",
+            "category": "Meat And Poultry",
+            "similarity_score": 0.5167,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الفرنسي يحضر من اوراك دجاج متبلة مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious French culinary preparation of chicken thighs crispy breaded pan-fried with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0003",
+            "recipe_name_ar": "ملوخية بالفراخ",
+            "recipe_name_en": "Molokhia With Chicken",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.5146,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+            "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+          },
+          {
+            "recipe_id": "R0041",
+            "recipe_name_ar": "اوراك دجاج متبلة مشوي على الفحم بالبهارات",
+            "recipe_name_en": "Charcoal Grilled Chicken Thighs",
+            "cuisine": "Greek",
+            "category": "Meat And Poultry",
+            "similarity_score": 0.5144,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ اليوناني يحضر من اوراك دجاج متبلة مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Greek culinary preparation of chicken thighs charcoal grilled with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 0.0
+      },
+      "sparse_top": {
+        "recipe_id": "R0035",
+        "name_ar": "صدور دجاج مخلية كمونية بالبصل المكرمل",
+        "name_en": "Slow Braised With Onions Chicken Breast",
+        "score": 0.1644
+      },
+      "dense_top": {
+        "recipe_id": "R0046",
+        "name_ar": "اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Chicken Thighs",
+        "score": 0.8059
+      }
+    },
+    {
+      "query": "How to make bechamel pasta",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "How to make bechamel pasta",
+        "normalized_query": "bechamel pasta",
+        "language": "en",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0012",
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "recipe_name_en": "Pasta Alfredo With Chicken",
+            "cuisine": "Italian",
+            "category": "Pasta",
+            "similarity_score": 0.55,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: pasta | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "مكرونة فوتشيني مسلوقة ممزوجة بصلصة الألفريدو الكريمة الغنية المحضرة بالزبدة والثوم وجبن البارميزان مع شرائح صدور الدجاج المشوحة.",
+            "description_en": "Silky fettuccine pasta coated in rich butter, heavy cream, garlic, and parmesan cheese topped with tender seared chicken breast."
+          },
+          {
+            "recipe_id": "R0178",
+            "recipe_name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+            "recipe_name_en": "Crispy Breaded Pan-Fried Penne Pasta",
+            "cuisine": "Italian",
+            "category": "Pasta And Grains",
+            "similarity_score": 0.5302,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: pasta",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإيطالي يحضر من مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Italian culinary preparation of penne pasta crispy breaded pan-fried with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0173",
+            "recipe_name_ar": "مكرونة فرن ايطالي مشوي على الفحم بالبهارات",
+            "recipe_name_en": "Charcoal Grilled Penne Pasta",
+            "cuisine": "Turkish",
+            "category": "Pasta And Grains",
+            "similarity_score": 0.5146,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: pasta",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ التركي يحضر من مكرونة فرن ايطالي مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Turkish culinary preparation of penne pasta charcoal grilled with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 9.53
+      },
+      "sparse_top": {
+        "recipe_id": "R0178",
+        "name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Penne Pasta",
+        "score": 0.1976
+      },
+      "dense_top": {
+        "recipe_id": "R0173",
+        "name_ar": "مكرونة فرن ايطالي مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Penne Pasta",
+        "score": 0.6536
+      }
+    }
+  ],
+  "3. Slang and Synonyms": [
+    {
+      "query": "عايز وصفة بالفراخ",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "عايز وصفة بالفراخ",
+        "normalized_query": "عايز وصفه بدجاج",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.1848,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أقراص محضرة من الفول المدشوش المنقوع والمطحون مع البصل والثوم والأعشاب الخضراء كالشبت والكزبرة مع توابل الكمون والكزبرة الجافة، ومقلية في الزيت حتى القرمشة.",
+            "description_en": "Authentic Egyptian green patties made with soaked split dried fava beans, fresh leeks, coriander, dill, coated in sesame seeds and fried crispy."
+          },
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.1807,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبق الكشري المصري التقليدي المكون من طبقات الأرز بالشعرية والعدس البني والمكرونة المقصوصة والحمص المسلوق، يعلوه البصل المحمر المقرمش مع صلصة الطماطم ودقة الخل والثوم.",
+            "description_en": "Egypt's national street food dish combining rice, brown lentils, macaroni, chickpeas, tangy tomato vinegar sauce, and crispy caramelized onions."
+          },
+          {
+            "recipe_id": "R0004",
+            "recipe_name_ar": "محشي مشكل",
+            "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.1768,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+            "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 8.04
+      },
+      "sparse_top": {
+        "recipe_id": "R0003",
+        "name_ar": "ملوخية بالفراخ",
+        "name_en": "Molokhia With Chicken",
+        "score": 0.137
+      },
+      "dense_top": {
+        "recipe_id": "R0118",
+        "name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Brown Lentils",
+        "score": 0.6075
+      }
+    },
+    {
+      "query": "عايز وصفة بالدجاج",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "عايز وصفة بالدجاج",
+        "normalized_query": "عايز وصفه بالدجاج",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0012",
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "recipe_name_en": "Pasta Alfredo With Chicken",
+            "cuisine": "Italian",
+            "category": "Pasta",
+            "similarity_score": 0.4466,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: بالدجاج | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "مكرونة فوتشيني مسلوقة ممزوجة بصلصة الألفريدو الكريمة الغنية المحضرة بالزبدة والثوم وجبن البارميزان مع شرائح صدور الدجاج المشوحة.",
+            "description_en": "Silky fettuccine pasta coated in rich butter, heavy cream, garlic, and parmesan cheese topped with tender seared chicken breast."
+          },
+          {
+            "recipe_id": "R0003",
+            "recipe_name_ar": "ملوخية بالفراخ",
+            "recipe_name_en": "Molokhia With Chicken",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.4335,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+            "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+          },
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "recipe_name_en": "Egyptian Kofta Mashweya",
+            "cuisine": "Egyptian",
+            "category": "Meat And Poultry",
+            "similarity_score": 0.4282,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أصابع لحم بقري مفروم متبلة بخلطة البصل المصفى ودهن اللية والبهارات والبقدونس، مشوية حتى النضج بنكهة شواء شهية.",
+            "description_en": "Charcoal-grilled minced beef and lamb skewers seasoned with grated onion water, parsley, and traditional El-Hati spice blend."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 11.75
+      },
+      "sparse_top": {
+        "recipe_id": "R0012",
+        "name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+        "name_en": "Pasta Alfredo With Chicken",
+        "score": 0.148
+      },
+      "dense_top": {
+        "recipe_id": "R0046",
+        "name_ar": "اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Chicken Thighs",
+        "score": 0.8123
+      }
+    },
+    {
+      "query": "أكلة فيها قوطة",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "أكلة فيها قوطة",
+        "normalized_query": "اكله فيها طماطم",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0164",
+            "recipe_name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew Potatoes",
+            "cuisine": "Spanish",
+            "category": "Vegetables",
+            "similarity_score": 0.4491,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإسباني يحضر من بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Spanish culinary preparation of potatoes spicy tomato stew with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0140",
+            "recipe_name_ar": "حمص شام مسلوق يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew Chickpeas",
+            "cuisine": "Mediterranean",
+            "category": "Legumes And Pulses",
+            "similarity_score": 0.4024,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ المتوسطي يحضر من حمص شام مسلوق يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Mediterranean culinary preparation of chickpeas spicy tomato stew with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0128",
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew White Beans",
+            "cuisine": "Italian",
+            "category": "Legumes And Pulses",
+            "similarity_score": 0.3984,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإيطالي يحضر من فاصوليا بيضاء مسلوقة يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Italian culinary preparation of white beans spicy tomato stew with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 21.47
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0118",
+        "name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Brown Lentils",
+        "score": 0.488
+      }
+    },
+    {
+      "query": "أكلة فيها طماطم",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "أكلة فيها طماطم",
+        "normalized_query": "اكله فيها طماطم",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0164",
+            "recipe_name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew Potatoes",
+            "cuisine": "Spanish",
+            "category": "Vegetables",
+            "similarity_score": 0.4491,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإسباني يحضر من بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Spanish culinary preparation of potatoes spicy tomato stew with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0140",
+            "recipe_name_ar": "حمص شام مسلوق يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew Chickpeas",
+            "cuisine": "Mediterranean",
+            "category": "Legumes And Pulses",
+            "similarity_score": 0.4024,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ المتوسطي يحضر من حمص شام مسلوق يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Mediterranean culinary preparation of chickpeas spicy tomato stew with fresh seasonings."
+          },
+          {
+            "recipe_id": "R0128",
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة يخنة طماطم مسبكة حارة",
+            "recipe_name_en": "Spicy Tomato Stew White Beans",
+            "cuisine": "Italian",
+            "category": "Legumes And Pulses",
+            "similarity_score": 0.3984,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإيطالي يحضر من فاصوليا بيضاء مسلوقة يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Italian culinary preparation of white beans spicy tomato stew with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 9.88
+      },
+      "sparse_top": {
+        "recipe_id": "R0092",
+        "name_ar": "جمبري مقشر طازج يخنة طماطم مسبكة حارة",
+        "name_en": "Spicy Tomato Stew Shrimp",
+        "score": 0.1416
+      },
+      "dense_top": {
+        "recipe_id": "R0164",
+        "name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+        "name_en": "Spicy Tomato Stew Potatoes",
+        "score": 0.6298
+      }
+    }
+  ],
+  "4. Ambiguous / Unclear Queries": [
+    {
+      "query": "عايز أكلة حلوة",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "عايز أكلة حلوة",
+        "normalized_query": "عايز اكله حلوه",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0009",
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "recipe_name_en": "Shakshuka Egyptian Style",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.2089,
+            "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "بيض طازج مطهو على نار هادئة داخل صلصة الطماطم المسبكة مع البصل والفلفل الأخضر والثوم وزيت الزيتون، والمتبلة بالكمون والبابريكا مع البقدونس.",
+            "description_en": "Eggs poached gently in a bubbling, spiced sauce of tomatoes, bell peppers, sautéed onions, garlic, and fresh herbs."
+          },
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.1897,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أقراص محضرة من الفول المدشوش المنقوع والمطحون مع البصل والثوم والأعشاب الخضراء كالشبت والكزبرة مع توابل الكمون والكزبرة الجافة، ومقلية في الزيت حتى القرمشة.",
+            "description_en": "Authentic Egyptian green patties made with soaked split dried fava beans, fresh leeks, coriander, dill, coated in sesame seeds and fried crispy."
+          },
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.1825,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "فول مدمس مهروس ومتبل بالطحينة وعصير الليمون والثوم المفروم والكمون وزيت الزيتون، ممزوج مع مكعبات الطماطم الطازجة والبقدونس المفروم.",
+            "description_en": "Slow-cooked fava beans tossed Alexandria-style with tahini, crushed garlic, chopped tomatoes, cumin, lemon juice, and pure olive oil."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 12.57
+      },
+      "sparse_top": {
+        "recipe_id": "R0009",
+        "name_ar": "شكشوكة مصرية بالبيض والخضار",
+        "name_en": "Shakshuka Egyptian Style",
+        "score": 0.1111
+      },
+      "dense_top": {
+        "recipe_id": "R0118",
+        "name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+        "name_en": "Crispy Breaded Pan-Fried Brown Lentils",
+        "score": 0.5385
+      }
+    },
+    {
+      "query": "اعمللي حاجة",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "اعمللي حاجة",
+        "normalized_query": "اعمللي حاجه",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.2039,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أقراص محضرة من الفول المدشوش المنقوع والمطحون مع البصل والثوم والأعشاب الخضراء كالشبت والكزبرة مع توابل الكمون والكزبرة الجافة، ومقلية في الزيت حتى القرمشة.",
+            "description_en": "Authentic Egyptian green patties made with soaked split dried fava beans, fresh leeks, coriander, dill, coated in sesame seeds and fried crispy."
+          },
+          {
+            "recipe_id": "R0005",
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "recipe_name_en": "Egyptian Fattah",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.1974,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+            "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+          },
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.1963,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "فول مدمس مهروس ومتبل بالطحينة وعصير الليمون والثوم المفروم والكمون وزيت الزيتون، ممزوج مع مكعبات الطماطم الطازجة والبقدونس المفروم.",
+            "description_en": "Slow-cooked fava beans tossed Alexandria-style with tahini, crushed garlic, chopped tomatoes, cumin, lemon juice, and pure olive oil."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 9.6
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0011",
+        "name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+        "name_en": "Egyptian Taameya (Falafel)",
+        "score": 0.2718
+      }
+    },
+    {
+      "query": "أكلة",
+      "api_response": {
+        "status": "LOW_CONFIDENCE",
+        "query": "أكلة",
+        "normalized_query": "اكله",
+        "language": "ar",
+        "matched_recipes": [],
+        "rejection_reason": "لم يتم العثور على وصفة مطابقة بدرجة ثقة كافية (أعلى نتيجة: 0.178، الحد الأدنى: 0.180).",
+        "rejection_reason_en": "No high-confidence recipe match found (top score: 0.178, threshold: 0.180).",
+        "clarification_message": null,
+        "execution_time_ms": 10.72
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0011",
+        "name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+        "name_en": "Egyptian Taameya (Falafel)",
+        "score": 0.5359
+      }
+    }
+  ],
+  "5. Out of Domain (Non-Food)": [
+    {
+      "query": "عايز شاحن موبايل",
+      "api_response": {
+        "status": "REJECTED_OUT_OF_DOMAIN",
+        "query": "عايز شاحن موبايل",
+        "normalized_query": "عايز شاحن موبايل",
+        "language": "ar",
+        "matched_recipes": [],
+        "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+        "rejection_reason_en": "Out of domain: Non-food query detected.",
+        "clarification_message": null,
+        "execution_time_ms": 0.0
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0006",
+        "name_ar": "حواوشي بلدي",
+        "name_en": "Hawawshi",
+        "score": 0.1956
+      }
+    },
+    {
+      "query": "اشرحلي البرمجة",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "اشرحلي البرمجة",
+        "normalized_query": "اشرحلي البرمجه",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0005",
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "recipe_name_en": "Egyptian Fattah",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.2067,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+            "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+          },
+          {
+            "recipe_id": "R0004",
+            "recipe_name_ar": "محشي مشكل",
+            "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.2018,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+            "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+          },
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.1883,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "طبق الكشري المصري التقليدي المكون من طبقات الأرز بالشعرية والعدس البني والمكرونة المقصوصة والحمص المسلوق، يعلوه البصل المحمر المقرمش مع صلصة الطماطم ودقة الخل والثوم.",
+            "description_en": "Egypt's national street food dish combining rice, brown lentils, macaroni, chickpeas, tangy tomato vinegar sauce, and crispy caramelized onions."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 10.48
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0005",
+        "name_ar": "فتة مصرية باللحمة والخل والثوم",
+        "name_en": "Egyptian Fattah",
+        "score": 0.2833
+      }
+    }
+  ],
+  "6. Out of Catalog / Non-existent Recipe": [
+    {
+      "query": "سوشي سلمون ياباني بالأفوكادو",
+      "api_response": {
+        "status": "REJECTED_OUT_OF_CATALOG",
+        "query": "سوشي سلمون ياباني بالأفوكادو",
+        "normalized_query": "سوشي سلمون ياباني بالافوكادو",
+        "language": "ar",
+        "matched_recipes": [],
+        "rejection_reason": "صنف الطعام المطلوب (سوشي) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+        "rejection_reason_en": "Out of catalog: Food category 'سوشي' is not supported in the recipe database.",
+        "clarification_message": null,
+        "execution_time_ms": 2.0
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0064",
+        "name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+        "name_en": "Smoked Paprika Glaze Lamb Shoulder",
+        "score": 0.3532
+      }
+    },
+    {
+      "query": "تاكو مكسيكي باللحمة المفرومة",
+      "api_response": {
+        "status": "REJECTED_OUT_OF_CATALOG",
+        "query": "تاكو مكسيكي باللحمة المفرومة",
+        "normalized_query": "تاكو مكسيكي بلحم المفرومه",
+        "language": "ar",
+        "matched_recipes": [],
+        "rejection_reason": "صنف الطعام المطلوب (تاكو) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+        "rejection_reason_en": "Out of catalog: Food category 'تاكو' is not supported in the recipe database.",
+        "clarification_message": null,
+        "execution_time_ms": 3.61
+      },
+      "sparse_top": {
+        "recipe_id": "R0005",
+        "name_ar": "فتة مصرية باللحمة والخل والثوم",
+        "name_en": "Egyptian Fattah",
+        "score": 0.1209
+      },
+      "dense_top": {
+        "recipe_id": "R0124",
+        "name_ar": "عدس بني بجبة متبل بالبابريكا المدخنة والشطة",
+        "name_en": "Smoked Paprika Glaze Brown Lentils",
+        "score": 0.2534
+      }
+    },
+    {
+      "query": "باستا بالزعفران والكافيار",
+      "api_response": {
+        "status": "SUCCESS",
+        "query": "باستا بالزعفران والكافيار",
+        "normalized_query": "باستا بالزعفران والكافيار",
+        "language": "ar",
+        "matched_recipes": [
+          {
+            "recipe_id": "R0004",
+            "recipe_name_ar": "محشي مشكل",
+            "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+            "cuisine": "Egyptian",
+            "category": "Main Course",
+            "similarity_score": 0.2434,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+            "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+          },
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "cuisine": "Egyptian",
+            "category": "Breakfast",
+            "similarity_score": 0.2393,
+            "match_reason": "وصفة رئيسية أصيلة موثقة",
+            "is_core_recipe": true,
+            "description_ar": "أقراص محضرة من الفول المدشوش المنقوع والمطحون مع البصل والثوم والأعشاب الخضراء كالشبت والكزبرة مع توابل الكمون والكزبرة الجافة، ومقلية في الزيت حتى القرمشة.",
+            "description_en": "Authentic Egyptian green patties made with soaked split dried fava beans, fresh leeks, coriander, dill, coated in sesame seeds and fried crispy."
+          },
+          {
+            "recipe_id": "R0064",
+            "recipe_name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+            "recipe_name_en": "Smoked Paprika Glaze Lamb Shoulder",
+            "cuisine": "Spanish",
+            "category": "Meat And Poultry",
+            "similarity_score": 0.2391,
+            "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+            "is_core_recipe": false,
+            "description_ar": "طبق شهي من المطبخ الإسباني يحضر من كتف ضان بلدي متبل بالبابريكا المدخنة والشطة مع التوابل والبهارات الطازجة.",
+            "description_en": "Delicious Spanish culinary preparation of lamb shoulder smoked paprika glaze with fresh seasonings."
+          }
+        ],
+        "rejection_reason": null,
+        "rejection_reason_en": null,
+        "clarification_message": null,
+        "execution_time_ms": 9.14
+      },
+      "sparse_top": {
+        "recipe_id": "R0185",
+        "name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "name_en": "Charcoal Grilled Egyptian Rice",
+        "score": 0.0
+      },
+      "dense_top": {
+        "recipe_id": "R0064",
+        "name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+        "name_en": "Smoked Paprika Glaze Lamb Shoulder",
+        "score": 0.4347
+      }
+    }
+  ]
+}

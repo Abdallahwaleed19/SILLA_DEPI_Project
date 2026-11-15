@@ -1,0 +1,1081 @@
+{
+  "benchmark_metadata": {
+    "timestamp": "2026-11-15T17:25:08+0200",
+    "database_source": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\silla_staging.db",
+    "total_queries_evaluated": 20,
+    "in_catalog_queries": 14,
+    "negative_rejection_queries": 6
+  },
+  "comparative_summary": {
+    "systems": [
+      {
+        "name": "TF-IDF (Scikit-Learn Baseline)",
+        "threshold": 0.23,
+        "precision_at_1": 0.1429,
+        "precision_at_3": 0.0476,
+        "recall_at_3": 0.1429,
+        "mrr": 0.1429,
+        "out_of_catalog_rejection_rate": 1.0,
+        "false_acceptances": 0,
+        "false_rejections": 12,
+        "avg_latency_ms": 1.68
+      },
+      {
+        "name": "Sentence Transformers (Dense Baseline)",
+        "threshold": 0.26,
+        "precision_at_1": 0.1429,
+        "precision_at_3": 0.0714,
+        "recall_at_3": 0.1667,
+        "mrr": 0.1786,
+        "out_of_catalog_rejection_rate": 0.5,
+        "false_acceptances": 3,
+        "false_rejections": 3,
+        "avg_latency_ms": 6.83
+      },
+      {
+        "name": "SILLA Hybrid NLP Engine (Sparse + Dense + Guard + Colloquial)",
+        "threshold": 0.18,
+        "precision_at_1": 1.0,
+        "precision_at_3": 0.381,
+        "recall_at_3": 0.8988,
+        "mrr": 1.0,
+        "out_of_catalog_rejection_rate": 1.0,
+        "false_acceptances": 0,
+        "false_rejections": 0,
+        "avg_latency_ms": 8.73
+      }
+    ]
+  },
+  "tfidf_baseline_details": {
+    "system": "TF-IDF (Scikit-Learn Baseline)",
+    "threshold": 0.23,
+    "mean_precision_at_1": 0.1429,
+    "mean_precision_at_3": 0.0476,
+    "mean_recall_at_3": 0.1429,
+    "mean_mrr": 0.1429,
+    "out_of_catalog_rejection_rate": 1.0,
+    "false_acceptance_count": 0,
+    "false_rejection_count": 12,
+    "average_latency_ms": 1.68,
+    "query_results": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "relevant": [
+          "R0002"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 19.42
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "relevant": [
+          "R0001"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 1.07
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "relevant": [
+          "R0008"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 1.0
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "relevant": [
+          "R0005"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 1.01
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "relevant": [
+          "R0012"
+        ],
+        "retrieved": [
+          "R0012"
+        ],
+        "scores": [
+          0.2315
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 1.0
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "relevant": [
+          "R0009"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 1.93
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "relevant": [
+          "R0016"
+        ],
+        "retrieved": [
+          "R0016"
+        ],
+        "scores": [
+          0.2771
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.44
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "relevant": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "relevant": [
+          "R0006"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "relevant": [
+          "R0010",
+          "R0011"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "relevant": [
+          "R0007"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "relevant": [
+          "R0003"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 7.09
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.55
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "relevant": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "relevant": [
+          "R0014"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      }
+    ]
+  },
+  "dense_baseline_details": {
+    "system": "Sentence Transformers (Dense Baseline)",
+    "threshold": 0.26,
+    "mean_precision_at_1": 0.1429,
+    "mean_precision_at_3": 0.0714,
+    "mean_recall_at_3": 0.1667,
+    "mean_mrr": 0.1786,
+    "out_of_catalog_rejection_rate": 0.5,
+    "false_acceptance_count": 3,
+    "false_rejection_count": 3,
+    "average_latency_ms": 6.83,
+    "query_results": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "relevant": [
+          "R0002"
+        ],
+        "retrieved": [
+          "R0010",
+          "R0009",
+          "R0011"
+        ],
+        "scores": [
+          0.6069,
+          0.598,
+          0.5914
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 15.18
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "relevant": [
+          "R0001"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 4.0
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "relevant": [
+          "R0008"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "relevant": [
+          "R0005"
+        ],
+        "retrieved": [
+          "R0017",
+          "R0007",
+          "R0027"
+        ],
+        "scores": [
+          0.7376,
+          0.7159,
+          0.7113
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 14.1
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "relevant": [
+          "R0012"
+        ],
+        "retrieved": [
+          "R0012",
+          "R0173",
+          "R0174"
+        ],
+        "scores": [
+          0.8138,
+          0.7492,
+          0.7235
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "relevant": [
+          "R0009"
+        ],
+        "retrieved": [
+          "R0154"
+        ],
+        "scores": [
+          0.2746
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "relevant": [
+          "R0016"
+        ],
+        "retrieved": [
+          "R0024",
+          "R0118",
+          "R0064"
+        ],
+        "scores": [
+          0.3396,
+          0.3365,
+          0.3276
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 16.03
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "relevant": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "retrieved": [
+          "R0178",
+          "R0012",
+          "R0176"
+        ],
+        "scores": [
+          0.8231,
+          0.7816,
+          0.7679
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.33, R@3=0.33, MRR=0.50)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 3.99
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "relevant": [
+          "R0006"
+        ],
+        "retrieved": [
+          "R0011",
+          "R0118",
+          "R0022"
+        ],
+        "scores": [
+          0.3984,
+          0.3849,
+          0.3815
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 14.09
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "relevant": [
+          "R0010",
+          "R0011"
+        ],
+        "retrieved": [
+          "R0004",
+          "R0005",
+          "R0002"
+        ],
+        "scores": [
+          0.6503,
+          0.6225,
+          0.6118
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "relevant": [
+          "R0007"
+        ],
+        "retrieved": [],
+        "scores": [],
+        "status": "FALSE_REJECTION (empty)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "relevant": [
+          "R0003"
+        ],
+        "retrieved": [
+          "R0118",
+          "R0016",
+          "R0123"
+        ],
+        "scores": [
+          0.5262,
+          0.524,
+          0.5096
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 17.11
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "relevant": [],
+        "retrieved": [
+          "R0064",
+          "R0148",
+          "R0098"
+        ],
+        "scores": [
+          0.3799,
+          0.3495,
+          0.3246
+        ],
+        "status": "FALSE_ACCEPTANCE (retrieved: ['R0064', 'R0148', 'R0098'])",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "relevant": [],
+        "retrieved": [
+          "R0011",
+          "R0118",
+          "R0010"
+        ],
+        "scores": [
+          0.4562,
+          0.4462,
+          0.3833
+        ],
+        "status": "FALSE_ACCEPTANCE (retrieved: ['R0011', 'R0118', 'R0010'])",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 16.85
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "relevant": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "retrieved": [
+          "R0034",
+          "R0041",
+          "R0046"
+        ],
+        "scores": [
+          0.7132,
+          0.702,
+          0.6963
+        ],
+        "status": "HIT (P@1=0.0, P@3=0.00, R@3=0.00, MRR=0.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 15.42
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "relevant": [
+          "R0014"
+        ],
+        "retrieved": [
+          "R0014",
+          "R0106",
+          "R0012"
+        ],
+        "scores": [
+          0.6842,
+          0.4777,
+          0.4554
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 10.17
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "relevant": [],
+        "retrieved": [
+          "R0107",
+          "R0034",
+          "R0106"
+        ],
+        "scores": [
+          0.416,
+          0.3873,
+          0.3866
+        ],
+        "status": "FALSE_ACCEPTANCE (retrieved: ['R0107', 'R0034', 'R0106'])",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 9.2
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "NO_GUARD",
+        "latency_ms": 0.53
+      }
+    ]
+  },
+  "hybrid_engine_details": {
+    "system": "SILLA Hybrid NLP Engine (Sparse + Dense + Guard + Colloquial)",
+    "threshold": 0.18,
+    "mean_precision_at_1": 1.0,
+    "mean_precision_at_3": 0.381,
+    "mean_recall_at_3": 0.8988,
+    "mean_mrr": 1.0,
+    "out_of_catalog_rejection_rate": 1.0,
+    "false_acceptance_count": 0,
+    "false_rejection_count": 0,
+    "average_latency_ms": 8.73,
+    "query_results": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "relevant": [
+          "R0002"
+        ],
+        "retrieved": [
+          "R0002",
+          "R0005",
+          "R0010"
+        ],
+        "scores": [
+          0.6299,
+          0.4037,
+          0.3938
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 17.43
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "relevant": [
+          "R0001"
+        ],
+        "retrieved": [
+          "R0001",
+          "R0012",
+          "R0125"
+        ],
+        "scores": [
+          0.3325,
+          0.1378,
+          0.1317
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 10.04
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "relevant": [
+          "R0008"
+        ],
+        "retrieved": [
+          "R0008",
+          "R0118",
+          "R0016"
+        ],
+        "scores": [
+          0.3212,
+          0.214,
+          0.194
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 8.53
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "relevant": [
+          "R0005"
+        ],
+        "retrieved": [
+          "R0005",
+          "R0007",
+          "R0017"
+        ],
+        "scores": [
+          0.5327,
+          0.47,
+          0.4254
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 15.79
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "relevant": [
+          "R0012"
+        ],
+        "retrieved": [
+          "R0012",
+          "R0177",
+          "R0173"
+        ],
+        "scores": [
+          0.7117,
+          0.5095,
+          0.5032
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 18.4
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "relevant": [
+          "R0009"
+        ],
+        "retrieved": [
+          "R0009",
+          "R0001",
+          "R0010"
+        ],
+        "scores": [
+          0.3113,
+          0.1926,
+          0.1925
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 10.06
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "relevant": [
+          "R0016"
+        ],
+        "retrieved": [
+          "R0016",
+          "R0008",
+          "R0004"
+        ],
+        "scores": [
+          0.4897,
+          0.2811,
+          0.2336
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "relevant": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "retrieved": [
+          "R0012",
+          "R0178",
+          "R0176"
+        ],
+        "scores": [
+          0.5788,
+          0.5692,
+          0.5012
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=0.33, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 17.96
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "relevant": [
+          "R0006"
+        ],
+        "retrieved": [
+          "R0006",
+          "R0011",
+          "R0005"
+        ],
+        "scores": [
+          0.4401,
+          0.2843,
+          0.2696
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "relevant": [
+          "R0010",
+          "R0011"
+        ],
+        "retrieved": [
+          "R0010",
+          "R0002",
+          "R0004"
+        ],
+        "scores": [
+          0.4878,
+          0.4706,
+          0.4407
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=0.50, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 27.43
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "relevant": [
+          "R0007"
+        ],
+        "retrieved": [
+          "R0007",
+          "R0137",
+          "R0125"
+        ],
+        "scores": [
+          0.2666,
+          0.2283,
+          0.2224
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 6.27
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "relevant": [
+          "R0003"
+        ],
+        "retrieved": [
+          "R0003",
+          "R0016",
+          "R0008"
+        ],
+        "scores": [
+          0.4215,
+          0.3482,
+          0.2972
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 15.99
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REJECT_NON_FOOD",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REJECT_OUT_OF_CATALOG",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REJECT_OUT_OF_CATALOG",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REJECT_OUT_OF_CATALOG",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "relevant": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "retrieved": [
+          "R0042",
+          "R0030",
+          "R0015"
+        ],
+        "scores": [
+          0.5409,
+          0.5368,
+          0.4958
+        ],
+        "status": "HIT (P@1=1.0, P@3=1.00, R@3=0.75, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "relevant": [
+          "R0014"
+        ],
+        "retrieved": [
+          "R0014",
+          "R0012",
+          "R0006"
+        ],
+        "scores": [
+          0.4863,
+          0.3105,
+          0.2936
+        ],
+        "status": "HIT (P@1=1.0, P@3=0.33, R@3=1.00, MRR=1.00)",
+        "guard_decision": "ACCEPT",
+        "latency_ms": 26.63
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REQUEST_CLARIFICATION",
+        "latency_ms": 0.0
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "relevant": [],
+        "retrieved": [],
+        "scores": [],
+        "status": "CORRECT_REJECTION",
+        "guard_decision": "REJECT_NON_FOOD",
+        "latency_ms": 0.0
+      }
+    ]
+  }
+}

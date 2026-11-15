@@ -1,0 +1,2296 @@
+{
+  "audit_title": "SILLA Hybrid NLP Engine - Formal Final Audit & Verification Report",
+  "audit_timestamp": "2026-11-15T17:44:58+0200",
+  "database_safety_verification": {
+    "production_database": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\silla.db",
+    "production_sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+    "expected_sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+    "is_production_db_untouched": true,
+    "staging_database": "D:\\VS_Works\\SILLA_DEPI_Project\\SILLA_Data_Engineering\\database\\silla_staging.db",
+    "total_recipes_indexed": 185,
+    "domain_guard_catalog_false_positives": 0
+  },
+  "query_set_breakdown": {
+    "total_evaluated_queries": 20,
+    "in_catalog_valid_queries_count": 14,
+    "in_catalog_qids": [
+      "SMK-01",
+      "SMK-02",
+      "SMK-03",
+      "SMK-04",
+      "SMK-05",
+      "SMK-06",
+      "SMK-07",
+      "SMK-08",
+      "SMK-09",
+      "SMK-10",
+      "SMK-11",
+      "SMK-12",
+      "SMK-17",
+      "SMK-18"
+    ],
+    "negative_rejection_queries_count": 6,
+    "negative_qids": [
+      "SMK-13",
+      "SMK-14",
+      "SMK-15",
+      "SMK-16",
+      "SMK-19",
+      "SMK-20"
+    ],
+    "excluded_queries_count": 0,
+    "exclusion_notes": "No queries were excluded. All 20 queries were evaluated uniformly across all models."
+  },
+  "metric_definitions_and_formulas": {
+    "precision_at_1": {
+      "formula": "P@1 = I(Retrieved_1 in GroundTruth)",
+      "description": "Measures whether the very first recommended recipe is an exact relevant hit. Evaluated over 14 in-catalog queries."
+    },
+    "precision_at_3": {
+      "formula": "P@3 = |Retrieved_Top3 ∩ GroundTruth| / 3",
+      "description": "Measures relevance density in top 3 slots. Note: For single-target queries (|GT|=1), the maximum possible P@3 is 1/3 (0.3333)."
+    },
+    "recall_at_3": {
+      "formula": "Recall@3 = |Retrieved_Top3 ∩ GroundTruth| / |GroundTruth|",
+      "description": "Measures proportion of known relevant recipes retrieved in top 3."
+    },
+    "mrr_at_3": {
+      "formula": "MRR@3 = (1 / N_valid) * sum_{i=1}^{N_valid} (1 / rank_i*) where 1 <= rank_i* <= 3, else 0",
+      "description": "Mean Reciprocal Rank restricted to top 3 retrieved results. Properly named MRR@3."
+    },
+    "out_of_catalog_rejection_rate": {
+      "formula": "RejectionRate = Correct_Rejections / Total_Negative_Queries",
+      "description": "Measures accuracy of rejecting non-food, sweets, burgers, and out-of-catalog items over 6 negative queries."
+    },
+    "false_acceptance_count": {
+      "definition": "Number of negative queries where a model passed threshold and returned 1 or more recipes (Type I Error)."
+    },
+    "false_rejection_count": {
+      "definition": "Number of valid in-catalog queries where a model returned 0 recipes due to threshold cutoff (Type II Error)."
+    },
+    "improvement_derivation": {
+      "baseline_p1": 0.1429,
+      "hybrid_p1": 1.0,
+      "relative_gain_percent": 599.79,
+      "absolute_gain_percentage_points": 85.71,
+      "mathematical_explanation": "Relative gain = (1.0000 - 0.1429) / 0.1429 * 100% = +599.79% (~ +600%). Absolute gain = +85.71 percentage points."
+    }
+  },
+  "comparative_metrics_table": {
+    "headers": [
+      "Model",
+      "Threshold",
+      "P@1",
+      "P@3",
+      "Recall@3",
+      "MRR@3",
+      "Top-1 Correct",
+      "Top-3 Hits",
+      "False Rejections",
+      "Rejection Rate",
+      "False Acceptances"
+    ],
+    "rows": [
+      {
+        "model": "TF-IDF Baseline",
+        "threshold": 0.23,
+        "precision_at_1": 0.1429,
+        "precision_at_3": 0.0476,
+        "recall_at_3": 0.1429,
+        "mrr_at_3": 0.1429,
+        "top1_correct": "2 / 14",
+        "top3_hits": "2 / 14",
+        "false_rejections": "12 / 14",
+        "out_of_catalog_rejection_rate": "100.0%",
+        "false_acceptances": "0 / 6"
+      },
+      {
+        "model": "Sentence Transformers Baseline",
+        "threshold": 0.26,
+        "precision_at_1": 0.1429,
+        "precision_at_3": 0.0714,
+        "recall_at_3": 0.1667,
+        "mrr_at_3": 0.1786,
+        "top1_correct": "2 / 14",
+        "top3_hits": "3 / 14",
+        "false_rejections": "3 / 14",
+        "out_of_catalog_rejection_rate": "50.0%",
+        "false_acceptances": "3 / 6"
+      },
+      {
+        "model": "SILLA Hybrid NLP Engine",
+        "threshold": 0.18,
+        "precision_at_1": 1.0,
+        "precision_at_3": 0.381,
+        "recall_at_3": 0.8988,
+        "mrr_at_3": 1.0,
+        "top1_correct": "14 / 14",
+        "top3_hits": "14 / 14",
+        "false_rejections": "0 / 14",
+        "out_of_catalog_rejection_rate": "100.0%",
+        "false_acceptances": "0 / 6"
+      }
+    ]
+  },
+  "contradictory_queries_audit": {
+    "status": "VERIFIED_SAFE_INTERCEPTION",
+    "policy": "Queries with fundamental culinary contradictions (e.g. Koshari + Seafood, Savory Bechamel + Jam/Chocolate) must NOT return naive partial matches. They are strictly intercepted as REJECTED_CONTRADICTORY with zero recipe suggestions and an explicit clarification prompt.",
+    "test_results": [
+      {
+        "query": "كشري بالسمك",
+        "status": "REJECTED_CONTRADICTORY",
+        "rejection_reason": "الطلب يحتوي على تعارض جوهري: الكشري المصري الأصيل لا يُعد بالأسماك أو المأكولات البحرية.",
+        "clarification_message": "الطلب يحتوي على مكونات متعارضة جوهرياً. هل تبحث عن الوصفة التقليدية أم وصفة أخرى؟",
+        "matched_recipes_count": 0,
+        "is_correctly_intercepted": true
+      },
+      {
+        "query": "مكرونة بشاميل بالمربى والشوكولاتة",
+        "status": "REJECTED_CONTRADICTORY",
+        "rejection_reason": "الطلب يحتوي على تعارض جوهري: لا يمكن دمج أطباق حادقة رئيسية (مثل البشاميل/الكفتة/الحواوشي) مع السكريات والمربى والحلويات.",
+        "clarification_message": "الطلب يحتوي على مكونات متعارضة جوهرياً. هل تبحث عن الوصفة التقليدية أم وصفة أخرى؟",
+        "matched_recipes_count": 0,
+        "is_correctly_intercepted": true
+      }
+    ]
+  },
+  "performance_and_latency_audit": {
+    "cold_start_time_seconds": 12.73,
+    "is_cold_start_included_in_query_latency": false,
+    "cold_start_explanation": "One-time cost at application startup to initialize FastEmbed ONNX Runtime and SQLite indexes into RAM.",
+    "pure_warm_mean_latency_ms": 11.54,
+    "pure_warm_median_latency_ms": 11.42,
+    "pure_warm_p95_latency_ms": 21.47,
+    "pure_warm_p99_latency_ms": 24.33,
+    "max_latency_ms": 28.21,
+    "memory_resident_mb": 76.35,
+    "memory_leak_delta_100_queries_mb": 0.08,
+    "throughput_queries_per_second": 86.6
+  },
+  "raw_per_query_evaluations": {
+    "tfidf": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "ground_truth": [
+          "R0002"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0002",
+            "score": 0.2149,
+            "recipe_name_ar": "كشري مصري",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0185",
+            "score": 0.1048,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0005",
+            "score": 0.0543,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "ground_truth": [
+          "R0001"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0001",
+            "score": 0.2163,
+            "recipe_name_ar": "مكرونة بشاميل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0178",
+            "score": 0.077,
+            "recipe_name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0179",
+            "score": 0.0769,
+            "recipe_name_ar": "مكرونة فرن ايطالي كمونية بالبصل المكرمل",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "ground_truth": [
+          "R0008"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0008",
+            "score": 0.1976,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0016",
+            "score": 0.0753,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0118",
+            "score": 0.0685,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "ground_truth": [
+          "R0005"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0005",
+            "score": 0.1833,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0047",
+            "score": 0.0503,
+            "recipe_name_ar": "اوراك دجاج متبلة كمونية بالبصل المكرمل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0037",
+            "score": 0.0489,
+            "recipe_name_ar": "صدور دجاج مخلية تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "ground_truth": [
+          "R0012"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0012"
+        ],
+        "scores_after_threshold": [
+          0.2315
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0012",
+            "score": 0.2315,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0177",
+            "score": 0.1374,
+            "recipe_name_ar": "مكرونة فرن ايطالي بصلصة الكريمة والاعشاب العطرية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0003",
+            "score": 0.1278,
+            "recipe_name_ar": "ملوخية بالفراخ",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "ground_truth": [
+          "R0009"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0009",
+            "score": 0.1377,
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "ground_truth": [
+          "R0016"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0016"
+        ],
+        "scores_after_threshold": [
+          0.2771
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0016",
+            "score": 0.2771,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0008",
+            "score": 0.0682,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0004",
+            "score": 0.0257,
+            "recipe_name_ar": "محشي مشكل",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "ground_truth": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0178",
+            "score": 0.1479,
+            "recipe_name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0001",
+            "score": 0.0898,
+            "recipe_name_ar": "مكرونة بشاميل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0012",
+            "score": 0.0864,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "ground_truth": [
+          "R0006"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0006",
+            "score": 0.1791,
+            "recipe_name_ar": "حواوشي بلدي",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0054",
+            "score": 0.1207,
+            "recipe_name_ar": "كتف ضان بلدي طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0062",
+            "score": 0.1184,
+            "recipe_name_ar": "كتف ضان بلدي مسلوق في مرقة الكزبرة والحبهان",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "ground_truth": [
+          "R0010",
+          "R0011"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.139,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0010",
+            "score": 0.1257,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0002",
+            "score": 0.0814,
+            "recipe_name_ar": "كشري مصري",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "ground_truth": [
+          "R0007"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0089",
+            "score": 0.1776,
+            "recipe_name_ar": "جمبري مقشر طازج مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0101",
+            "score": 0.1755,
+            "recipe_name_ar": "حبار كاليماري طازج مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0137",
+            "score": 0.1753,
+            "recipe_name_ar": "حمص شام مسلوق مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "ground_truth": [
+          "R0003"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0003",
+            "score": 0.1823,
+            "recipe_name_ar": "ملوخية بالفراخ",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "ground_truth": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0030",
+            "score": 0.2242,
+            "recipe_name_ar": "صدور دجاج مخلية طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0042",
+            "score": 0.2236,
+            "recipe_name_ar": "اوراك دجاج متبلة طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0090",
+            "score": 0.1757,
+            "recipe_name_ar": "جمبري مقشر طازج طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "ground_truth": [
+          "R0014"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.0,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0097",
+            "score": 0.173,
+            "recipe_name_ar": "جمبري مقشر طازج تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0109",
+            "score": 0.1706,
+            "recipe_name_ar": "حبار كاليماري طازج تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0145",
+            "score": 0.1701,
+            "recipe_name_ar": "حمص شام مسلوق تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.0,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.0,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.0,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0097",
+            "score": 0.173,
+            "recipe_name_ar": "جمبري مقشر طازج تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0109",
+            "score": 0.1706,
+            "recipe_name_ar": "حبار كاليماري طازج تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0145",
+            "score": 0.1701,
+            "recipe_name_ar": "حمص شام مسلوق تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0185",
+            "score": 0.0,
+            "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0184",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0183",
+            "score": 0.0,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": false
+          }
+        ]
+      }
+    ],
+    "dense": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "ground_truth": [
+          "R0002"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0010",
+          "R0009",
+          "R0011"
+        ],
+        "scores_after_threshold": [
+          0.6069,
+          0.598,
+          0.5914
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0010",
+            "score": 0.6069,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0009",
+            "score": 0.598,
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0011",
+            "score": 0.5914,
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "ground_truth": [
+          "R0001"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0125",
+            "score": 0.2395,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0126",
+            "score": 0.2204,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0137",
+            "score": 0.2154,
+            "recipe_name_ar": "حمص شام مسلوق مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "ground_truth": [
+          "R0008"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0118",
+            "score": 0.2422,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0022",
+            "score": 0.2289,
+            "recipe_name_ar": "لحم بتلو بقري مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0058",
+            "score": 0.1842,
+            "recipe_name_ar": "كتف ضان بلدي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "ground_truth": [
+          "R0005"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0017",
+          "R0007",
+          "R0027"
+        ],
+        "scores_after_threshold": [
+          0.7376,
+          0.7159,
+          0.7113
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0017",
+            "score": 0.7376,
+            "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0007",
+            "score": 0.7159,
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0027",
+            "score": 0.7113,
+            "recipe_name_ar": "لحم بتلو بقري طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "ground_truth": [
+          "R0012"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0012",
+          "R0173",
+          "R0174"
+        ],
+        "scores_after_threshold": [
+          0.8138,
+          0.7492,
+          0.7235
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0012",
+            "score": 0.8138,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0173",
+            "score": 0.7492,
+            "recipe_name_ar": "مكرونة فرن ايطالي مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0174",
+            "score": 0.7235,
+            "recipe_name_ar": "مكرونة فرن ايطالي طاجن في الفرن بالصلصة",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "ground_truth": [
+          "R0009"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0154"
+        ],
+        "scores_after_threshold": [
+          0.2746
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0154",
+            "score": 0.2746,
+            "recipe_name_ar": "باذنجان رومي مشوي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0153",
+            "score": 0.2534,
+            "recipe_name_ar": "باذنجان رومي مشوي بصلصة الكريمة والاعشاب العطرية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0009",
+            "score": 0.2533,
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "ground_truth": [
+          "R0016"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0024",
+          "R0118",
+          "R0064"
+        ],
+        "scores_after_threshold": [
+          0.3396,
+          0.3365,
+          0.3276
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0024",
+            "score": 0.3396,
+            "recipe_name_ar": "لحم بتلو بقري سلطة منعشة بزيت الزيتون والليمون",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0118",
+            "score": 0.3365,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0064",
+            "score": 0.3276,
+            "recipe_name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "ground_truth": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "outcome": "HIT_TOP_3",
+        "retrieved_after_threshold": [
+          "R0178",
+          "R0012",
+          "R0176"
+        ],
+        "scores_after_threshold": [
+          0.8231,
+          0.7816,
+          0.7679
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0178",
+            "score": 0.8231,
+            "recipe_name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0012",
+            "score": 0.7816,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0176",
+            "score": 0.7679,
+            "recipe_name_ar": "مكرونة فرن ايطالي يخنة طماطم مسبكة حارة",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "ground_truth": [
+          "R0006"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0011",
+          "R0118",
+          "R0022"
+        ],
+        "scores_after_threshold": [
+          0.3984,
+          0.3849,
+          0.3815
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0011",
+            "score": 0.3984,
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0118",
+            "score": 0.3849,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0022",
+            "score": 0.3815,
+            "recipe_name_ar": "لحم بتلو بقري مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "ground_truth": [
+          "R0010",
+          "R0011"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0004",
+          "R0005",
+          "R0002"
+        ],
+        "scores_after_threshold": [
+          0.6503,
+          0.6225,
+          0.6118
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0004",
+            "score": 0.6503,
+            "recipe_name_ar": "محشي مشكل",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0005",
+            "score": 0.6225,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0002",
+            "score": 0.6118,
+            "recipe_name_ar": "كشري مصري",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "ground_truth": [
+          "R0007"
+        ],
+        "outcome": "FALSE_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0125",
+            "score": 0.2127,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0137",
+            "score": 0.2098,
+            "recipe_name_ar": "حمص شام مسلوق مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0126",
+            "score": 0.2041,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة طاجن في الفرن بالصلصة",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "ground_truth": [
+          "R0003"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0118",
+          "R0016",
+          "R0123"
+        ],
+        "scores_after_threshold": [
+          0.5262,
+          0.524,
+          0.5096
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0118",
+            "score": 0.5262,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0016",
+            "score": 0.524,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0123",
+            "score": 0.5096,
+            "recipe_name_ar": "عدس بني بجبة طاجن مغربي بالزيتون والليمون المعصفر",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "ground_truth": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "outcome": "MISS",
+        "retrieved_after_threshold": [
+          "R0034",
+          "R0041",
+          "R0046"
+        ],
+        "scores_after_threshold": [
+          0.7132,
+          0.702,
+          0.6963
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0034",
+            "score": 0.7132,
+            "recipe_name_ar": "صدور دجاج مخلية مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0041",
+            "score": 0.702,
+            "recipe_name_ar": "اوراك دجاج متبلة مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0046",
+            "score": 0.6963,
+            "recipe_name_ar": "اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "ground_truth": [
+          "R0014"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0014",
+          "R0106",
+          "R0012"
+        ],
+        "scores_after_threshold": [
+          0.6842,
+          0.4777,
+          0.4554
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0014",
+            "score": 0.6842,
+            "recipe_name_ar": "بيتزا مارجريتا ايطالية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0106",
+            "score": 0.4777,
+            "recipe_name_ar": "حبار كاليماري طازج مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0012",
+            "score": 0.4554,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0143",
+            "score": 0.1791,
+            "recipe_name_ar": "حمص شام مسلوق كمونية بالبصل المكرمل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0008",
+            "score": 0.1627,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0133",
+            "score": 0.159,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة تشويح سريع مع فلفل الالوان",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "ground_truth": [],
+        "outcome": "FALSE_ACCEPTANCE",
+        "retrieved_after_threshold": [
+          "R0064",
+          "R0148",
+          "R0098"
+        ],
+        "scores_after_threshold": [
+          0.3799,
+          0.3495,
+          0.3246
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0064",
+            "score": 0.3799,
+            "recipe_name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0148",
+            "score": 0.3495,
+            "recipe_name_ar": "حمص شام مسلوق متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0098",
+            "score": 0.3246,
+            "recipe_name_ar": "جمبري مقشر طازج مسلوق في مرقة الكزبرة والحبهان",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "ground_truth": [],
+        "outcome": "FALSE_ACCEPTANCE",
+        "retrieved_after_threshold": [
+          "R0011",
+          "R0118",
+          "R0010"
+        ],
+        "scores_after_threshold": [
+          0.4562,
+          0.4462,
+          0.3833
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0011",
+            "score": 0.4562,
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0118",
+            "score": 0.4462,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0010",
+            "score": 0.3833,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0001",
+            "score": 0.2548,
+            "recipe_name_ar": "مكرونة بشاميل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0041",
+            "score": 0.2303,
+            "recipe_name_ar": "اوراك دجاج متبلة مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0118",
+            "score": 0.2239,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "ground_truth": [],
+        "outcome": "FALSE_ACCEPTANCE",
+        "retrieved_after_threshold": [
+          "R0107",
+          "R0034",
+          "R0106"
+        ],
+        "scores_after_threshold": [
+          0.416,
+          0.3873,
+          0.3866
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0107",
+            "score": 0.416,
+            "recipe_name_ar": "حبار كاليماري طازج كمونية بالبصل المكرمل",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0034",
+            "score": 0.3873,
+            "recipe_name_ar": "صدور دجاج مخلية مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0106",
+            "score": 0.3866,
+            "recipe_name_ar": "حبار كاليماري طازج مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0006",
+            "score": 0.2148,
+            "recipe_name_ar": "حواوشي بلدي",
+            "passed_threshold": false
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0023",
+            "score": 0.2081,
+            "recipe_name_ar": "لحم بتلو بقري كمونية بالبصل المكرمل",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0064",
+            "score": 0.1979,
+            "recipe_name_ar": "كتف ضان بلدي متبل بالبابريكا المدخنة والشطة",
+            "passed_threshold": false
+          }
+        ]
+      }
+    ],
+    "hybrid": [
+      {
+        "qid": "SMK-01",
+        "category": "In-Catalog",
+        "query": "كشري مصري",
+        "ground_truth": [
+          "R0002"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0002",
+          "R0005",
+          "R0010"
+        ],
+        "scores_after_threshold": [
+          0.6299,
+          0.4037,
+          0.3938
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0002",
+            "score": 0.6299,
+            "recipe_name_ar": "كشري مصري",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0005",
+            "score": 0.4037,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0010",
+            "score": 0.3938,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-02",
+        "category": "In-Catalog",
+        "query": "مكرونة بشاميل باللحمة",
+        "ground_truth": [
+          "R0001"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0001",
+          "R0012",
+          "R0125"
+        ],
+        "scores_after_threshold": [
+          0.3325,
+          0.1378,
+          0.1317
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0001",
+            "score": 0.3325,
+            "recipe_name_ar": "مكرونة بشاميل",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0012",
+            "score": 0.1378,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": false
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0125",
+            "score": 0.1317,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة مشوي على الفحم بالبهارات",
+            "passed_threshold": false
+          }
+        ]
+      },
+      {
+        "qid": "SMK-03",
+        "category": "In-Catalog",
+        "query": "شوربة عدس بالشعرية",
+        "ground_truth": [
+          "R0008"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0008",
+          "R0118",
+          "R0016"
+        ],
+        "scores_after_threshold": [
+          0.3212,
+          0.214,
+          0.194
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0008",
+            "score": 0.3212,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0118",
+            "score": 0.214,
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0016",
+            "score": 0.194,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-04",
+        "category": "In-Catalog",
+        "query": "Egyptian fattah with meat",
+        "ground_truth": [
+          "R0005"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0005",
+          "R0007",
+          "R0017"
+        ],
+        "scores_after_threshold": [
+          0.5327,
+          0.47,
+          0.4254
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0005",
+            "score": 0.5327,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0007",
+            "score": 0.47,
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0017",
+            "score": 0.4254,
+            "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-05",
+        "category": "In-Catalog",
+        "query": "pasta with chicken and cream",
+        "ground_truth": [
+          "R0012"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0012",
+          "R0177",
+          "R0173"
+        ],
+        "scores_after_threshold": [
+          0.7117,
+          0.5095,
+          0.5032
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0012",
+            "score": 0.7117,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0177",
+            "score": 0.5095,
+            "recipe_name_ar": "مكرونة فرن ايطالي بصلصة الكريمة والاعشاب العطرية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0173",
+            "score": 0.5032,
+            "recipe_name_ar": "مكرونة فرن ايطالي مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-06",
+        "category": "Ambiguous/Broad",
+        "query": "أكلة سريعة بالبيض",
+        "ground_truth": [
+          "R0009"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0009",
+          "R0001",
+          "R0010"
+        ],
+        "scores_after_threshold": [
+          0.3113,
+          0.1926,
+          0.1925
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0009",
+            "score": 0.3113,
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0001",
+            "score": 0.1926,
+            "recipe_name_ar": "مكرونة بشاميل",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0010",
+            "score": 0.1925,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-07",
+        "category": "Ambiguous/Broad",
+        "query": "شوربة خضار صحية",
+        "ground_truth": [
+          "R0016"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0016",
+          "R0008",
+          "R0004"
+        ],
+        "scores_after_threshold": [
+          0.4897,
+          0.2811,
+          0.2336
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0016",
+            "score": 0.4897,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0008",
+            "score": 0.2811,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0004",
+            "score": 0.2336,
+            "recipe_name_ar": "محشي مشكل",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-08",
+        "category": "Ambiguous/Broad",
+        "query": "Italian pasta dish",
+        "ground_truth": [
+          "R0001",
+          "R0012",
+          "R0013"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0012",
+          "R0178",
+          "R0176"
+        ],
+        "scores_after_threshold": [
+          0.5788,
+          0.5692,
+          0.5012
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0012",
+            "score": 0.5788,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0178",
+            "score": 0.5692,
+            "recipe_name_ar": "مكرونة فرن ايطالي مقرمش بالبقسماط والبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0176",
+            "score": 0.5012,
+            "recipe_name_ar": "مكرونة فرن ايطالي يخنة طماطم مسبكة حارة",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-09",
+        "category": "Colloquial",
+        "query": "عايز اعمل حواوشي في العيش البلدي",
+        "ground_truth": [
+          "R0006"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0006",
+          "R0011",
+          "R0005"
+        ],
+        "scores_after_threshold": [
+          0.4401,
+          0.2843,
+          0.2696
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0006",
+            "score": 0.4401,
+            "recipe_name_ar": "حواوشي بلدي",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0011",
+            "score": 0.2843,
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0005",
+            "score": 0.2696,
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-10",
+        "category": "Colloquial",
+        "query": "فطار مصري فول وطعمية",
+        "ground_truth": [
+          "R0010",
+          "R0011"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0010",
+          "R0002",
+          "R0004"
+        ],
+        "scores_after_threshold": [
+          0.4878,
+          0.4706,
+          0.4407
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0010",
+            "score": 0.4878,
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0002",
+            "score": 0.4706,
+            "recipe_name_ar": "كشري مصري",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0004",
+            "score": 0.4407,
+            "recipe_name_ar": "محشي مشكل",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-11",
+        "category": "Colloquial",
+        "query": "كفتة مشوية على الفحم زي المحلات",
+        "ground_truth": [
+          "R0007"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0007",
+          "R0137",
+          "R0125"
+        ],
+        "scores_after_threshold": [
+          0.2789,
+          0.2443,
+          0.2416
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0007",
+            "score": 0.2789,
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0137",
+            "score": 0.2443,
+            "recipe_name_ar": "حمص شام مسلوق مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0125",
+            "score": 0.2416,
+            "recipe_name_ar": "فاصوليا بيضاء مسلوقة مشوي على الفحم بالبهارات",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-12",
+        "category": "Colloquial",
+        "query": "ملوخية خضرا بالطشة",
+        "ground_truth": [
+          "R0003"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0003",
+          "R0016",
+          "R0008"
+        ],
+        "scores_after_threshold": [
+          0.4215,
+          0.3482,
+          0.2972
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0003",
+            "score": 0.4215,
+            "recipe_name_ar": "ملوخية بالفراخ",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0016",
+            "score": 0.3482,
+            "recipe_name_ar": "شوربة خضار مشكل صحية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0008",
+            "score": 0.2972,
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-17",
+        "category": "Colloquial-Extended",
+        "query": "صينية فراخ بالبطاطس في الفرن",
+        "ground_truth": [
+          "R0042",
+          "R0030",
+          "R0015",
+          "R0162"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0042",
+          "R0030",
+          "R0015"
+        ],
+        "scores_after_threshold": [
+          0.5409,
+          0.5368,
+          0.4958
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0042",
+            "score": 0.5409,
+            "recipe_name_ar": "اوراك دجاج متبلة طاجن في الفرن بالصلصة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0030",
+            "score": 0.5368,
+            "recipe_name_ar": "صدور دجاج مخلية طاجن في الفرن بالصلصة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0015",
+            "score": 0.4958,
+            "recipe_name_ar": "كاري دجاج بالارز البسمتي",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-18",
+        "category": "Colloquial-Extended",
+        "query": "طريقة عمل البيتزا في البيت بعجينة هشة",
+        "ground_truth": [
+          "R0014"
+        ],
+        "outcome": "HIT_RANK_1",
+        "retrieved_after_threshold": [
+          "R0014",
+          "R0012",
+          "R0006"
+        ],
+        "scores_after_threshold": [
+          0.4863,
+          0.3105,
+          0.2936
+        ],
+        "raw_top3_candidates": [
+          {
+            "rank": 1,
+            "recipe_id": "R0014",
+            "score": 0.4863,
+            "recipe_name_ar": "بيتزا مارجريتا ايطالية",
+            "passed_threshold": true
+          },
+          {
+            "rank": 2,
+            "recipe_id": "R0012",
+            "score": 0.3105,
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "passed_threshold": true
+          },
+          {
+            "rank": 3,
+            "recipe_id": "R0006",
+            "score": 0.2936,
+            "recipe_name_ar": "حواوشي بلدي",
+            "passed_threshold": true
+          }
+        ]
+      },
+      {
+        "qid": "SMK-13",
+        "category": "Out-of-Catalog",
+        "query": "شاحن موبايل تايب سي سريع",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      },
+      {
+        "qid": "SMK-14",
+        "category": "Out-of-Catalog",
+        "query": "سوشي ياباني سلمون وأرز",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      },
+      {
+        "qid": "SMK-15",
+        "category": "Out-of-Catalog",
+        "query": "تشيز كيك شوكولاتة وحلويات غربية",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      },
+      {
+        "qid": "SMK-16",
+        "category": "Out-of-Catalog",
+        "query": "ساندوتش برجر بيج ماك بالجبنة",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      },
+      {
+        "qid": "SMK-19",
+        "category": "Ambiguous-Reject",
+        "query": "أكل سريع وخلاص",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      },
+      {
+        "qid": "SMK-20",
+        "category": "Out-of-Catalog",
+        "query": "كابل شاحن لابتوب ديل اصلي",
+        "ground_truth": [],
+        "outcome": "CORRECT_REJECTION",
+        "retrieved_after_threshold": [],
+        "scores_after_threshold": [],
+        "raw_top3_candidates": []
+      }
+    ]
+  }
+}

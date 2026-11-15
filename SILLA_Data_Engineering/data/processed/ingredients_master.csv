@@ -28,8 +28,8 @@ ING0026,Dry Coriander,كزبرة جافة,"dry coriander, dry coriander",كزب�
 ING0027,Eggplant,باذنجان رومي,"eggplant, eggplant",باذنجان رومي,Vegetables,g,eggplant,"vegan,gluten-free,halal"
 ING0028,Eggs,بيض,"eggs, eggs",بيض,Dairy and Eggs,piece,eggs,"vegetarian,halal"
 ING0029,Egyptian Baladi Bread,عيش بلدي مصري,"egyptian baladi bread, egyptian baladi bread",عيش بلدي مصري,Pasta and Grains,piece,egyptian baladi bread,"vegan,halal"
-ING0030,Egyptian Rice,Egyptian Rice,"egyptian rice, egyptian rice",Egyptian Rice,Pasta and Grains,g,egyptian rice,halal
-ING0031,Egyptian White Rice,أرز مصري,"egyptian white rice, egyptian white rice",أرز مصري,Pasta and Grains,g,egyptian white rice,"vegan,gluten-free,halal"
+ING0030,Egyptian Rice,ارز مصري,egyptian rice;short-grain rice;egyptian white rice,ارز مصري;أرز مصري;رز مصري,Pasta and Grains,g,egyptian rice,"vegan,gluten-free,halal"
+ING0031,Egyptian White Rice,أرز مصري,egyptian white rice;short-grain white rice;egyptian rice,أرز مصري;ارز مصري;رز ابيض مصري,Pasta and Grains,g,egyptian white rice,"vegan,gluten-free,halal"
 ING0032,Elbow Macaroni,مكرونة مقصوصة,"elbow macaroni, elbow macaroni",مكرونة مقصوصة,Pasta and Grains,g,elbow macaroni,"vegan,halal"
 ING0033,Fettuccine Pasta,مكرونة فيتوتشيني,"fettuccine pasta, fettuccine pasta",مكرونة فيتوتشيني,Pasta and Grains,g,fettuccine pasta,"vegetarian,halal"
 ING0034,Fresh Coriander,كزبرة خضراء,"fresh coriander, fresh coriander",كزبرة خضراء,Vegetables,bunch,fresh coriander,"vegan,gluten-free,halal"
@@ -51,8 +51,7 @@ ING0049,Olive Oil,زيت زيتون,"olive oil, olive oil",زيت زيتون,Oil
 ING0050,Paprika,بابريكا حلوة,"paprika, paprika",بابريكا حلوة,Spices and Seasonings,teaspoon,paprika,"vegan,gluten-free,halal"
 ING0051,Parmesan Cheese,جبنة بارميزان,"parmesan cheese, parmesan cheese",جبنة بارميزان,Cheese,g,parmesan cheese,halal
 ING0052,Penne Pasta,مكرونة فرن,"penne pasta, penne pasta",مكرونة فرن,Pasta and Grains,g,penne pasta,"vegan,halal"
-ING0053,Potato,بطاطس,"potato, potato",بطاطس,Vegetables,piece,potato,"vegan,gluten-free,halal"
-ING0054,Potatoes,بطاطس,"potatoes, potatoes",بطاطس,Vegetables,piece,potatoes,"vegan,gluten-free,halal"
+ING0053,Potato,بطاطس,potato;potatoes;russet potato;baking potato,بطاطس;حبة بطاطس;حبات بطاطس,Vegetables,piece,potato,"vegan,gluten-free,halal"
 ING0055,Red Split Lentils,عدس أصفر,"red split lentils, red split lentils",عدس أصفر,Legumes and Pulses,g,red split lentils,"vegan,gluten-free,halal"
 ING0056,Red Tomato,طماطم حمراء,"red tomato, red tomato",طماطم حمراء,Vegetables,piece,red tomato,"vegan,gluten-free,halal"
 ING0057,Salt,ملح طعام,"salt, salt",ملح طعام,Spices and Seasonings,teaspoon,salt,"vegan,gluten-free,halal"

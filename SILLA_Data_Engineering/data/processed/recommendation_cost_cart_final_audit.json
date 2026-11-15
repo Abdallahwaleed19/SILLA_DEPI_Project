@@ -1,0 +1,2318 @@
+{
+  "audit_metadata": {
+    "report_title": "SILLA Recommendation Engine, Cost Calculation & Smart Cart Final Audit",
+    "audit_version": "1.0-FINAL",
+    "generation_date": "2026-11-15T18:43:19.929230",
+    "target_database": {
+      "path": "SILLA_Data_Engineering/database/silla_staging.db",
+      "total_recipes": 185,
+      "total_ingredients": 71,
+      "total_recipe_ingredients": 1388,
+      "total_products": 265,
+      "total_stores": 8,
+      "status": "ACTIVE_STAGING_VALIDATED"
+    },
+    "production_database": {
+      "path": "SILLA_Data_Engineering/database/silla.db",
+      "sha256": "adc255d41656f1d70afafb556709641fc4029fb9a24582226bf330f71177c84d",
+      "status": "UNTOUCHED_AND_VERIFIED",
+      "promotion_status": "PROMOTION_PENDING_USER_APPROVAL"
+    },
+    "nlp_engine_integration": {
+      "source_module": "SILLA_NLP",
+      "status": "UNTOUCHED_AND_PRESERVED",
+      "weights_and_thresholds_modified": false,
+      "nlp_unit_tests_passing": "26/26"
+    }
+  },
+  "unit_conversion_audit": {
+    "classification_summary": {
+      "exact_conversions_count": 14,
+      "approximate_conversions_count": 15,
+      "unsupported_handling": "Deterministic (returns None and classification='UNSUPPORTED')"
+    },
+    "exact_conversions": [
+      {
+        "from": "g",
+        "to": "g",
+        "factor": 1.0,
+        "type": "EXACT",
+        "standard": "SI Metric Identity",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "ml",
+        "to": "ml",
+        "factor": 1.0,
+        "type": "EXACT",
+        "standard": "SI Metric Identity",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "piece",
+        "to": "piece",
+        "factor": 1.0,
+        "type": "EXACT",
+        "standard": "Discrete Count Identity",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "bunch",
+        "to": "bunch",
+        "factor": 1.0,
+        "type": "EXACT",
+        "standard": "Discrete Count Identity",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "kg",
+        "to": "g",
+        "factor": 1000.0,
+        "type": "EXACT",
+        "standard": "SI Metric Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "g",
+        "to": "kg",
+        "factor": 0.001,
+        "type": "EXACT",
+        "standard": "SI Metric Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "l",
+        "to": "ml",
+        "factor": 1000.0,
+        "type": "EXACT",
+        "standard": "SI Metric Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "ml",
+        "to": "l",
+        "factor": 0.001,
+        "type": "EXACT",
+        "standard": "SI Metric Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "tsp",
+        "to": "ml",
+        "factor": 5.0,
+        "type": "EXACT",
+        "standard": "International / Metric Culinary Teaspoon Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "ml",
+        "to": "tsp",
+        "factor": 0.2,
+        "type": "EXACT",
+        "standard": "Inverse Metric Teaspoon Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "tbsp",
+        "to": "ml",
+        "factor": 15.0,
+        "type": "EXACT",
+        "standard": "International / Metric Culinary Tablespoon Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "ml",
+        "to": "tbsp",
+        "factor": 0.0667,
+        "type": "EXACT",
+        "standard": "Inverse Metric Tablespoon Definition",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "cup",
+        "to": "ml",
+        "factor": 240.0,
+        "type": "EXACT",
+        "standard": "US Legal / Metric Standard Culinary Cup",
+        "variance_pct": 0.0
+      },
+      {
+        "from": "ml",
+        "to": "cup",
+        "factor": 0.00417,
+        "type": "EXACT",
+        "standard": "Inverse Standard Culinary Cup",
+        "variance_pct": 0.0
+      }
+    ],
+    "approximate_conversions": [
+      {
+        "conversion": "tsp -> g",
+        "factor": 5.0,
+        "type": "APPROXIMATE",
+        "standard": "Culinary Bulk Density Approximation (rho ≈ 1.0 g/ml)",
+        "variance_range_pct": "±20% to ±30%",
+        "notes": "Fine salt ~5.7g, ground black pepper ~2.5-3.0g, baking powder ~4.5g"
+      },
+      {
+        "conversion": "tbsp -> g",
+        "factor": 15.0,
+        "type": "APPROXIMATE",
+        "standard": "Culinary Bulk Density Approximation (rho ≈ 1.0 g/ml)",
+        "variance_range_pct": "±15% to ±25%",
+        "notes": "Butter ~14.2g, tomato paste ~16g, all-purpose flour ~8-10g"
+      },
+      {
+        "conversion": "cup -> g",
+        "factor": 200.0,
+        "type": "APPROXIMATE",
+        "standard": "Standard Culinary Average Cup Weight",
+        "variance_range_pct": "±20% to ±30%",
+        "notes": "Granulated sugar ~200g, all-purpose flour ~125g, water/milk ~240g"
+      },
+      {
+        "conversion": "produce piece -> g (Yellow Onion ING0071)",
+        "factor": 125.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Agricultural / Supermarket Average Bulb Weight",
+        "variance_range_pct": "±25%",
+        "notes": "Medium baladi onion ranges between 100g and 160g"
+      },
+      {
+        "conversion": "produce piece -> g (Potato ING0053)",
+        "factor": 150.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Agricultural / Supermarket Average Tuber Weight",
+        "variance_range_pct": "±25%",
+        "notes": "Medium cooking potato ranges between 120g and 200g"
+      },
+      {
+        "conversion": "produce piece -> g (Tomato ING0056)",
+        "factor": 120.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Agricultural / Supermarket Average Tomato Weight",
+        "variance_range_pct": "±25%",
+        "notes": "Medium red tomato ranges between 90g and 150g"
+      },
+      {
+        "conversion": "produce piece -> g (Carrot ING0016)",
+        "factor": 100.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Agricultural / Supermarket Average Carrot Weight",
+        "variance_range_pct": "±20%",
+        "notes": "Medium carrot ranges between 80g and 130g"
+      },
+      {
+        "conversion": "produce piece -> g (Whole Egg ING0028)",
+        "factor": 60.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Commercial Grade A Large Table Egg",
+        "variance_range_pct": "±10%",
+        "notes": "Standard large table egg ranges between 55g and 65g"
+      },
+      {
+        "conversion": "produce piece -> g (Lemon ING0046)",
+        "factor": 60.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Baladi Lemon Average Weight",
+        "variance_range_pct": "±25%",
+        "notes": "Baladi lemon ranges between 45g and 75g"
+      },
+      {
+        "conversion": "produce piece -> g (Bell Pepper ING0041)",
+        "factor": 150.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Green Bell Pepper Average Weight",
+        "variance_range_pct": "±20%",
+        "notes": "Medium bell pepper ranges between 120g and 180g"
+      },
+      {
+        "conversion": "produce piece -> g (Eggplant ING0008)",
+        "factor": 250.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Baladi Black Rumi Eggplant Average Weight",
+        "variance_range_pct": "±30%",
+        "notes": "Medium rumi eggplant ranges between 200g and 350g"
+      },
+      {
+        "conversion": "clove -> g (Garlic)",
+        "factor": 4.0,
+        "type": "APPROXIMATE",
+        "standard": "USDA / International Culinary Standard Average Garlic Clove",
+        "variance_range_pct": "±25%",
+        "notes": "Small clove ~3g, large clove ~5-6g, standard average 4g"
+      },
+      {
+        "conversion": "bunch -> g (Fresh Herbs)",
+        "factor": 50.0,
+        "type": "APPROXIMATE",
+        "standard": "Egyptian Local Fresh Market Herb Bundle Average",
+        "variance_range_pct": "±30%",
+        "notes": "Fresh parsley/dill/coriander bundle ranges between 40g and 70g"
+      },
+      {
+        "conversion": "g <-> ml (Liquids)",
+        "factor": 1.0,
+        "type": "APPROXIMATE",
+        "standard": "Aqueous Solution Density Approximation",
+        "variance_range_pct": "±8%",
+        "notes": "Water rho=1.00, whole milk rho=1.03, vegetable oil rho=0.92"
+      },
+      {
+        "conversion": "piece -> ml",
+        "factor": 50.0,
+        "type": "APPROXIMATE",
+        "standard": "Egg / Citrus Fruit Average Liquid Volume",
+        "variance_range_pct": "±30%",
+        "notes": "1 egg liquid volume ~50ml, 1 lemon juice ~30-40ml"
+      }
+    ],
+    "correction_of_previous_statement": "AUDIT CORRECTION: In the previous summary, unit conversions were informally described as having 0% error. This final audit formally rectifies this: SI metric conversions (kg<->g, L<->ml, tsp<->ml) are mathematically EXACT with 0.0% error. However, culinary volume-to-mass conversions (tsp/tbsp to grams) and produce piece weights (onion, potato, tomato) are inherently APPROXIMATE, relying on documented agricultural and bulk density averages with estimated empirical variances ranging between ±10% and ±30%. The engine now explicitly classifies every conversion into EXACT or APPROXIMATE with source tracking."
+  },
+  "cost_calculation_audit": {
+    "benchmark_recipes_count": 4,
+    "procurement_coverage_guarantee": "VERIFIED: Across all recipes, whole grocery package procurement covers 100% of required quantities (packages * size >= required)",
+    "coverage_definition_audit": "VERIFIED: Price Completeness Ratio (Coverage) is strictly defined as N_priced_required / N_total_required ingredients. It is completely independent of the number of products existing for any ingredient in the catalog.",
+    "recomputed_recipes": [
+      {
+        "recipe_id": "R0001",
+        "recipe_name_ar": "مكرونة بشاميل",
+        "recipe_name_en": "Macaroni Béchamel",
+        "base_servings": 6.0,
+        "total_required_ingredients": 12,
+        "priced_required_ingredients": 8,
+        "unpriced_required_ingredients": 4,
+        "price_completeness_ratio": 0.6667,
+        "coverage_formula_verified": "8 / 12 = 0.6667 (Independent of product counts)",
+        "net_recipe_cost_egp": 185.12,
+        "net_cost_per_serving_egp": 30.85,
+        "grocery_procurement_cost_egp": 452.0,
+        "procurement_cost_per_serving_egp": 75.33,
+        "procurement_coverage_guarantee": "VERIFIED (100% of required quantities covered by whole packages)",
+        "priced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0052",
+            "ingredient_name_ar": "مكرونة فرن",
+            "ingredient_name_en": "Penne Pasta",
+            "required_quantity": 500.0,
+            "required_unit": "g",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0001",
+              "product_name": "Baraka Penne Rigate Pasta 400G",
+              "product_name_ar": "مكرونة فرن بركة 400 جم Baraka",
+              "brand": "Baraka",
+              "store_id": "STR001",
+              "package_size": 400.0,
+              "package_unit": "g",
+              "price_egp": 14.5
+            },
+            "packages_needed": 2,
+            "pro_rata_cost_egp": 18.12,
+            "procurement_cost_egp": 29.0,
+            "leftover_quantity": 300.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0042",
+            "ingredient_name_ar": "لحم بقري مفروم",
+            "ingredient_name_en": "Ground Beef",
+            "required_quantity": 500.0,
+            "required_unit": "g",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0127",
+              "product_name": "Americana Frozen Minced Beef Lean 400G",
+              "product_name_ar": "لحم بقري مفروم احمر مجمد امريكانا 400 جم Americana",
+              "brand": "Americana",
+              "store_id": "STR002",
+              "package_size": 400.0,
+              "package_unit": "g",
+              "price_egp": 115.0
+            },
+            "packages_needed": 2,
+            "pro_rata_cost_egp": 143.75,
+            "procurement_cost_egp": 230.0,
+            "leftover_quantity": 300.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0071",
+            "ingredient_name_ar": "بصل أصفر",
+            "ingredient_name_en": "Yellow Onion",
+            "required_quantity": 2.0,
+            "required_unit": "piece",
+            "converted_quantity": 250.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "source_standard": "Egyptian Supermarket & Agricultural Average Weight (1 piece ≈ 125.0g)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0144",
+              "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+              "product_name_ar": "بصل ذهبي بلدي للطبخ 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR004",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 4.5,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 750.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0001",
+            "ingredient_name_ar": "دقيق أبيض فاخر",
+            "ingredient_name_en": "All-Purpose Flour",
+            "required_quantity": 100.0,
+            "required_unit": "g",
+            "converted_quantity": 100.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0145",
+              "product_name": "Local Fresh Market Egyptian Red Onions Fresh 1Kg",
+              "product_name_ar": "بصل احمر طازج 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR005",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 22.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 2.2,
+            "procurement_cost_egp": 22.0,
+            "leftover_quantity": 900.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0011",
+            "ingredient_name_ar": "زبدة",
+            "ingredient_name_en": "Butter",
+            "required_quantity": 100.0,
+            "required_unit": "g",
+            "converted_quantity": 100.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0071",
+              "product_name": "Crystal Vegetable Ghee Butter Flavor 700G",
+              "product_name_ar": "سمن نباتي كريستال بطعم الزبدة الصفراء 700 جم Crystal",
+              "brand": "Crystal",
+              "store_id": "STR001",
+              "package_size": 700.0,
+              "package_unit": "g",
+              "price_egp": 68.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 9.71,
+            "procurement_cost_egp": 68.0,
+            "leftover_quantity": 600.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0028",
+            "ingredient_name_ar": "بيض",
+            "ingredient_name_en": "Eggs",
+            "required_quantity": 2.0,
+            "required_unit": "piece",
+            "converted_quantity": 100.0,
+            "converted_unit": "ml",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_piece_to_ml_approx_50ml",
+            "source_standard": "Egg / Citrus Fruit Average Liquid Volume (avg 50.0 ml)",
+            "estimated_variance_pct": 30.0,
+            "matched_product": {
+              "product_id": "P0076",
+              "product_name": "Wadi Food Distilled Cane Vinegar 1L",
+              "product_name_ar": "خل قصب سكر ابيض وادي فود 5% تركيز 1 لتر Wadi Food",
+              "brand": "Wadi Food",
+              "store_id": "STR001",
+              "package_size": 1000.0,
+              "package_unit": "ml",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 1.8,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 900.0,
+            "leftover_unit": "ml"
+          },
+          {
+            "ingredient_id": "ING0062",
+            "ingredient_name_ar": "معجون طماطم",
+            "ingredient_name_en": "Tomato Paste",
+            "required_quantity": 2.0,
+            "required_unit": "tbsp",
+            "converted_quantity": 30.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tbsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tbsp ≈ 15.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0099",
+              "product_name": "Harvest Tomato Paste Tin 370G",
+              "product_name_ar": "معجون طماطم هارفست علبة صفيح مركز 370 جم Harvest",
+              "brand": "Harvest",
+              "store_id": "STR004",
+              "package_size": 370.0,
+              "package_unit": "g",
+              "price_egp": 25.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 2.03,
+            "procurement_cost_egp": 25.0,
+            "leftover_quantity": 340.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0009",
+            "ingredient_name_ar": "فلفل أسود",
+            "ingredient_name_en": "Black Pepper",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0107",
+              "product_name": "Al-Doha Spices Ground Black Pepper 70G",
+              "product_name_ar": "فلفل اسود مطحون الضحى نقي فاخر 70 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR002",
+              "package_size": 70.0,
+              "package_unit": "g",
+              "price_egp": 42.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 3.0,
+            "procurement_cost_egp": 42.0,
+            "leftover_quantity": 65.0,
+            "leftover_unit": "g"
+          }
+        ],
+        "unpriced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0070",
+            "ingredient_name_ar": "حليب كامل الدسم",
+            "ingredient_name_en": "Whole Milk",
+            "required_quantity": 1000.0,
+            "required_unit": "ml",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0048",
+            "ingredient_name_ar": "جوزة الطيب",
+            "ingredient_name_en": "Nutmeg",
+            "required_quantity": 0.5,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0057",
+            "ingredient_name_ar": "ملح طعام",
+            "ingredient_name_en": "Salt",
+            "required_quantity": 1.5,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0065",
+            "ingredient_name_ar": "زيت نباتي",
+            "ingredient_name_en": "Vegetable Oil",
+            "required_quantity": 2.0,
+            "required_unit": "tbsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          }
+        ],
+        "pricing_disclaimer": "تنبيه: التكلفة المعروضة تغطي 8 من أصل 12 مكونًا (66.7%). يوجد 4 مكونًا بدون منتجات مطابقة في قاعدة البيانات، ولم تُحسب تكلفتها بصفر، بل تم إدراجها بشكل مستقل لضمان الشفافية."
+      },
+      {
+        "recipe_id": "R0002",
+        "recipe_name_ar": "كشري مصري",
+        "recipe_name_en": "Koshari",
+        "base_servings": 6.0,
+        "total_required_ingredients": 14,
+        "priced_required_ingredients": 7,
+        "unpriced_required_ingredients": 7,
+        "price_completeness_ratio": 0.5,
+        "coverage_formula_verified": "7 / 14 = 0.5000 (Independent of product counts)",
+        "net_recipe_cost_egp": 56.58,
+        "net_cost_per_serving_egp": 9.43,
+        "grocery_procurement_cost_egp": 358.0,
+        "procurement_cost_per_serving_egp": 59.67,
+        "procurement_coverage_guarantee": "VERIFIED (100% of required quantities covered by whole packages)",
+        "priced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0031",
+            "ingredient_name_ar": "أرز مصري",
+            "ingredient_name_en": "Egyptian White Rice",
+            "required_quantity": 300.0,
+            "required_unit": "g",
+            "converted_quantity": 300.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0020",
+              "product_name": "Al-Doha Egyptian White Rice 5Kg",
+              "product_name_ar": "ارز مصري الضحى شيكارة 5 كجم Al-Doha",
+              "brand": "Al-Doha",
+              "store_id": "STR005",
+              "package_size": 5000.0,
+              "package_unit": "g",
+              "price_egp": 195.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 11.7,
+            "procurement_cost_egp": 195.0,
+            "leftover_quantity": 4700.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0010",
+            "ingredient_name_ar": "عدس بني",
+            "ingredient_name_en": "Brown Lentils",
+            "required_quantity": 200.0,
+            "required_unit": "g",
+            "converted_quantity": 200.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0030",
+              "product_name": "El-Mizan Brown Lentils 500G",
+              "product_name_ar": "عدس بجبة الميزان مصري 500 جم El-Mizan",
+              "brand": "El-Mizan",
+              "store_id": "STR005",
+              "package_size": 500.0,
+              "package_unit": "g",
+              "price_egp": 38.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 15.2,
+            "procurement_cost_egp": 38.0,
+            "leftover_quantity": 300.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0032",
+            "ingredient_name_ar": "مكرونة مقصوصة",
+            "ingredient_name_en": "Elbow Macaroni",
+            "required_quantity": 250.0,
+            "required_unit": "g",
+            "converted_quantity": 250.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0003",
+              "product_name": "Baraka Elbow Macaroni 400G",
+              "product_name_ar": "مكرونة مقصوصة بركة 400 جم Baraka",
+              "brand": "Baraka",
+              "store_id": "STR003",
+              "package_size": 400.0,
+              "package_unit": "g",
+              "price_egp": 14.5
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 9.06,
+            "procurement_cost_egp": 14.5,
+            "leftover_quantity": 150.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0066",
+            "ingredient_name_ar": "شعرية",
+            "ingredient_name_en": "Vermicelli",
+            "required_quantity": 100.0,
+            "required_unit": "g",
+            "converted_quantity": 100.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0005",
+              "product_name": "Baraka Vermicelli Pasta 400G",
+              "product_name_ar": "شعرية تحمير بركة 400 جم Baraka",
+              "brand": "Baraka",
+              "store_id": "STR005",
+              "package_size": 400.0,
+              "package_unit": "g",
+              "price_egp": 14.5
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 3.62,
+            "procurement_cost_egp": 14.5,
+            "leftover_quantity": 300.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0071",
+            "ingredient_name_ar": "بصل أصفر",
+            "ingredient_name_en": "Yellow Onion",
+            "required_quantity": 4.0,
+            "required_unit": "piece",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "source_standard": "Egyptian Supermarket & Agricultural Average Weight (1 piece ≈ 125.0g)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0144",
+              "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+              "product_name_ar": "بصل ذهبي بلدي للطبخ 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR004",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 9.0,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 500.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0039",
+            "ingredient_name_ar": "ثوم",
+            "ingredient_name_en": "Garlic",
+            "required_quantity": 8.0,
+            "required_unit": "clove",
+            "converted_quantity": 32.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_clove_to_g_4g",
+            "source_standard": "USDA / International Culinary Standard Average Garlic Clove (3-5g, avg 4.0g)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0153",
+              "product_name": "Local Fresh Market Egyptian Garlic Heads Fresh 500G",
+              "product_name_ar": "ثوم بلدي احمر مفرز رووس نصف كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR003",
+              "package_size": 500.0,
+              "package_unit": "g",
+              "price_egp": 40.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 2.56,
+            "procurement_cost_egp": 40.0,
+            "leftover_quantity": 468.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0023",
+            "ingredient_name_ar": "كمون مطحون",
+            "ingredient_name_en": "Cumin",
+            "required_quantity": 2.0,
+            "required_unit": "tsp",
+            "converted_quantity": 10.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0108",
+              "product_name": "Al-Doha Spices Ground Cumin 70G",
+              "product_name_ar": "كمون بلدي مطحون الضحى عالي الرايحة 70 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR003",
+              "package_size": 70.0,
+              "package_unit": "g",
+              "price_egp": 38.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 5.43,
+            "procurement_cost_egp": 38.0,
+            "leftover_quantity": 60.0,
+            "leftover_unit": "g"
+          }
+        ],
+        "unpriced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0013",
+            "ingredient_name_ar": "حمص معلب",
+            "ingredient_name_en": "Canned Chickpeas",
+            "required_quantity": 400.0,
+            "required_unit": "g",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0063",
+            "ingredient_name_ar": "صلصة طماطم",
+            "ingredient_name_en": "Tomato Sauce",
+            "required_quantity": 500.0,
+            "required_unit": "g",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0068",
+            "ingredient_name_ar": "خل أبيض",
+            "ingredient_name_en": "White Vinegar",
+            "required_quantity": 60.0,
+            "required_unit": "ml",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0021",
+            "ingredient_name_ar": "كزبرة مطحونة",
+            "ingredient_name_en": "Coriander",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0020",
+            "ingredient_name_ar": "شطة حمراء مطحونة",
+            "ingredient_name_en": "Chili Pepper Powder",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "is_optional": true,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0065",
+            "ingredient_name_ar": "زيت نباتي",
+            "ingredient_name_en": "Vegetable Oil",
+            "required_quantity": 150.0,
+            "required_unit": "ml",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0057",
+            "ingredient_name_ar": "ملح طعام",
+            "ingredient_name_en": "Salt",
+            "required_quantity": 2.0,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          }
+        ],
+        "pricing_disclaimer": "تنبيه: التكلفة المعروضة تغطي 7 من أصل 14 مكونًا (50.0%). يوجد 7 مكونًا بدون منتجات مطابقة في قاعدة البيانات، ولم تُحسب تكلفتها بصفر، بل تم إدراجها بشكل مستقل لضمان الشفافية."
+      },
+      {
+        "recipe_id": "R0004",
+        "recipe_name_ar": "محشي مشكل",
+        "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+        "base_servings": 6.0,
+        "total_required_ingredients": 14,
+        "priced_required_ingredients": 9,
+        "unpriced_required_ingredients": 5,
+        "price_completeness_ratio": 0.6429,
+        "coverage_formula_verified": "9 / 14 = 0.6429 (Independent of product counts)",
+        "net_recipe_cost_egp": 84.48,
+        "net_cost_per_serving_egp": 14.08,
+        "grocery_procurement_cost_egp": 501.0,
+        "procurement_cost_per_serving_egp": 83.5,
+        "procurement_coverage_guarantee": "VERIFIED (100% of required quantities covered by whole packages)",
+        "priced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0031",
+            "ingredient_name_ar": "أرز مصري",
+            "ingredient_name_en": "Egyptian White Rice",
+            "required_quantity": 400.0,
+            "required_unit": "g",
+            "converted_quantity": 400.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0020",
+              "product_name": "Al-Doha Egyptian White Rice 5Kg",
+              "product_name_ar": "ارز مصري الضحى شيكارة 5 كجم Al-Doha",
+              "brand": "Al-Doha",
+              "store_id": "STR005",
+              "package_size": 5000.0,
+              "package_unit": "g",
+              "price_egp": 195.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 15.6,
+            "procurement_cost_egp": 195.0,
+            "leftover_quantity": 4600.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0072",
+            "ingredient_name_ar": "كوسة",
+            "ingredient_name_en": "Zucchini",
+            "required_quantity": 1000.0,
+            "required_unit": "g",
+            "converted_quantity": 1000.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0147",
+              "product_name": "Local Fresh Market Egyptian Green Zucchini Fresh 1Kg",
+              "product_name_ar": "كوسة بلدية خضراء للمحشي والطبيخ 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR002",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 22.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 22.0,
+            "procurement_cost_egp": 22.0,
+            "leftover_quantity": 0.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0008",
+            "ingredient_name_ar": "باذنجان أسود",
+            "ingredient_name_en": "Black Eggplant",
+            "required_quantity": 800.0,
+            "required_unit": "g",
+            "converted_quantity": 800.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0148",
+              "product_name": "Local Fresh Market Egyptian Small Black Eggplant Fresh 1Kg",
+              "product_name_ar": "باذنجان اسود عروس صغير للمحشي 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR003",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 16.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 12.8,
+            "procurement_cost_egp": 16.0,
+            "leftover_quantity": 200.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0041",
+            "ingredient_name_ar": "فلفل رومي أخضر",
+            "ingredient_name_en": "Green Bell Pepper",
+            "required_quantity": 500.0,
+            "required_unit": "g",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0150",
+              "product_name": "Local Fresh Market Egyptian Green Bell Peppers Fresh 1Kg",
+              "product_name_ar": "فلفل رومي اخضر بلدي للمحشي 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR005",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 24.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 12.0,
+            "procurement_cost_egp": 24.0,
+            "leftover_quantity": 500.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0071",
+            "ingredient_name_ar": "بصل أصفر",
+            "ingredient_name_en": "Yellow Onion",
+            "required_quantity": 3.0,
+            "required_unit": "piece",
+            "converted_quantity": 375.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "source_standard": "Egyptian Supermarket & Agricultural Average Weight (1 piece ≈ 125.0g)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0144",
+              "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+              "product_name_ar": "بصل ذهبي بلدي للطبخ 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR004",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 6.75,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 625.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0034",
+            "ingredient_name_ar": "كزبرة خضراء",
+            "ingredient_name_en": "Fresh Coriander",
+            "required_quantity": 1.0,
+            "required_unit": "bunch",
+            "converted_quantity": 1.0,
+            "converted_unit": "bunch",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0156",
+              "product_name": "Local Fresh Market Fresh Green Coriander Bunch",
+              "product_name_ar": "حزمة كزبرة خضراء بلدية طازجة Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR001",
+              "package_size": 1.0,
+              "package_unit": "bunch",
+              "price_egp": 4.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 4.0,
+            "procurement_cost_egp": 4.0,
+            "leftover_quantity": 0.0,
+            "leftover_unit": "bunch"
+          },
+          {
+            "ingredient_id": "ING0040",
+            "ingredient_name_ar": "سمن بلدي",
+            "ingredient_name_en": "Ghee",
+            "required_quantity": 3.0,
+            "required_unit": "tbsp",
+            "converted_quantity": 45.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tbsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tbsp ≈ 15.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0082",
+              "product_name": "Rawabi Vegetable Ghee Baladi Flavor 1.5Kg",
+              "product_name_ar": "سمن روابي عبوة اقتصادية 1.5 كجم Rawabi",
+              "brand": "Rawabi",
+              "store_id": "STR002",
+              "package_size": 1500.0,
+              "package_unit": "g",
+              "price_egp": 142.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 4.26,
+            "procurement_cost_egp": 142.0,
+            "leftover_quantity": 1455.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0023",
+            "ingredient_name_ar": "كمون مطحون",
+            "ingredient_name_en": "Cumin",
+            "required_quantity": 1.5,
+            "required_unit": "tsp",
+            "converted_quantity": 7.5,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0108",
+              "product_name": "Al-Doha Spices Ground Cumin 70G",
+              "product_name_ar": "كمون بلدي مطحون الضحى عالي الرايحة 70 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR003",
+              "package_size": 70.0,
+              "package_unit": "g",
+              "price_egp": 38.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 4.07,
+            "procurement_cost_egp": 38.0,
+            "leftover_quantity": 62.5,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0009",
+            "ingredient_name_ar": "فلفل أسود",
+            "ingredient_name_en": "Black Pepper",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0107",
+              "product_name": "Al-Doha Spices Ground Black Pepper 70G",
+              "product_name_ar": "فلفل اسود مطحون الضحى نقي فاخر 70 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR002",
+              "package_size": 70.0,
+              "package_unit": "g",
+              "price_egp": 42.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 3.0,
+            "procurement_cost_egp": 42.0,
+            "leftover_quantity": 65.0,
+            "leftover_unit": "g"
+          }
+        ],
+        "unpriced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0063",
+            "ingredient_name_ar": "صلصة طماطم",
+            "ingredient_name_en": "Tomato Sauce",
+            "required_quantity": 600.0,
+            "required_unit": "g",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0035",
+            "ingredient_name_ar": "شبت طازج",
+            "ingredient_name_en": "Fresh Dill",
+            "required_quantity": 1.0,
+            "required_unit": "bunch",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0037",
+            "ingredient_name_ar": "بقدونس طازج",
+            "ingredient_name_en": "Fresh Parsley",
+            "required_quantity": 1.0,
+            "required_unit": "bunch",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0024",
+            "ingredient_name_ar": "نعناع مجفف",
+            "ingredient_name_en": "Dried Mint",
+            "required_quantity": 1.0,
+            "required_unit": "tbsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0057",
+            "ingredient_name_ar": "ملح طعام",
+            "ingredient_name_en": "Salt",
+            "required_quantity": 2.5,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          }
+        ],
+        "pricing_disclaimer": "تنبيه: التكلفة المعروضة تغطي 9 من أصل 14 مكونًا (64.3%). يوجد 5 مكونًا بدون منتجات مطابقة في قاعدة البيانات، ولم تُحسب تكلفتها بصفر، بل تم إدراجها بشكل مستقل لضمان الشفافية."
+      },
+      {
+        "recipe_id": "R0007",
+        "recipe_name_ar": "كفتة الحاتي المشوية",
+        "recipe_name_en": "Egyptian Kofta Mashweya",
+        "base_servings": 4.0,
+        "total_required_ingredients": 8,
+        "priced_required_ingredients": 6,
+        "unpriced_required_ingredients": 2,
+        "price_completeness_ratio": 0.75,
+        "coverage_formula_verified": "6 / 8 = 0.7500 (Independent of product counts)",
+        "net_recipe_cost_egp": 213.8,
+        "net_cost_per_serving_egp": 53.45,
+        "grocery_procurement_cost_egp": 348.5,
+        "procurement_cost_per_serving_egp": 87.12,
+        "procurement_coverage_guarantee": "VERIFIED (100% of required quantities covered by whole packages)",
+        "priced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0042",
+            "ingredient_name_ar": "لحم بقري مفروم",
+            "ingredient_name_en": "Ground Beef",
+            "required_quantity": 700.0,
+            "required_unit": "g",
+            "converted_quantity": 700.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "source_standard": "Identity Mapping (Same Unit)",
+            "estimated_variance_pct": 0.0,
+            "matched_product": {
+              "product_id": "P0127",
+              "product_name": "Americana Frozen Minced Beef Lean 400G",
+              "product_name_ar": "لحم بقري مفروم احمر مجمد امريكانا 400 جم Americana",
+              "brand": "Americana",
+              "store_id": "STR002",
+              "package_size": 400.0,
+              "package_unit": "g",
+              "price_egp": 115.0
+            },
+            "packages_needed": 2,
+            "pro_rata_cost_egp": 201.25,
+            "procurement_cost_egp": 230.0,
+            "leftover_quantity": 100.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0071",
+            "ingredient_name_ar": "بصل أصفر",
+            "ingredient_name_en": "Yellow Onion",
+            "required_quantity": 2.0,
+            "required_unit": "piece",
+            "converted_quantity": 250.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "source_standard": "Egyptian Supermarket & Agricultural Average Weight (1 piece ≈ 125.0g)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0144",
+              "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+              "product_name_ar": "بصل ذهبي بلدي للطبخ 1 كجم Local Fresh Market",
+              "brand": "Local Fresh Market",
+              "store_id": "STR004",
+              "package_size": 1000.0,
+              "package_unit": "g",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 4.5,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 750.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0003",
+            "ingredient_name_ar": "بيكنج بودر",
+            "ingredient_name_en": "Baking Powder",
+            "required_quantity": 0.5,
+            "required_unit": "tsp",
+            "converted_quantity": 2.5,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0086",
+              "product_name": "Dr. Oetker Baking Powder 16G",
+              "product_name_ar": "بيكنج بودر دكتور اوتكر باكو 16 جم Dr. Oetker",
+              "brand": "Dr. Oetker",
+              "store_id": "STR001",
+              "package_size": 16.0,
+              "package_unit": "g",
+              "price_egp": 4.5
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 0.7,
+            "procurement_cost_egp": 4.5,
+            "leftover_quantity": 13.5,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0022",
+            "ingredient_name_ar": "نشا ذرة",
+            "ingredient_name_en": "Cornstarch",
+            "required_quantity": 1.0,
+            "required_unit": "tbsp",
+            "converted_quantity": 15.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tbsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tbsp ≈ 15.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0090",
+              "product_name": "Dream Cornstarch 200G",
+              "product_name_ar": "نشا ذرة نقي دريم للحلويات 200 جم Dream",
+              "brand": "Dream",
+              "store_id": "STR005",
+              "package_size": 200.0,
+              "package_unit": "g",
+              "price_egp": 18.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 1.35,
+            "procurement_cost_egp": 18.0,
+            "leftover_quantity": 185.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0002",
+            "ingredient_name_ar": "بهارات كبابة صيني",
+            "ingredient_name_en": "Allspice",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0117",
+              "product_name": "Al-Doha Spices Ground Allspice 60G",
+              "product_name_ar": "كبابة صيني مطحونة الضحى بهار حلو 60 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR002",
+              "package_size": 60.0,
+              "package_unit": "g",
+              "price_egp": 36.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 3.0,
+            "procurement_cost_egp": 36.0,
+            "leftover_quantity": 55.0,
+            "leftover_unit": "g"
+          },
+          {
+            "ingredient_id": "ING0009",
+            "ingredient_name_ar": "فلفل أسود",
+            "ingredient_name_en": "Black Pepper",
+            "required_quantity": 1.0,
+            "required_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "source_standard": "Culinary Bulk Density Approximation (1 tsp ≈ 5.0g at rho ≈ 1.0 g/ml)",
+            "estimated_variance_pct": 25.0,
+            "matched_product": {
+              "product_id": "P0107",
+              "product_name": "Al-Doha Spices Ground Black Pepper 70G",
+              "product_name_ar": "فلفل اسود مطحون الضحى نقي فاخر 70 جم Al-Doha Spices",
+              "brand": "Al-Doha Spices",
+              "store_id": "STR002",
+              "package_size": 70.0,
+              "package_unit": "g",
+              "price_egp": 42.0
+            },
+            "packages_needed": 1,
+            "pro_rata_cost_egp": 3.0,
+            "procurement_cost_egp": 42.0,
+            "leftover_quantity": 65.0,
+            "leftover_unit": "g"
+          }
+        ],
+        "unpriced_ingredients_breakdown": [
+          {
+            "ingredient_id": "ING0037",
+            "ingredient_name_ar": "بقدونس طازج",
+            "ingredient_name_en": "Fresh Parsley",
+            "required_quantity": 0.5,
+            "required_unit": "cup",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          },
+          {
+            "ingredient_id": "ING0057",
+            "ingredient_name_ar": "ملح طعام",
+            "ingredient_name_en": "Salt",
+            "required_quantity": 1.5,
+            "required_unit": "tsp",
+            "is_optional": false,
+            "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+          }
+        ],
+        "pricing_disclaimer": "تنبيه: التكلفة المعروضة تغطي 6 من أصل 8 مكونًا (75.0%). يوجد 2 مكونًا بدون منتجات مطابقة في قاعدة البيانات، ولم تُحسب تكلفتها بصفر، بل تم إدراجها بشكل مستقل لضمان الشفافية."
+      }
+    ]
+  },
+  "smart_cart_audit": {
+    "recipes": [
+      "R0001 (مكرونة بشاميل)",
+      "R0007 (كفتة مشوية)"
+    ],
+    "individual_procurement_costs": {
+      "R0001_procurement_cost_egp": 452.0,
+      "R0007_procurement_cost_egp": 348.5,
+      "sum_separate_procurement_egp": 800.5
+    },
+    "smart_cart_procurement_cost_egp": 625.5,
+    "total_savings_egp": 175.0,
+    "savings_percentage": 21.86,
+    "shared_ingredients_count": 3,
+    "unique_ingredients_count": 8,
+    "unpriced_ingredients_count": 5,
+    "mathematical_reconciliation": {
+      "formula": "sum_separate_procurement (800.50) - smart_cart_procurement (625.50) = 175.00 EGP",
+      "savings_breakdown_by_item": [
+        {
+          "ingredient_id": "ING0042",
+          "ingredient_name_ar": "لحم بقري مفروم",
+          "product_name": "Americana Frozen Minced Beef Lean 400G",
+          "unit_price": "0.2875 EGP/g",
+          "total_quantity_needed": "1200.0 g",
+          "separate_packages": 4,
+          "separate_cost_egp": 460.0,
+          "smart_packages": 3,
+          "smart_cost_egp": 345.0,
+          "saved_egp": 115.0,
+          "reason": "Eliminated 1 redundant package by consolidating quantities"
+        },
+        {
+          "ingredient_id": "ING0009",
+          "ingredient_name_ar": "فلفل أسود",
+          "product_name": "Al-Doha Spices Ground Black Pepper 70G",
+          "unit_price": "0.6 EGP/g",
+          "total_quantity_needed": "10.0 g",
+          "separate_packages": 2,
+          "separate_cost_egp": 84.0,
+          "smart_packages": 1,
+          "smart_cost_egp": 42.0,
+          "saved_egp": 42.0,
+          "reason": "Eliminated 1 redundant package by consolidating quantities"
+        },
+        {
+          "ingredient_id": "ING0071",
+          "ingredient_name_ar": "بصل أصفر",
+          "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+          "unit_price": "0.018 EGP/g",
+          "total_quantity_needed": "500.0 g",
+          "separate_packages": 2,
+          "separate_cost_egp": 36.0,
+          "smart_packages": 1,
+          "smart_cost_egp": 18.0,
+          "saved_egp": 18.0,
+          "reason": "Eliminated 1 redundant package by consolidating quantities"
+        }
+      ]
+    },
+    "all_cart_items_table": [
+      {
+        "ingredient_id": "ING0042",
+        "ingredient_name_ar": "لحم بقري مفروم",
+        "is_shared": true,
+        "total_needed": "1200.0 g",
+        "product_id": "P0127",
+        "product_name": "Americana Frozen Minced Beef Lean 400G",
+        "package_spec": "400.0 g @ 115.0 EGP",
+        "unit_price": "0.2875 EGP/g",
+        "store_id": "STR002",
+        "separate_pkgs": 4,
+        "separate_cost_egp": 460.0,
+        "smart_pkgs": 3,
+        "smart_cost_egp": 345.0,
+        "savings_egp": 115.0,
+        "leftover": "0.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 500.0,
+            "original_unit": "g",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "separate_packages_needed": 2
+          },
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 700.0,
+            "original_unit": "g",
+            "converted_quantity": 700.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "separate_packages_needed": 2
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0009",
+        "ingredient_name_ar": "فلفل أسود",
+        "is_shared": true,
+        "total_needed": "10.0 g",
+        "product_id": "P0107",
+        "product_name": "Al-Doha Spices Ground Black Pepper 70G",
+        "package_spec": "70.0 g @ 42.0 EGP",
+        "unit_price": "0.6 EGP/g",
+        "store_id": "STR002",
+        "separate_pkgs": 2,
+        "separate_cost_egp": 84.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 42.0,
+        "savings_egp": 42.0,
+        "leftover": "60.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 1.0,
+            "original_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "separate_packages_needed": 1
+          },
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 1.0,
+            "original_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0071",
+        "ingredient_name_ar": "بصل أصفر",
+        "is_shared": true,
+        "total_needed": "500.0 g",
+        "product_id": "P0144",
+        "product_name": "Local Fresh Market Egyptian Yellow Onions Fresh 1Kg",
+        "package_spec": "1000.0 g @ 18.0 EGP",
+        "unit_price": "0.018 EGP/g",
+        "store_id": "STR004",
+        "separate_pkgs": 2,
+        "separate_cost_egp": 36.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 18.0,
+        "savings_egp": 18.0,
+        "leftover": "500.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 2.0,
+            "original_unit": "piece",
+            "converted_quantity": 250.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "separate_packages_needed": 1
+          },
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 2.0,
+            "original_unit": "piece",
+            "converted_quantity": 250.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "produce_piece_to_g_125.0g",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0011",
+        "ingredient_name_ar": "زبدة",
+        "is_shared": false,
+        "total_needed": "100.0 g",
+        "product_id": "P0071",
+        "product_name": "Crystal Vegetable Ghee Butter Flavor 700G",
+        "package_spec": "700.0 g @ 68.0 EGP",
+        "unit_price": "0.0971 EGP/g",
+        "store_id": "STR001",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 68.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 68.0,
+        "savings_egp": 0.0,
+        "leftover": "600.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 100.0,
+            "original_unit": "g",
+            "converted_quantity": 100.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0002",
+        "ingredient_name_ar": "بهارات كبابة صيني",
+        "is_shared": false,
+        "total_needed": "5.0 g",
+        "product_id": "P0117",
+        "product_name": "Al-Doha Spices Ground Allspice 60G",
+        "package_spec": "60.0 g @ 36.0 EGP",
+        "unit_price": "0.6 EGP/g",
+        "store_id": "STR002",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 36.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 36.0,
+        "savings_egp": 0.0,
+        "leftover": "55.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 1.0,
+            "original_unit": "tsp",
+            "converted_quantity": 5.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0052",
+        "ingredient_name_ar": "مكرونة فرن",
+        "is_shared": false,
+        "total_needed": "500.0 g",
+        "product_id": "P0001",
+        "product_name": "Baraka Penne Rigate Pasta 400G",
+        "package_spec": "400.0 g @ 14.5 EGP",
+        "unit_price": "0.0362 EGP/g",
+        "store_id": "STR001",
+        "separate_pkgs": 2,
+        "separate_cost_egp": 29.0,
+        "smart_pkgs": 2,
+        "smart_cost_egp": 29.0,
+        "savings_egp": 0.0,
+        "leftover": "300.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 500.0,
+            "original_unit": "g",
+            "converted_quantity": 500.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "separate_packages_needed": 2
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0062",
+        "ingredient_name_ar": "معجون طماطم",
+        "is_shared": false,
+        "total_needed": "30.0 g",
+        "product_id": "P0099",
+        "product_name": "Harvest Tomato Paste Tin 370G",
+        "package_spec": "370.0 g @ 25.0 EGP",
+        "unit_price": "0.0676 EGP/g",
+        "store_id": "STR004",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 25.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 25.0,
+        "savings_egp": 0.0,
+        "leftover": "340.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 2.0,
+            "original_unit": "tbsp",
+            "converted_quantity": 30.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tbsp_to_g",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0001",
+        "ingredient_name_ar": "دقيق أبيض فاخر",
+        "is_shared": false,
+        "total_needed": "100.0 g",
+        "product_id": "P0145",
+        "product_name": "Local Fresh Market Egyptian Red Onions Fresh 1Kg",
+        "package_spec": "1000.0 g @ 22.0 EGP",
+        "unit_price": "0.022 EGP/g",
+        "store_id": "STR005",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 22.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 22.0,
+        "savings_egp": 0.0,
+        "leftover": "900.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 100.0,
+            "original_unit": "g",
+            "converted_quantity": 100.0,
+            "converted_unit": "g",
+            "conversion_classification": "EXACT",
+            "conversion_method": "exact_unit_match",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0022",
+        "ingredient_name_ar": "نشا ذرة",
+        "is_shared": false,
+        "total_needed": "15.0 g",
+        "product_id": "P0090",
+        "product_name": "Dream Cornstarch 200G",
+        "package_spec": "200.0 g @ 18.0 EGP",
+        "unit_price": "0.09 EGP/g",
+        "store_id": "STR005",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 18.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 18.0,
+        "savings_egp": 0.0,
+        "leftover": "185.0 g",
+        "usages": [
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 1.0,
+            "original_unit": "tbsp",
+            "converted_quantity": 15.0,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tbsp_to_g",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0028",
+        "ingredient_name_ar": "بيض",
+        "is_shared": false,
+        "total_needed": "100.0 ml",
+        "product_id": "P0076",
+        "product_name": "Wadi Food Distilled Cane Vinegar 1L",
+        "package_spec": "1000.0 ml @ 18.0 EGP",
+        "unit_price": "0.018 EGP/ml",
+        "store_id": "STR001",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 18.0,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 18.0,
+        "savings_egp": 0.0,
+        "leftover": "900.0 ml",
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "original_quantity": 2.0,
+            "original_unit": "piece",
+            "converted_quantity": 100.0,
+            "converted_unit": "ml",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_piece_to_ml_approx_50ml",
+            "separate_packages_needed": 1
+          }
+        ]
+      },
+      {
+        "ingredient_id": "ING0003",
+        "ingredient_name_ar": "بيكنج بودر",
+        "is_shared": false,
+        "total_needed": "2.5 g",
+        "product_id": "P0086",
+        "product_name": "Dr. Oetker Baking Powder 16G",
+        "package_spec": "16.0 g @ 4.5 EGP",
+        "unit_price": "0.2812 EGP/g",
+        "store_id": "STR001",
+        "separate_pkgs": 1,
+        "separate_cost_egp": 4.5,
+        "smart_pkgs": 1,
+        "smart_cost_egp": 4.5,
+        "savings_egp": 0.0,
+        "leftover": "13.5 g",
+        "usages": [
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "original_quantity": 0.5,
+            "original_unit": "tsp",
+            "converted_quantity": 2.5,
+            "converted_unit": "g",
+            "conversion_classification": "APPROXIMATE",
+            "conversion_method": "culinary_volume_to_mass_tsp_to_g",
+            "separate_packages_needed": 1
+          }
+        ]
+      }
+    ],
+    "unpriced_ingredients_table": [
+      {
+        "ingredient_id": "ING0037",
+        "ingredient_name_ar": "بقدونس طازج",
+        "ingredient_name_en": "Fresh Parsley",
+        "used_in_recipes": [
+          "كفتة الحاتي المشوية"
+        ],
+        "recipe_count": 1,
+        "usages": [
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "quantity": 0.5,
+            "unit": "cup"
+          }
+        ],
+        "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+      },
+      {
+        "ingredient_id": "ING0048",
+        "ingredient_name_ar": "جوزة الطيب",
+        "ingredient_name_en": "Nutmeg",
+        "used_in_recipes": [
+          "مكرونة بشاميل"
+        ],
+        "recipe_count": 1,
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "quantity": 0.5,
+            "unit": "tsp"
+          }
+        ],
+        "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+      },
+      {
+        "ingredient_id": "ING0057",
+        "ingredient_name_ar": "ملح طعام",
+        "ingredient_name_en": "Salt",
+        "used_in_recipes": [
+          "مكرونة بشاميل",
+          "كفتة الحاتي المشوية"
+        ],
+        "recipe_count": 2,
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "quantity": 1.5,
+            "unit": "tsp"
+          },
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "quantity": 1.5,
+            "unit": "tsp"
+          }
+        ],
+        "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+      },
+      {
+        "ingredient_id": "ING0065",
+        "ingredient_name_ar": "زيت نباتي",
+        "ingredient_name_en": "Vegetable Oil",
+        "used_in_recipes": [
+          "مكرونة بشاميل"
+        ],
+        "recipe_count": 1,
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "quantity": 2.0,
+            "unit": "tbsp"
+          }
+        ],
+        "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+      },
+      {
+        "ingredient_id": "ING0070",
+        "ingredient_name_ar": "حليب كامل الدسم",
+        "ingredient_name_en": "Whole Milk",
+        "used_in_recipes": [
+          "مكرونة بشاميل"
+        ],
+        "recipe_count": 1,
+        "usages": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "quantity": 1000.0,
+            "unit": "ml"
+          }
+        ],
+        "reason": "NO_MATCHING_PRODUCT_IN_DATABASE"
+      }
+    ],
+    "policy_consistency_audit": "VERIFIED: Separate procurement costs are computed using identical SKU, store, and package prices as Smart Cart; zero product-arbitrage bias."
+  },
+  "recommendation_ranking_audit": {
+    "ranking_formula": "S_rec = S_nlp * (0.70 + 0.30 * Coverage) + CoreBoost",
+    "intent_preservation_rate": "100% (User's closest intent recipe remained #1 in all tested queries)",
+    "core_boost_value": 0.05,
+    "evaluated_queries": [
+      {
+        "query": "مكرونة بشاميل",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0001",
+          "name": "مكرونة بشاميل",
+          "score": 0.4103
+        },
+        "top_1_with_coverage": {
+          "id": "R0001",
+          "name": "مكرونة بشاميل",
+          "score": 0.3693
+        },
+        "top_1_full_S_rec": {
+          "id": "R0001",
+          "name": "مكرونة بشاميل",
+          "score": 0.4193
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0001",
+            "recipe_name_ar": "مكرونة بشاميل",
+            "recipe_name_en": "Macaroni Béchamel",
+            "nlp_similarity_score": 0.4103,
+            "ingredient_coverage_ratio": 0.6667,
+            "score_nlp_only": 0.4103,
+            "score_with_coverage": 0.3693,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.4193
+          },
+          {
+            "recipe_id": "R0012",
+            "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+            "recipe_name_en": "Pasta Alfredo With Chicken",
+            "nlp_similarity_score": 0.2423,
+            "ingredient_coverage_ratio": 0.75,
+            "score_nlp_only": 0.2423,
+            "score_with_coverage": 0.2241,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.2741
+          },
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "nlp_similarity_score": 0.2232,
+            "ingredient_coverage_ratio": 0.7,
+            "score_nlp_only": 0.2232,
+            "score_with_coverage": 0.2031,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.2531
+          }
+        ]
+      },
+      {
+        "query": "كفتة مشوية",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0007",
+          "name": "كفتة الحاتي المشوية",
+          "score": 0.3365
+        },
+        "top_1_with_coverage": {
+          "id": "R0007",
+          "name": "كفتة الحاتي المشوية",
+          "score": 0.3113
+        },
+        "top_1_full_S_rec": {
+          "id": "R0007",
+          "name": "كفتة الحاتي المشوية",
+          "score": 0.3613
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0007",
+            "recipe_name_ar": "كفتة الحاتي المشوية",
+            "recipe_name_en": "Egyptian Kofta Mashweya",
+            "nlp_similarity_score": 0.3365,
+            "ingredient_coverage_ratio": 0.75,
+            "score_nlp_only": 0.3365,
+            "score_with_coverage": 0.3113,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.3613
+          },
+          {
+            "recipe_id": "R0058",
+            "recipe_name_ar": "كتف ضان بلدي مقرمش بالبقسماط والبهارات",
+            "recipe_name_en": "Crispy Breaded Pan-Fried Lamb Shoulder",
+            "nlp_similarity_score": 0.1099,
+            "ingredient_coverage_ratio": 0.6667,
+            "score_nlp_only": 0.1099,
+            "score_with_coverage": 0.0989,
+            "core_boost": 0.0,
+            "composite_score_S_rec": 0.0989
+          },
+          {
+            "recipe_id": "R0118",
+            "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+            "recipe_name_en": "Crispy Breaded Pan-Fried Brown Lentils",
+            "nlp_similarity_score": 0.1057,
+            "ingredient_coverage_ratio": 0.8333,
+            "score_nlp_only": 0.1057,
+            "score_with_coverage": 0.1004,
+            "core_boost": 0.0,
+            "composite_score_S_rec": 0.1004
+          }
+        ]
+      },
+      {
+        "query": "عايز كشري مصري",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.6397
+        },
+        "top_1_with_coverage": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.5437
+        },
+        "top_1_full_S_rec": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.5937
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "nlp_similarity_score": 0.6397,
+            "ingredient_coverage_ratio": 0.5,
+            "score_nlp_only": 0.6397,
+            "score_with_coverage": 0.5437,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.5937
+          },
+          {
+            "recipe_id": "R0005",
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "recipe_name_en": "Egyptian Fattah",
+            "nlp_similarity_score": 0.416,
+            "ingredient_coverage_ratio": 0.8182,
+            "score_nlp_only": 0.416,
+            "score_with_coverage": 0.3933,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.4433
+          },
+          {
+            "recipe_id": "R0004",
+            "recipe_name_ar": "محشي مشكل",
+            "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+            "nlp_similarity_score": 0.4071,
+            "ingredient_coverage_ratio": 0.6429,
+            "score_nlp_only": 0.4071,
+            "score_with_coverage": 0.3635,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.4135
+          }
+        ]
+      },
+      {
+        "query": "Egyptian Koshari",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.4219
+        },
+        "top_1_with_coverage": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.3586
+        },
+        "top_1_full_S_rec": {
+          "id": "R0002",
+          "name": "كشري مصري",
+          "score": 0.4086
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0002",
+            "recipe_name_ar": "كشري مصري",
+            "recipe_name_en": "Koshari",
+            "nlp_similarity_score": 0.4219,
+            "ingredient_coverage_ratio": 0.5,
+            "score_nlp_only": 0.4219,
+            "score_with_coverage": 0.3586,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.4086
+          },
+          {
+            "recipe_id": "R0009",
+            "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+            "recipe_name_en": "Shakshuka Egyptian Style",
+            "nlp_similarity_score": 0.3697,
+            "ingredient_coverage_ratio": 0.8182,
+            "score_nlp_only": 0.3697,
+            "score_with_coverage": 0.3495,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.3995
+          },
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "nlp_similarity_score": 0.3667,
+            "ingredient_coverage_ratio": 0.6667,
+            "score_nlp_only": 0.3667,
+            "score_with_coverage": 0.33,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.38
+          }
+        ]
+      },
+      {
+        "query": "فول مدمس",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0010",
+          "name": "فول مدمس اسكندراني بالطحينة والليمون",
+          "score": 0.5172
+        },
+        "top_1_with_coverage": {
+          "id": "R0010",
+          "name": "فول مدمس اسكندراني بالطحينة والليمون",
+          "score": 0.4655
+        },
+        "top_1_full_S_rec": {
+          "id": "R0010",
+          "name": "فول مدمس اسكندراني بالطحينة والليمون",
+          "score": 0.5155
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "nlp_similarity_score": 0.5172,
+            "ingredient_coverage_ratio": 0.6667,
+            "score_nlp_only": 0.5172,
+            "score_with_coverage": 0.4655,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.5155
+          },
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "nlp_similarity_score": 0.2805,
+            "ingredient_coverage_ratio": 0.7,
+            "score_nlp_only": 0.2805,
+            "score_with_coverage": 0.2553,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.3053
+          },
+          {
+            "recipe_id": "R0005",
+            "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+            "recipe_name_en": "Egyptian Fattah",
+            "nlp_similarity_score": 0.2395,
+            "ingredient_coverage_ratio": 0.8182,
+            "score_nlp_only": 0.2395,
+            "score_with_coverage": 0.2264,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.2764
+          }
+        ]
+      },
+      {
+        "query": "طعمية سخنة",
+        "nlp_status": "SUCCESS",
+        "top_1_nlp_only": {
+          "id": "R0011",
+          "name": "طعمية مصرية بالفول المدشوش والسمسم",
+          "score": 0.3797
+        },
+        "top_1_with_coverage": {
+          "id": "R0011",
+          "name": "طعمية مصرية بالفول المدشوش والسمسم",
+          "score": 0.3455
+        },
+        "top_1_full_S_rec": {
+          "id": "R0011",
+          "name": "طعمية مصرية بالفول المدشوش والسمسم",
+          "score": 0.3955
+        },
+        "intent_preserved": true,
+        "candidates_comparison": [
+          {
+            "recipe_id": "R0011",
+            "recipe_name_ar": "طعمية مصرية بالفول المدشوش والسمسم",
+            "recipe_name_en": "Egyptian Taameya (Falafel)",
+            "nlp_similarity_score": 0.3797,
+            "ingredient_coverage_ratio": 0.7,
+            "score_nlp_only": 0.3797,
+            "score_with_coverage": 0.3455,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.3955
+          },
+          {
+            "recipe_id": "R0010",
+            "recipe_name_ar": "فول مدمس اسكندراني بالطحينة والليمون",
+            "recipe_name_en": "Egyptian Ful Medames Iskandarani",
+            "nlp_similarity_score": 0.2177,
+            "ingredient_coverage_ratio": 0.6667,
+            "score_nlp_only": 0.2177,
+            "score_with_coverage": 0.1959,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.2459
+          },
+          {
+            "recipe_id": "R0008",
+            "recipe_name_ar": "شوربة عدس اصفر مصرية",
+            "recipe_name_en": "Egyptian Yellow Lentil Soup (Shorbet Ads)",
+            "nlp_similarity_score": 0.2057,
+            "ingredient_coverage_ratio": 0.7273,
+            "score_nlp_only": 0.2057,
+            "score_with_coverage": 0.1889,
+            "core_boost": 0.05,
+            "composite_score_S_rec": 0.2389
+          }
+        ]
+      }
+    ]
+  },
+  "package_and_api_audit": {
+    "package_name": "SILLA_Recommendation",
+    "init_file_verified": true,
+    "clean_environment_tests": "ALL_PASSED",
+    "api_specifications": [
+      {
+        "function_name": "get_recommendations",
+        "module": "SILLA_Recommendation.api",
+        "inputs": {
+          "query": "str (Required - Arabic, Egyptian slang, or English query)",
+          "language": "Optional[str] (Hint: 'ar' or 'en', default None)",
+          "top_k": "int (default 3)",
+          "store_id": "Optional[str] (e.g. 'STR001' for Carrefour, default None)",
+          "min_coverage": "float (minimum price coverage filter, default 0.0)",
+          "db_path": "Path (default STAGING_DB_PATH)"
+        },
+        "outputs": {
+          "status": "str ('SUCCESS' | 'REJECTED_OUT_OF_DOMAIN' | 'REJECTED_OUT_OF_CATALOG' | 'REJECTED_CONTRADICTORY' | 'REQUEST_CLARIFICATION')",
+          "message": "Optional[str] (Explanatory reason when rejected or clarification requested)",
+          "query": "str",
+          "store_id": "Optional[str]",
+          "total_recommendations": "int (0 when rejected, else len(recommendations))",
+          "guard_triggered": "bool (True when query is rejected or clarifies, False on success)",
+          "recommendations": "list[dict] (Ranked candidate cards with composite scores, costs, and feasibility tiers)"
+        },
+        "expected_exceptions_handled": "Non-matching queries, out-of-domain terms, contradictory queries, vague terms, missing database."
+      },
+      {
+        "function_name": "calculate_recipe_cost",
+        "module": "SILLA_Recommendation.api",
+        "inputs": {
+          "recipe_id": "str (Required, e.g. 'R0001')",
+          "store_id": "Optional[str] (default None for all-store optimization)",
+          "db_path": "Path (default STAGING_DB_PATH)"
+        },
+        "outputs": {
+          "success": "bool",
+          "recipe_id": "str",
+          "recipe_name_ar": "str",
+          "recipe_name_en": "str",
+          "base_servings": "float",
+          "net_recipe_cost_egp": "float (Pro-rata consumed cost)",
+          "net_cost_per_serving_egp": "float",
+          "grocery_procurement_cost_egp": "float (Whole packages purchase cost)",
+          "procurement_cost_per_serving_egp": "float",
+          "price_completeness_ratio": "float (Coverage = priced_req / total_req)",
+          "is_fully_priced": "bool",
+          "pricing_disclaimer": "str",
+          "priced_ingredients": "list[dict]",
+          "unpriced_ingredients": "list[dict]"
+        },
+        "expected_exceptions_handled": "Recipe ID not found in database (returns success=False), no available products for store filter."
+      },
+      {
+        "function_name": "build_smart_cart",
+        "module": "SILLA_Recommendation.api",
+        "inputs": {
+          "recipe_ids": "List[str] (Required, e.g. ['R0001', 'R0007'])",
+          "store_id": "Optional[str] (default None)",
+          "db_path": "Path (default STAGING_DB_PATH)"
+        },
+        "outputs": {
+          "success": "bool",
+          "recipe_ids": "list[str]",
+          "recipes": "list[dict]",
+          "smart_cart_total_egp": "float (Consolidated procurement total)",
+          "separate_carts_total_egp": "float (Sum of separate recipe procurement)",
+          "total_savings_egp": "float (separate_total - smart_total)",
+          "savings_percentage": "float",
+          "shared_ingredients_count": "int",
+          "unique_ingredients_count": "int",
+          "unpriced_ingredients_count": "int",
+          "cart_items": "list[dict] (Consolidated products with package specs and attribution)",
+          "unpriced_ingredients": "list[dict]",
+          "summary_message": "str"
+        },
+        "expected_exceptions_handled": "Empty recipe list (returns success=False), non-existent recipe IDs (returns missing_recipe_ids list)."
+      }
+    ]
+  },
+  "automated_test_suite_summary": {
+    "recommendation_tests_run": 40,
+    "recommendation_tests_passed": 40,
+    "nlp_tests_run": 26,
+    "nlp_tests_passed": 26,
+    "total_tests_passed": 66,
+    "total_failures": 0,
+    "total_errors": 0,
+    "overall_status": "AUDIT_PASSED_OK"
+  }
+}

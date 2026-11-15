@@ -1,7 +1,8 @@
 """
 database/import_data.py
 ========================
-Imports all processed datasets into SQLite (database/silla.db) with strict foreign key validation.
+Imports all processed datasets into SQLite (database/silla.db or custom db_path)
+with strict foreign key validation using standard library.
 
 Tables imported in topological order:
 1. data_sources  <- data/source_registry.csv
@@ -13,12 +14,12 @@ Tables imported in topological order:
 7. product_price_history <- seeded from initial products collection
 """
 
+import csv
 import logging
 import sqlite3
 from pathlib import Path
-import pandas as pd
-
 import sys
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from config.settings import (
     DB_PATH, SCHEMA_PATH, PROCESSED_DIR, DATA_DIR,
@@ -41,27 +42,37 @@ DEFAULT_STORES = [
 ]
 
 
-def _load_csv(path: Path) -> pd.DataFrame | None:
+def _load_csv(path: Path) -> list[dict] | None:
     if not path.exists():
         logger.warning("File not found, skipping: %s", path)
         return None
-    df = pd.read_csv(path, dtype=str, encoding="utf-8-sig")
-    df = df.where(pd.notna(df), None)
-    logger.info("Loaded %d rows from %s", len(df), path)
-    return df
+    with open(path, "r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        rows = []
+        for r in reader:
+            clean_row = {k: (v.strip() if isinstance(v, str) and v.strip() != "" and v.strip().lower() != "nan" else None) for k, v in r.items()}
+            rows.append(clean_row)
+    logger.info("Loaded %d rows from %s", len(rows), path)
+    return rows
 
 
-def _import_df(conn: sqlite3.Connection, df: pd.DataFrame, table: str) -> int:
-    """Insert rows from df into table, ignoring duplicates."""
+def _import_rows(conn: sqlite3.Connection, rows: list[dict], table: str, keep_cols: list[str]) -> int:
+    """Insert rows into table, ignoring duplicates."""
+    if not rows:
+        return 0
     cursor = conn.cursor()
-    cols = df.columns.tolist()
-    placeholders = ", ".join(["?"] * len(cols))
-    sql = f"INSERT OR IGNORE INTO {table} ({', '.join(cols)}) VALUES ({placeholders})"
-    rows = [tuple(row) for row in df.itertuples(index=False, name=None)]
-    cursor.executemany(sql, rows)
+    placeholders = ", ".join(["?"] * len(keep_cols))
+    sql = f"INSERT OR IGNORE INTO {table} ({', '.join(keep_cols)}) VALUES ({placeholders})"
+    
+    tuples = []
+    for r in rows:
+        t = tuple(r.get(c) for c in keep_cols)
+        tuples.append(t)
+    
+    cursor.executemany(sql, tuples)
     conn.commit()
-    logger.info("Successfully imported %d rows -> %s", len(rows), table)
-    return len(rows)
+    logger.info("Successfully imported %d rows -> %s", len(tuples), table)
+    return len(tuples)
 
 
 def import_all(db_path: Path = DB_PATH) -> dict:
@@ -78,76 +89,102 @@ def import_all(db_path: Path = DB_PATH) -> dict:
 
         # 1. data_sources
         ds_path = DATA_DIR / "source_registry.csv"
-        ds_df = _load_csv(ds_path)
-        if ds_df is not None:
+        ds_rows = _load_csv(ds_path)
+        if ds_rows:
             keep_ds = ["source_id", "source_name", "source_type", "source_url", "access_method", "permission_status", "collection_date", "notes"]
-            ds_df = ds_df[[c for c in keep_ds if c in ds_df.columns]]
-            _import_df(conn, ds_df, "data_sources")
+            _import_rows(conn, ds_rows, "data_sources", keep_ds)
 
         # 2. stores
-        stores_df = pd.DataFrame(DEFAULT_STORES)
-        _import_df(conn, stores_df, "stores")
+        keep_stores = ["store_id", "store_name", "store_url", "country", "city"]
+        _import_rows(conn, DEFAULT_STORES, "stores", keep_stores)
 
         # Build store_name -> store_id map
         store_map = {s["store_name"]: s["store_id"] for s in DEFAULT_STORES}
 
         # 3. ingredients
         ing_path = PROCESSED_DIR / "ingredients_master.csv"
-        ing_df = _load_csv(ing_path)
-        if ing_df is not None:
+        ing_rows = _load_csv(ing_path)
+        if ing_rows:
             keep_ing = ["ingredient_id", "canonical_name_en", "canonical_name_ar", "aliases_en", "aliases_ar", "category", "default_unit", "dietary_tags"]
-            ing_df = ing_df[[c for c in keep_ing if c in ing_df.columns]]
-            _import_df(conn, ing_df, "ingredients")
+            _import_rows(conn, ing_rows, "ingredients", keep_ing)
 
         # 4. recipes
         rec_path = PROCESSED_DIR / "recipes_clean.csv"
-        rec_df = _load_csv(rec_path)
-        if rec_df is not None:
-            # Map source_id if present or default
-            if "source_id" not in rec_df.columns:
-                rec_df["source_id"] = "SRC002"
-            else:
-                rec_df["source_id"] = rec_df["source_id"].fillna("SRC002")
+        rec_raw_rows = _load_csv(rec_path)
+        if rec_raw_rows:
+            prepared_rec = []
+            for r in rec_raw_rows:
+                row_copy = r.copy()
+                if not row_copy.get("source_id"):
+                    row_copy["source_id"] = "SRC002"
+                # Renaming
+                row_copy["prep_time_min"] = row_copy.pop("preparation_time", None)
+                row_copy["cook_time_min"] = row_copy.pop("cooking_time", None)
+                row_copy["instructions"] = row_copy.pop("cooking_instructions", None)
+                # Numeric conversions
+                try:
+                    row_copy["base_servings"] = float(row_copy["base_servings"]) if row_copy.get("base_servings") is not None else 4.0
+                except (ValueError, TypeError):
+                    row_copy["base_servings"] = 4.0
+                try:
+                    row_copy["prep_time_min"] = int(float(row_copy["prep_time_min"])) if row_copy.get("prep_time_min") is not None else 15
+                except (ValueError, TypeError):
+                    row_copy["prep_time_min"] = 15
+                try:
+                    row_copy["cook_time_min"] = int(float(row_copy["cook_time_min"])) if row_copy.get("cook_time_min") is not None else 20
+                except (ValueError, TypeError):
+                    row_copy["cook_time_min"] = 20
+                prepared_rec.append(row_copy)
 
             keep_rec = [
-                "recipe_id", "recipe_name_en", "recipe_name_ar", "description",
+                "recipe_id", "recipe_name_en", "recipe_name_ar", "description", "description_ar",
                 "cuisine", "category", "base_servings", "prep_time_min",
                 "cook_time_min", "difficulty", "instructions", "image_url",
                 "source_url", "source_id", "collection_date"
             ]
-            # Rename if necessary
-            rename_map = {"preparation_time": "prep_time_min", "cooking_time": "cook_time_min", "cooking_instructions": "instructions"}
-            rec_df = rec_df.rename(columns=rename_map)
-            rec_df = rec_df[[c for c in keep_rec if c in rec_df.columns]]
-            _import_df(conn, rec_df, "recipes")
+            _import_rows(conn, prepared_rec, "recipes", keep_rec)
 
         # 5. recipe_ingredients
         ri_path = PROCESSED_DIR / "recipe_ingredients_clean.csv"
-        ri_df = _load_csv(ri_path)
-        if ri_df is not None:
-            # Convert quantity to numeric
-            ri_df["quantity"] = pd.to_numeric(ri_df["quantity"], errors="coerce").fillna(1.0)
-            ri_df["is_optional"] = pd.to_numeric(ri_df["is_optional"], errors="coerce").fillna(0).astype(int)
+        ri_raw_rows = _load_csv(ri_path)
+        if ri_raw_rows:
+            prepared_ri = []
+            for r in ri_raw_rows:
+                row_copy = r.copy()
+                try:
+                    row_copy["quantity"] = float(row_copy["quantity"]) if row_copy.get("quantity") is not None else 1.0
+                except (ValueError, TypeError):
+                    row_copy["quantity"] = 1.0
+                try:
+                    row_copy["is_optional"] = int(float(row_copy["is_optional"])) if row_copy.get("is_optional") is not None else 0
+                except (ValueError, TypeError):
+                    row_copy["is_optional"] = 0
+                prepared_ri.append(row_copy)
 
             keep_ri = ["recipe_id", "ingredient_id", "original_ingredient_name", "quantity", "unit", "preparation_note", "is_optional"]
-            ri_df = ri_df[[c for c in keep_ri if c in ri_df.columns]]
-            _import_df(conn, ri_df, "recipe_ingredients")
+            _import_rows(conn, prepared_ri, "recipe_ingredients", keep_ri)
 
         # 6. products
         prod_path = PROCESSED_DIR / "products_clean.csv"
-        prod_df = _load_csv(prod_path)
-        if prod_df is not None:
-            # Map store_id from store_name
-            if "store_id" not in prod_df.columns or prod_df["store_id"].isna().all():
-                prod_df["store_id"] = prod_df["store_name"].map(store_map).fillna("STR001")
-
-            # Map source_id
-            if "source_id" not in prod_df.columns or prod_df["source_id"].isna().all():
-                prod_df["source_id"] = "SRC005"
-
-            # Convert numeric columns
-            prod_df["package_size"] = pd.to_numeric(prod_df["package_size"], errors="coerce").fillna(1.0)
-            prod_df["price_egp"] = pd.to_numeric(prod_df["price_egp"], errors="coerce").fillna(0.0)
+        prod_raw_rows = _load_csv(prod_path)
+        if prod_raw_rows:
+            prepared_prod = []
+            for r in prod_raw_rows:
+                row_copy = r.copy()
+                store_name = row_copy.get("store_name", "")
+                if not row_copy.get("store_id"):
+                    row_copy["store_id"] = store_map.get(store_name, "STR001")
+                if not row_copy.get("source_id"):
+                    row_copy["source_id"] = "SRC005"
+                try:
+                    row_copy["package_size"] = float(row_copy["package_size"]) if row_copy.get("package_size") is not None else 1.0
+                except (ValueError, TypeError):
+                    row_copy["package_size"] = 1.0
+                try:
+                    row_copy["price_egp"] = float(row_copy["price_egp"]) if row_copy.get("price_egp") is not None else 0.0
+                except (ValueError, TypeError):
+                    row_copy["price_egp"] = 0.0
+                prepared_prod.append(row_copy)
 
             keep_prod = [
                 "product_id", "product_name", "product_name_ar", "brand",
@@ -155,8 +192,7 @@ def import_all(db_path: Path = DB_PATH) -> dict:
                 "price_egp", "store_id", "product_url", "image_url",
                 "availability", "collection_date", "price_source_type", "source_id"
             ]
-            prod_df = prod_df[[c for c in keep_prod if c in prod_df.columns]]
-            _import_df(conn, prod_df, "products")
+            _import_rows(conn, prepared_prod, "products", keep_prod)
 
             # 7. product_price_history
             cursor = conn.cursor()
@@ -164,7 +200,7 @@ def import_all(db_path: Path = DB_PATH) -> dict:
             if cursor.fetchone()[0] == 0:
                 history_rows = [
                     (row["product_id"], float(row["price_egp"]), row["collection_date"], row["source_id"])
-                    for _, row in prod_df.iterrows()
+                    for row in prepared_prod
                 ]
                 cursor.executemany(
                     "INSERT INTO product_price_history (product_id, price_egp, collection_date, source_id) VALUES (?, ?, ?, ?)",

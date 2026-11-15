@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS recipes (
     recipe_name_en  TEXT NOT NULL,
     recipe_name_ar  TEXT,
     description     TEXT,
+    description_ar  TEXT,
     cuisine         TEXT,
     category        TEXT,
     base_servings   REAL,

@@ -37,6 +37,7 @@ KNOWN_INGREDIENTS = {
     "fettuccine pasta": {"ar": "مكرونة فيتوتشيني", "category": "Pasta and Grains", "unit": "g", "dietary": "vegetarian,halal"},
     "lasagna pasta sheets": {"ar": "شرائح لازانيا", "category": "Pasta and Grains", "unit": "g", "dietary": "vegetarian,halal"},
     "vermicelli": {"ar": "شعرية", "category": "Pasta and Grains", "unit": "g", "dietary": "vegan,halal"},
+    "egyptian rice": {"ar": "ارز مصري", "category": "Pasta and Grains", "unit": "g", "dietary": "vegan,gluten-free,halal"},
     "egyptian white rice": {"ar": "أرز مصري", "category": "Pasta and Grains", "unit": "g", "dietary": "vegan,gluten-free,halal"},
     "basmati rice": {"ar": "أرز بسمتي", "category": "Pasta and Grains", "unit": "g", "dietary": "vegan,gluten-free,halal"},
     "brown lentils": {"ar": "عدس بني", "category": "Legumes and Pulses", "unit": "g", "dietary": "vegan,gluten-free,halal"},
@@ -117,6 +118,8 @@ def _canonical_key(name: str) -> str:
     """Normalize string for canonical mapping."""
     clean = re.sub(r"[^\w\s-]", "", str(name).lower())
     clean = " ".join(clean.split()).strip()
+    if clean == "potatoes":
+        clean = "potato"
     return clean
 
 

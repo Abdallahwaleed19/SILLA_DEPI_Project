@@ -1,0 +1,136 @@
+[
+  {
+    "label": "1. ممكن وصفة سهلة بالدجاج والبطاطس",
+    "query": "ممكن وصفة سهلة بالدجاج والبطاطس",
+    "normalized_query": "ممكن سهله بالدجاج والبطاطس",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0003",
+        "recipe_name_ar": "ملوخية بالفراخ",
+        "recipe_name_en": "Molokhia With Chicken",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5252,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+        "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+      },
+      {
+        "recipe_id": "R0012",
+        "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+        "recipe_name_en": "Pasta Alfredo With Chicken",
+        "cuisine": "Italian",
+        "category": "Pasta",
+        "similarity_score": 0.4784,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "مكرونة فوتشيني مسلوقة ممزوجة بصلصة الألفريدو الكريمة الغنية المحضرة بالزبدة والثوم وجبن البارميزان مع شرائح صدور الدجاج المشوحة.",
+        "description_en": "Silky fettuccine pasta coated in rich butter, heavy cream, garlic, and parmesan cheese topped with tender seared chicken breast."
+      },
+      {
+        "recipe_id": "R0015",
+        "recipe_name_ar": "كاري دجاج بالارز البسمتي",
+        "recipe_name_en": "Classic Chicken Curry",
+        "cuisine": "Indian",
+        "category": "Main Course",
+        "similarity_score": 0.4639,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "قطع من صدور الدجاج المطهوة مع مكعبات البطاطس والبصل والثوم ومتبلة ببهارات الكاري والكركم والكمون، وتقدم بجانب الأرز البسمتي.",
+        "description_en": "Tender chicken cooked in an aromatic curry sauce infused with turmeric, cumin, ginger, garlic, and coconut milk."
+      }
+    ],
+    "rejection_reason": null,
+    "rejection_reason_en": null,
+    "clarification_message": null,
+    "execution_time_ms": 47.07
+  },
+  {
+    "label": "2. I want an easy Egyptian rice recipe",
+    "query": "I want an easy Egyptian rice recipe",
+    "normalized_query": "I want an easy Egyptian rice recipe",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0185",
+        "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Egyptian Rice",
+        "cuisine": "Indian",
+        "category": "Pasta And Grains",
+        "similarity_score": 0.6383,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian, rice",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ الهندي يحضر من ارز مصري مفلفل مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Indian culinary preparation of egyptian rice charcoal grilled with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0004",
+        "recipe_name_ar": "محشي مشكل",
+        "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5056,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+        "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+      },
+      {
+        "recipe_id": "R0005",
+        "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+        "recipe_name_en": "Egyptian Fattah",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.4948,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+        "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+      }
+    ],
+    "rejection_reason": null,
+    "rejection_reason_en": null,
+    "clarification_message": null,
+    "execution_time_ms": 10.04
+  },
+  {
+    "label": "3. عايز حاجة حلوة وسريعة",
+    "query": "عايز حاجة حلوة وسريعة",
+    "normalized_query": "حلوه وسريعه",
+    "status": "LOW_CONFIDENCE",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "لم يتم العثور على وصفة مطابقة بدرجة ثقة كافية (أعلى نتيجة: 0.171، الحد الأدنى: 0.180).",
+    "rejection_reason_en": "No high-confidence recipe match found (top score: 0.171, threshold: 0.180).",
+    "clarification_message": null,
+    "execution_time_ms": 5.77
+  },
+  {
+    "label": "4. اشرحلي الفيزياء",
+    "query": "اشرحلي الفيزياء",
+    "normalized_query": "اشرحلي الفيزياء",
+    "status": "REJECTED_OUT_OF_DOMAIN",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+    "rejection_reason_en": "Out of domain: Non-food query detected.",
+    "clarification_message": null,
+    "execution_time_ms": 0.0
+  },
+  {
+    "label": "5. عايز سوشي بالدجاج",
+    "query": "عايز سوشي بالدجاج",
+    "normalized_query": "عايز سوشي بالدجاج",
+    "status": "REJECTED_OUT_OF_CATALOG",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "صنف الطعام المطلوب (سوشي) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+    "rejection_reason_en": "Out of catalog: Food category 'سوشي' is not supported in the recipe database.",
+    "clarification_message": null,
+    "execution_time_ms": 0.0
+  }
+]
