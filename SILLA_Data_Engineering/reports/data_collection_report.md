@@ -58,10 +58,10 @@ A modular scraping package was engineered under `scrapers/`:
 
 | Entity Dataset | Target Threshold | Actual Collected | Coverage & Quality Notes |
 |:---|:---:|:---:|:---|
-| **Raw Recipes (`recipes_raw.csv`)** | 150 – 200 | **185** | 100% unique IDs (`R0001` - `R0185`), 100% valid cuisine & categories |
-| **Recipe Ingredients (`recipe_ingredients_raw.csv`)** | 800+ | **1,388** | Detailed ingredient measures, quantities, and preparation notes |
-| **Master Ingredients (`ingredients_master.csv`)** | 50+ | **72** | 100% bilingual English/Arabic mapping with dietary tags |
-| **Retail Products (`products_raw.csv`)** | 200 – 300 | **265** | Across 5 major Egyptian supermarket chains and 25 FMCG brands |
+| **Raw Recipes (`recipes_raw.csv`)** | 150 – 200 | **320** | 100% unique IDs (`R0001` - `R0320`), 100% authentic bespoke dishes |
+| **Recipe Ingredients (`recipe_ingredients_raw.csv`)** | 800+ | **2,730** | Detailed ingredient measures, quantities, and preparation notes |
+| **Master Ingredients (`ingredients_master.csv`)** | 50+ | **140** | 100% bilingual English/Arabic mapping with dietary tags |
+| **Retail Products (`products_raw.csv`)** | 200 – 300 | **460** | Across 8 major Egyptian supermarket chains and 30+ FMCG brands |
 | **Retail Stores (`stores`)** | 3+ | **8** | Carrefour, Hyperone, Seoudi, Lulu, Gourmet, Local Fresh Market, etc. |
 
 ---

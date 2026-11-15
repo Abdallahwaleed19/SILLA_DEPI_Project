@@ -26,11 +26,11 @@ Automated validation was executed via `preprocessing/validate_data.py` and unit 
 
 | Target Dataset | Total Records | Null Key Fields | Duplicate Keys | Domain Violations | Foreign Key Integrity | Validation Status |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **`recipes_clean.csv`** | 185 | 0 | 0 | 0 (all servings > 0) | N/A | **PASS (100%)** |
-| **`ingredients_master.csv`** | 72 | 0 | 0 | 0 | N/A | **PASS (100%)** |
-| **`recipe_ingredients_clean.csv`**| 1,388 | 0 | 0 | 0 (all quantities > 0) | 100% valid recipe & ingredient FKs | **PASS (100%)** |
-| **`products_clean.csv`** | 265 | 0 | 0 | 0 (all prices > 0 EGP) | 100% valid ingredient & store FKs | **PASS (100%)** |
-| **`silla.db` Relational DB** | 7 Tables | 0 | 0 | 0 | `PRAGMA foreign_key_check` = 0 | **PASS (100%)** |
+| **`recipes_clean.csv`** | 320 | 0 | 0 | 0 (all servings > 0) | N/A | **PASS (100%)** |
+| **`ingredients_master.csv`** | 140 | 0 | 0 | 0 | N/A | **PASS (100%)** |
+| **`recipe_ingredients_clean.csv`**| 2,730 | 0 | 0 | 0 (all quantities > 0) | 100% valid recipe & ingredient FKs | **PASS (100%)** |
+| **`products_clean.csv`** | 460 | 0 | 0 | 0 (all prices > 0 EGP) | 100% valid ingredient & store FKs | **PASS (100%)** |
+| **`silla.db` (SQLite) & `silla_db` (PostgreSQL)** | 7 Tables | 0 | 0 | 0 | Foreign Key Validation = 0 errors | **PASS (100%)** |
 
 ---
 
@@ -56,7 +56,7 @@ Culinary recipes contain varied colloquial units. Handled in `preprocessing/norm
 In `preprocessing/clean_products.py`, retail FMCG products were linked to canonical ingredients using a greedy longest-match keyword algorithm:
 - Evaluates both English and Arabic product titles against master ingredient aliases.
 - Longer, more specific matches take precedence (e.g., `"Olive Oil"` takes precedence over general `"Oil"`).
-- Successfully achieved **100% mapping rate (265 / 265 products)** to canonical ingredient IDs.
+- Successfully achieved **100% mapping rate (460 / 460 products)** to canonical ingredient IDs.
 
 ---
 
