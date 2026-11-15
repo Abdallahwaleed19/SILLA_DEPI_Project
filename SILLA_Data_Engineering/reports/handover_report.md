@@ -28,19 +28,21 @@ All data assets are generated, validated, and available at the following paths:
 SILLA_Data_Engineering/
 ├── data/
 │   ├── raw/                             # Immutable source data
-│   │   ├── recipes_raw.csv              # 185 raw recipes
-│   │   ├── recipe_ingredients_raw.csv   # 1,388 raw ingredient measures
-│   │   └── products_raw.csv             # 265 raw supermarket products
+│   │   ├── recipes_raw.csv              # 320 raw recipes
+│   │   ├── recipe_ingredients_raw.csv   # 2,730 raw ingredient measures
+│   │   └── products_raw.csv             # 460 raw supermarket products
 │   ├── processed/                       # Cleaned, standardized & linked
-│   │   ├── recipes_clean.csv            # 185 normalized recipes
-│   │   ├── recipe_ingredients_clean.csv # 1,388 relational rows with FKs
-│   │   ├── ingredients_master.csv       # 72 canonical bilingual entities
-│   │   ├── products_clean.csv           # 265 retail products with FKs
+│   │   ├── recipes_clean.csv            # 320 normalized recipes
+│   │   ├── recipe_ingredients_clean.csv # 2,730 relational rows with FKs
+│   │   ├── ingredients_master.csv       # 140 canonical bilingual entities
+│   │   ├── products_clean.csv           # 460 retail products with FKs
 │   │   └── data_quality_report.csv      # Validation scorecard
 │   └── source_registry.csv              # Provenance & license audit
 └── database/
     ├── silla.db                         # Production SQLite relational database
-    ├── schema.sql                       # DDL schema (PostgreSQL compatible)
+    ├── schema.sql                       # SQLite DDL schema
+    ├── schema_postgres.sql              # PostgreSQL production DDL schema
+    ├── load_postgres.py                 # PostgreSQL 17/18+ automated loader
     └── query_examples.sql               # 15 battle-tested SQL queries
 ```
 
