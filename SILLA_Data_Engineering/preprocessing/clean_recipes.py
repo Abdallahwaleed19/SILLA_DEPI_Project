@@ -65,10 +65,11 @@ def clean_recipes(df: pd.DataFrame) -> pd.DataFrame:
         df["difficulty"] = df["difficulty"].apply(_clean_en_text).str.title()
 
     # 4. Normalize Arabic text fields
-    if "recipe_name_ar" in df.columns:
-        df["recipe_name_ar"] = df["recipe_name_ar"].apply(
-            lambda x: normalize_arabic_text(x) if x and x != "nan" else ""
-        )
+    for ar_col in ["recipe_name_ar", "description_ar"]:
+        if ar_col in df.columns:
+            df[ar_col] = df[ar_col].apply(
+                lambda x: normalize_arabic_text(x) if x and x != "nan" else ""
+            )
 
     # 5. Validate base_servings
     if "base_servings" in df.columns:

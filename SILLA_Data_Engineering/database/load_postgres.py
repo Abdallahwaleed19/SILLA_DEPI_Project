@@ -118,11 +118,11 @@ def load_postgres():
         rec_df = pd.read_csv(rec_path, dtype=str, encoding="utf-8-sig").fillna("")
         rec_sql = """
         INSERT INTO recipes (
-            recipe_id, recipe_name_en, recipe_name_ar, description,
+            recipe_id, recipe_name_en, recipe_name_ar, description, description_ar,
             cuisine, category, base_servings, prep_time_min,
             cook_time_min, difficulty, instructions, image_url,
             source_url, source_id, collection_date
-        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+        ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (recipe_id) DO NOTHING;
         """
         rec_rows = []
@@ -133,6 +133,7 @@ def load_postgres():
             source_id = r.get("source_id", "SRC002") or "SRC002"
             rec_rows.append((
                 r["recipe_id"], r["recipe_name_en"], r["recipe_name_ar"], r.get("description", ""),
+                r.get("description_ar", ""),
                 r.get("cuisine", "Egyptian"), r.get("category", "Main Course"), servings,
                 prep_t, cook_t, r.get("difficulty", "Medium"), r.get("cooking_instructions", ""),
                 r.get("image_url", ""), r.get("source_url", ""), source_id, r.get("collection_date", "2026-11-15")

@@ -59,6 +59,7 @@ CREATE TABLE recipes (
     recipe_name_en  VARCHAR(255) NOT NULL,
     recipe_name_ar  VARCHAR(255),
     description     TEXT,
+    description_ar  TEXT,
     cuisine         VARCHAR(100),
     category        VARCHAR(100),
     base_servings   NUMERIC DEFAULT 4,
