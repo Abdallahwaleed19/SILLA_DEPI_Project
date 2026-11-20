@@ -1,0 +1,179 @@
+{
+  "method_comparison": {
+    "Random": {
+      "category_precision": 0.2761,
+      "ingredient_jaccard": 0.1529,
+      "description_sim": 0.0438,
+      "ndcg_description": 0.1872,
+      "cost_gap": 1.0144,
+      "diversity": 0.8893,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9935
+    },
+    "Same category (random)": {
+      "category_precision": 0.9935,
+      "ingredient_jaccard": 0.2356,
+      "description_sim": 0.0807,
+      "ndcg_description": 0.3503,
+      "cost_gap": 0.6862,
+      "diversity": 0.8101,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 1.0
+    },
+    "Naive ingredient cosine (no variant filter)": {
+      "category_precision": 0.711,
+      "ingredient_jaccard": 0.5965,
+      "description_sim": 0.3168,
+      "ndcg_description": 0.4465,
+      "cost_gap": 0.5862,
+      "diversity": 0.4032,
+      "duplicate_rate": 0.2129,
+      "catalog_coverage": 1.0
+    },
+    "Ingredients only (TF-IDF)": {
+      "category_precision": 0.6129,
+      "ingredient_jaccard": 0.436,
+      "description_sim": 0.1442,
+      "ndcg_description": 0.635,
+      "cost_gap": 0.7281,
+      "diversity": 0.6383,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    },
+    "Hybrid content-based (SILLA)": {
+      "category_precision": 0.9471,
+      "ingredient_jaccard": 0.4129,
+      "description_sim": 0.1441,
+      "ndcg_description": 0.6451,
+      "cost_gap": 0.5751,
+      "diversity": 0.6671,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    }
+  },
+  "weight_sensitivity": {
+    "ingredients 1.0": {
+      "category_precision": 0.6129,
+      "ingredient_jaccard": 0.436,
+      "description_sim": 0.1442,
+      "ndcg_description": 0.635,
+      "cost_gap": 0.7281,
+      "diversity": 0.6383,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    },
+    "ingredients .7 / category .3": {
+      "category_precision": 0.9652,
+      "ingredient_jaccard": 0.4087,
+      "description_sim": 0.1402,
+      "ndcg_description": 0.6251,
+      "cost_gap": 0.592,
+      "diversity": 0.6628,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    },
+    "default (.55/.10/.20/.05/.10)": {
+      "category_precision": 0.9471,
+      "ingredient_jaccard": 0.4129,
+      "description_sim": 0.1441,
+      "ndcg_description": 0.6451,
+      "cost_gap": 0.5751,
+      "diversity": 0.6671,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    },
+    "ingredients .4 / category .3 / numeric .3": {
+      "category_precision": 0.9923,
+      "ingredient_jaccard": 0.3967,
+      "description_sim": 0.1404,
+      "ndcg_description": 0.6292,
+      "cost_gap": 0.5199,
+      "diversity": 0.6724,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9742
+    },
+    "equal weights": {
+      "category_precision": 0.9497,
+      "ingredient_jaccard": 0.3868,
+      "description_sim": 0.1369,
+      "ndcg_description": 0.6218,
+      "cost_gap": 0.5506,
+      "diversity": 0.6927,
+      "duplicate_rate": 0.0,
+      "catalog_coverage": 0.9806
+    }
+  },
+  "scenarios": {
+    "Unconstrained (same category)": {
+      "queries": 155.0,
+      "success_rate": 1.0,
+      "avg_results": 4.97,
+      "constraint_compliance": 1.0,
+      "avg_similarity": 0.6277,
+      "avg_cost_change_pct": 32.04,
+      "pantry_coverage_with_pantry": null,
+      "pantry_coverage_without_pantry": null
+    },
+    "Cheaper alternative": {
+      "queries": 155.0,
+      "success_rate": 0.9484,
+      "avg_results": 4.23,
+      "constraint_compliance": 1.0,
+      "avg_similarity": 0.5648,
+      "avg_cost_change_pct": -47.24,
+      "pantry_coverage_with_pantry": null,
+      "pantry_coverage_without_pantry": null
+    },
+    "Vegetarian version of a non-vegetarian dish": {
+      "queries": 88.0,
+      "success_rate": 1.0,
+      "avg_results": 5.0,
+      "constraint_compliance": 1.0,
+      "avg_similarity": 0.4846,
+      "avg_cost_change_pct": -56.77,
+      "pantry_coverage_with_pantry": null,
+      "pantry_coverage_without_pantry": null
+    },
+    "Exclude the key ingredient (allergy / dislike)": {
+      "queries": 155.0,
+      "success_rate": 1.0,
+      "avg_results": 4.93,
+      "constraint_compliance": 1.0,
+      "avg_similarity": 0.5977,
+      "avg_cost_change_pct": 29.64,
+      "pantry_coverage_with_pantry": null,
+      "pantry_coverage_without_pantry": null
+    },
+    "Budget: max 30 EGP per serving": {
+      "queries": 155.0,
+      "success_rate": 0.929,
+      "avg_results": 4.61,
+      "constraint_compliance": 1.0,
+      "avg_similarity": 0.5202,
+      "avg_cost_change_pct": -27.64,
+      "pantry_coverage_with_pantry": null,
+      "pantry_coverage_without_pantry": null
+    },
+    "Pantry-aware (8 random pantry items)": {
+      "queries": 155.0,
+      "success_rate": 1.0,
+      "avg_results": 5.0,
+      "constraint_compliance": null,
+      "avg_similarity": null,
+      "avg_cost_change_pct": null,
+      "pantry_coverage_with_pantry": 0.3707,
+      "pantry_coverage_without_pantry": 0.3284
+    }
+  },
+  "setup": {
+    "k": 5,
+    "queries": 155,
+    "weights": {
+      "ingredients": 0.55,
+      "ingredient_mix": 0.1,
+      "category": 0.2,
+      "cuisine": 0.05,
+      "numeric": 0.1
+    }
+  }
+}

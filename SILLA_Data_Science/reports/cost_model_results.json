@@ -1,0 +1,75 @@
+{
+  "data": {
+    "n_dishes": 155,
+    "n_features": 179,
+    "target_mean_egp": 48.08,
+    "target_median_egp": 40.32
+  },
+  "cv_results": {
+    "Baseline: category median": {
+      "MAE_egp": 18.1435,
+      "RMSE_egp": 24.0499,
+      "R2": 0.5415,
+      "MedianAPE_pct": 38.3151,
+      "within_25pct": 0.3505,
+      "R2_std": 0.1375
+    },
+    "Ridge regression (log target)": {
+      "MAE_egp": 16.368,
+      "RMSE_egp": 24.0843,
+      "R2": 0.5513,
+      "MedianAPE_pct": 31.8769,
+      "within_25pct": 0.4129,
+      "R2_std": 0.1795
+    },
+    "Random forest": {
+      "MAE_egp": 13.0313,
+      "RMSE_egp": 18.5245,
+      "R2": 0.7313,
+      "MedianAPE_pct": 25.5543,
+      "within_25pct": 0.5075,
+      "R2_std": 0.0714
+    },
+    "Gradient boosting": {
+      "MAE_egp": 12.5757,
+      "RMSE_egp": 17.5457,
+      "R2": 0.7609,
+      "MedianAPE_pct": 25.3805,
+      "within_25pct": 0.4882,
+      "R2_std": 0.0689
+    }
+  },
+  "leakage_demo": {
+    "KFold on 320 rows (variants leak)": {
+      "MAE_egp": 7.9224,
+      "RMSE_egp": 11.8193,
+      "R2": 0.8971,
+      "MedianAPE_pct": 12.9059,
+      "within_25pct": 0.7281
+    },
+    "GroupKFold by dish family (correct)": {
+      "MAE_egp": 13.4477,
+      "RMSE_egp": 18.8303,
+      "R2": 0.7327,
+      "MedianAPE_pct": 25.8195,
+      "within_25pct": 0.4844
+    }
+  },
+  "feature_importance": {
+    "n_cat_Meat and Poultry": 0.3048,
+    "n_cat_Seafood": 0.2795,
+    "n_ingredients": 0.0795,
+    "total_time": 0.0429,
+    "ing_Lemon": 0.0226,
+    "category_Seafood": 0.0212,
+    "n_cat_Flour and Baking": 0.0196,
+    "base_servings": 0.0178,
+    "n_cat_Cheese": 0.014,
+    "category_Main Course": 0.0136,
+    "ing_Ghee": 0.0129,
+    "n_cat_Spices and Seasonings": 0.0117,
+    "ing_Cumin": 0.01,
+    "ing_Raw White Sesame Seeds": 0.0081,
+    "n_cat_Vegetables": 0.0075
+  }
+}
