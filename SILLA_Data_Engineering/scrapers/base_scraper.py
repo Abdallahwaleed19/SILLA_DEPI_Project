@@ -5,6 +5,8 @@ Abstract base class for all SILLA data scrapers.
 Every concrete scraper must inherit from BaseScraper and implement collect().
 """
 
+from __future__ import annotations
+
 import abc
 import logging
 import time

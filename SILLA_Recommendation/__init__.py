@@ -26,13 +26,19 @@ from SILLA_Recommendation.recommendation_engine import (
 from SILLA_Recommendation.smart_cart import (
     SmartCart,
 )
+from SILLA_Recommendation.cart_builder import (
+    CartBuilder,
+)
 from SILLA_Recommendation.api import (
     get_recommendations,
     calculate_recipe_cost,
     build_smart_cart,
+    build_cart,
+    compare_stores,
     get_recommendation_engine,
     get_cost_calculator,
     get_smart_cart,
+    get_cart_builder,
 )
 
 __all__ = [
@@ -49,10 +55,14 @@ __all__ = [
     "CostCalculator",
     "RecommendationEngine",
     "SmartCart",
+    "CartBuilder",
     "get_recommendations",
     "calculate_recipe_cost",
     "build_smart_cart",
+    "build_cart",
+    "compare_stores",
     "get_recommendation_engine",
     "get_cost_calculator",
     "get_smart_cart",
+    "get_cart_builder",
 ]
