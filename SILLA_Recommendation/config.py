@@ -58,15 +58,35 @@ STANDARD_UNIT_CONVERSIONS = {
     ("piece", "piece"): 1.0,
 }
 
-# Produce item piece-to-gram standard weight in Egyptian supermarkets
+# Produce item piece-to-gram standard weight in Egyptian supermarkets (supports both current & legacy IDs)
 PRODUCE_PIECE_WEIGHT_G = {
-    "ING0071": 125.0,  # Yellow Onion (بصل أصفر) ~ 125g
-    "ING0053": 150.0,  # Potato (بطاطس) ~ 150g
-    "ING0016": 100.0,  # Carrot (جزر) ~ 100g
-    "ING0046": 60.0,   # Lemon (ليمون) ~ 60g
-    "ING0060": 60.0,   # Lemon alias
-    "ING0056": 120.0,  # Tomato (طماطم حمراء) ~ 120g
-    "ING0041": 150.0,  # Bell pepper (فلفل رومي) ~ 150g
-    "ING0008": 250.0,  # Eggplant (باذنجان رومي) ~ 250g
-    "ING0028": 60.0,   # Whole Egg (بيضة) ~ 60g
+    # Yellow & Red Onion (بصل أصفر / أحمر) ~ 125g
+    "ING0139": 125.0,
+    "ING0102": 125.0,
+    "ING0071": 125.0,
+    # Potato (بطاطس) ~ 150g
+    "ING0095": 150.0,
+    "ING0053": 150.0,
+    # Carrot (جزر) ~ 100g
+    "ING0024": 100.0,
+    "ING0016": 100.0,
+    # Lemon (ليمون) ~ 60g
+    "ING0074": 60.0,
+    "ING0046": 60.0,
+    "ING0060": 60.0,
+    # Tomato (طماطم حمراء) ~ 120g
+    "ING0104": 120.0,
+    "ING0056": 120.0,
+    # Bell pepper (فلفل رومي) ~ 150g
+    "ING0064": 150.0,
+    "ING0041": 150.0,
+    # Eggplant (باذنجان رومي / أسود) ~ 250g
+    "ING0011": 250.0,
+    "ING0131": 250.0,
+    "ING0008": 250.0,
+    # Whole Egg (بيضة) ~ 60g
+    "ING0044": 60.0,
+    "ING0028": 60.0,
+    # Garlic (ثوم) ~ 4g per clove
+    "ING0062": 4.0,
 }

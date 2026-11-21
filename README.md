@@ -490,22 +490,21 @@ All members collaborate through a shared GitHub repository and coordinated devel
 
 ## 🗺️ Development Roadmap
 
-- [ ] Project planning and requirements analysis
-- [ ] Recipe and product dataset collection
-- [ ] Database design and implementation
-- [ ] UI/UX design using Figma
-- [ ] Frontend development using React
-- [ ] Backend development using FastAPI
-- [ ] Natural-language recipe matching
-- [ ] Ingredient quantity calculation
-- [ ] Pantry management
-- [ ] Product matching
-- [ ] Automated shopping cart generation
-- [ ] Budget-aware product selection
-- [ ] Frontend and backend integration
-- [ ] Testing and evaluation
-- [ ] Website deployment
-- [ ] Final documentation and presentation
+- [x] Project planning and requirements analysis
+- [x] Recipe and product dataset collection & data engineering (`Abdullah Waleed`)
+- [x] Database design, schema, and normalization (`Abdullah Waleed`)
+- [x] Natural-language hybrid recipe matching & domain guard (`Saif Sameh`)
+- [x] Exploratory data analysis & content-based recommender (`Amr Badr`)
+- [x] Ingredient quantity calculation & servings scaling (`Jana Shalaby`)
+- [x] Pantry management & household ingredient deductions (`Jana Shalaby`)
+- [x] Supermarket product matching & packaging optimization (`Jana Shalaby`)
+- [x] Multi-recipe consolidated shopping cart generation (`Jana Shalaby`)
+- [x] Budget-aware product selection & OR-Tools knapsack optimization (`Jana Shalaby`)
+- [x] Out-of-stock recovery & culinary substitution engine (`Jana Shalaby`)
+- [x] Multi-store price comparison across major supermarkets (`Jana Shalaby`)
+- [ ] Frontend UI development using Streamlit (`Malak Ayman`)
+- [ ] End-to-end user experience testing & deployment (`Team`)
+- [ ] Final project defense and presentation (`Team`)
 
 ---
 

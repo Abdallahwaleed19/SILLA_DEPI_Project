@@ -10,6 +10,8 @@ normalize_quantity(qty_str)     → float or None
 convert_to_base_unit(qty, unit) → (float, str) in grams or ml
 """
 
+from __future__ import annotations
+
 import re
 import logging
 from fractions import Fraction

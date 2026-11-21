@@ -12,7 +12,10 @@ Recommendation Engine for SILLA:
 from pathlib import Path
 from typing import Dict, List, Optional, Any
 
-from SILLA_NLP import match_recipe
+try:
+    from SILLA_NLP import match_recipe
+except (ImportError, ModuleNotFoundError):
+    match_recipe = None
 from SILLA_Recommendation.config import (
     DB_PATH,
     NLP_SCORE_WEIGHT,
@@ -33,6 +36,12 @@ class RecommendationEngine:
     def __init__(self, db_path: Path = DB_PATH):
         self.db_path = Path(db_path)
         self.cost_calculator = CostCalculator(self.db_path)
+
+    def _get_connection(self):
+        import sqlite3
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        return conn
 
     def recommend(
         self,
@@ -55,8 +64,31 @@ class RecommendationEngine:
         Returns:
             Dictionary containing query status, intent message, and ranked recommendations.
         """
-        # 1. Query NLP Engine
-        nlp_result = match_recipe(query, language=language, top_k=max(top_k * 2, 6))
+        # 1. Query NLP Engine (with lightweight SQL keyword fallback if numpy/NLP dependencies are absent)
+        if match_recipe is not None:
+            nlp_result = match_recipe(query, language=language, top_k=max(top_k * 2, 6))
+        else:
+            with self._get_connection() as conn:
+                q_clean = query.strip()
+                rows = conn.execute(
+                    "SELECT recipe_id, recipe_name_ar, recipe_name_en FROM recipes WHERE recipe_name_ar LIKE ? OR recipe_name_en LIKE ? LIMIT ?",
+                    (f"%{q_clean}%", f"%{q_clean}%", max(top_k * 2, 6))
+                ).fetchall()
+                matched = [
+                    {
+                        "recipe_id": r["recipe_id"],
+                        "recipe_name_ar": r["recipe_name_ar"],
+                        "recipe_name_en": r["recipe_name_en"],
+                        "similarity_score": 0.85,
+                    }
+                    for r in rows
+                ]
+                nlp_result = {
+                    "status": "SUCCESS" if matched else "NO_MATCH",
+                    "matched_recipes": matched,
+                    "rejection_reason": None if matched else "No recipe matched search keywords",
+                    "clarification_message": None,
+                }
 
         status = nlp_result.get("status")
         rejection_msg = (

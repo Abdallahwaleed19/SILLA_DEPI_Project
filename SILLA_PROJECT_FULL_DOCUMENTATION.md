@@ -142,12 +142,25 @@ flowchart TD
 3. **مؤشر اكتمال الأسعار (`Price Completeness Ratio`):**
    حساب نسبة المكونات التي وُجدت لها أسعار نشطة في السوق لتوفير أقصى درجات الشفافية المالية للمستخدم.
 
-### 5.3 السلة الذكية ومقارنة المتاجر (`Smart Cart Optimizer`)
-الملف: [smart_cart.py](file:///d:/VS_Works/SILLA_DEPI_Project/SILLA_Recommendation/smart_cart.py)
-- تجميع المكونات الناقصة فقط في قائمة تسوق موحدة.
-- حساب عدد العبوات المطلوبة لكل منتج (Ceiling Coverage) لضمان عدم حدوث نقص أثناء الطهي.
-- **مقارنة الأسعار عبر سلاسل السوبرماركت (Multi-Store Comparison):**
-  مقارنة إجمالي تكلفة السلة بين المتاجر الكبرى (كارفور vs سعودي vs لولو) وإرشاد المستخدم للمتجر الأوفر، مع إمكانية تحسين السلة متعددة المتاجر (Multi-store Optimization).
+### 5.3 السلة الذكية ومنطق الأعمال (`CartBuilder` & `Smart Cart` - إعداد: جنى شلبي)
+الملفات: [cart_builder.py](file:///d:/SILLA_DEPI_Project/SILLA_DEPI_Project/SILLA_Recommendation/cart_builder.py) و [smart_cart.py](file:///d:/SILLA_DEPI_Project/SILLA_DEPI_Project/SILLA_Recommendation/smart_cart.py)
+الدفتر التفاعلي: [01_smart_cart_builder.ipynb](file:///d:/SILLA_DEPI_Project/SILLA_DEPI_Project/SILLA_Recommendation/notebooks/01_smart_cart_builder.ipynb)
+
+يقوم هذا المكون بتحويل الوصفات إلى سلة تسوق حقيقية محسوبة بدقة متناهية:
+1. **حساب الحصص وعدد الأفراد (Servings Scaling):**
+   - تعديل كميات المقادير بدقة بناءً على عدد الأفراد المطلوب مقارنة بالحجم المعياري للوجبة ($Q_{\text{scaled}} = Q_{\text{base}} \times \frac{\text{Target Servings}}{\text{Base Servings}}$).
+2. **استبعاد وخصم مكونات المطبخ المنزلي (Pantry Check):**
+   - استبعاد المكونات المتوفرة لدى المستخدم بالاسم، أو خصم الكميات المتوفرة وتكليف المستخدم بشراء الفارق فقط، وتوثيق المبالغ الموفرة.
+3. **مطابقة منتجات المتاجر وأحجام العبوات (Package Matching):**
+   - اختيار المنتجات الأوفر سعر وحدة مع تطبيق التقريب للأعلى (Ceiling Division) لحجم العبوة لتجنب أي عجز أثناء الطهي، وتتبع كميات الفائض (Leftover Quantity).
+4. **دمج المكونات المشتركة بين عدة وصفات (Multi-Recipe Consolidation):**
+   - تجميع المكونات المشتركة عبر قائمة الوصفات المختارة (كاللحوم والبصل والتوابل) وشراء عبوة مجمعة، مما يوفر مبالغ ملموسة مقارنة بالشراء المنفصل لكل وجبة.
+5. **مراعاة الميزانية وحل الـ Knapsack (Budget Optimization with OR-Tools):**
+   - صياغة رياضية متقدمة (Integer Linear Programming) تستخدم **Google OR-Tools** (مع بديل Branch-and-Bound مدمج) لإعطاء الأولوية القصوى للمكونات الأساسية واستبعاد المكونات الاختيارية (`is_optional = True`) لتلتزم السلة بسقف الميزانية المحدد.
+6. **التعامل مع المنتجات غير المتاحة والبدائل الذكية (Out-of-Stock & Substitutes):**
+   - مصفوفة تضم 11 بديلاً غذائياً معتمداً في المطبخ المصري (كالزبدة والزيت، والمكرونة المقصوصة والفرن، ومعجون الطماطم والصلصة المسبكة) لتعويض أي نقص فوري بمنتج بديل متوفر في المتجر.
+7. **المقارنة الاقتصادية بين سلاسل السوبرماركت (Multi-Store Comparison):**
+   - فحص السلة في وقت واحد عبر 8 متاجر كبرى (كارفور، لولو، هايبر وان، سعودي، جورميه) لتحديد المتجر الأوفر بدقة.
 
 ---
 
@@ -155,8 +168,8 @@ flowchart TD
 
 خضعت المنظومة لاختبارات صارمة شاملة:
 - **اختبارات `SILLA_NLP/tests/`:** **31 اختباراً آلياً** ناجحاً بالكامل (تغطي التطبيع، اللغات، صمام الأمان، المحرك اللفظي والدلالي، واختبارات الارتداد Regression).
-- **اختبارات `SILLA_Recommendation/tests/`:** **40 اختباراً آلياً** ناجحاً بالكامل (تغطي تحويل الوحدات، تغطية العبوات، حساب الاستهلاك، ومقارنة المتاجر والسلة).
-- **إجمالي الاختبارات الآلية بالمشروع:** **71 من 71 اختباراً ناجحاً بنسبة 100% (Zero Failures)**.
+- **اختبارات `SILLA_Recommendation/tests/`:** **41 اختباراً آلياً** ناجحاً بالكامل (تغطي `test_cart_builder.py` (12), `test_smart_cart.py` (10), `test_cost_calculation.py` (16), `test_api.py` (3)).
+- **إجمالي الاختبارات الآلية بالمشروع:** **72 اختباراً ناجحاً بنسبة 100% (Zero Failures)**.
 
 ---
 
@@ -167,34 +180,26 @@ flowchart TD
 from SILLA_NLP.api import match_recipe
 
 response = match_recipe(user_query="طريقة عمل كشري مصري", top_k=3)
-# Output Schema:
-# {
-#   "status": "SUCCESS" | "REJECTED_OUT_OF_DOMAIN" | "REJECTED_OUT_OF_CATALOG" | "REQUEST_CLARIFICATION",
-#   "query": "طريقة عمل كشري مصري",
-#   "matched_recipes": [
-#       {
-#           "recipe_id": "R0002",
-#           "recipe_name_ar": "كشري مصري",
-#           "recipe_name_en": "Koshari",
-#           "similarity_score": 0.6301,
-#           "match_reason": "مطابقة لفظية قوية | تشابه دلالي عالي | تطابق في عنوان الوصفة"
-#       }
-#   ],
-#   "rejection_reason": null,
-#   "clarification_message": null,
-#   "execution_time_ms": 12.5
-# }
 ```
 
-### 7.2 واجهة حساب التكلفة والسلة الذكية
+### 7.2 واجهة السلة الذكية ومنطق الأعمال (`build_cart`)
+الملف: `SILLA_Recommendation.api`
 ```python
-from SILLA_Recommendation.api import calculate_cost, build_cart
+from SILLA_Recommendation.api import build_cart, compare_stores
 
-# 1. حساب تكلفة الوصفة
-cost_info = calculate_cost(recipe_id="R0002", store_id="S001")
+# 1. بناء السلة الذكية مع عدد الأفراد والمطبخ والميزانية
+cart = build_cart(
+    recipe_ids=["R0001", "R0007"],           # قائمة الوصفات
+    servings=6,                              # عدد الأفراد
+    user_pantry=["بصل", "زيت", "ملح"],       # المكونات المتوفرة في البيت
+    budget_egp=350.0,                        # سقف الميزانية بالجنيه
+    store_id="STR003",                       # المتجر (اختياري)
+    enable_substitutes=True,                 # تفعيل البدائل الذكية
+    optimize_budget=True                     # ترشيد السلة تلقائياً
+)
 
-# 2. بناء السلة الذكية مع النواقص
-cart = build_cart(recipe_ids=["R0002"], user_pantry=["ارز", "زيت"], store_id="S001")
+# 2. المقارنة الشاملة بين المتاجر
+stores_comparison = compare_stores(recipe_ids=["R0001", "R0007"], servings=6)
 ```
 
 ---
