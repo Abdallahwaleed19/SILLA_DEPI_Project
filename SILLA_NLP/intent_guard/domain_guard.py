@@ -14,6 +14,8 @@ Features:
 import re
 from typing import Dict, Any, Optional
 
+from SILLA_NLP.preprocessing.query_preprocessor import normalize_arabic, stem_arabic_token
+
 # Non-Food Keywords (Immediate Rejection)
 NON_FOOD_PATTERNS = [
     r"\bشاحن\b", r"\bموبايل\b", r"\bهاتف\b", r"\bتايب\s*سي\b", r"\bكابل\b", r"\bسلك\b",
@@ -21,11 +23,13 @@ NON_FOOD_PATTERNS = [
     r"\bقميص\b", r"\bبنطلون\b", r"\bحذاء\b", r"\bملابس\b", r"\bمكياج\b", r"\bعطر\b",
     r"\bبطاري[ةه]\b", r"\bجراب\b", r"\bباور\s*بانك\b", r"\bcharger\b", r"\bcable\b",
     r"\bphone\b", r"\blaptop\b", r"\btype-c\b", r"\bheadphones\b", r"\bbattery\b",
-    # Tech, Software, and Programming
+    # Tech, Software, AI, and Programming
     r"\b([وبك]?ل?)(?:ال)?برمج[ةه]\b", r"\b([وبك]?ل?)(?:ال)?مبرمج\b", r"\b([وبك]?ل?)(?:ال)?كود\b", r"\b([وبك]?ل?)(?:ال)?اكواد\b", r"\b([وبك]?ل?)(?:ال)?سوفت\s*وير\b",
+    r"\b([وبك]?ل?)(?:ال)?ذكاء\s*(?:ال)?(?:اصطناعي|صناعي)\b", r"\b([وبك]?ل?)(?:ال)?خوارزمي[ةه]\b", r"\b([وبك]?ل?)(?:ال)?داتا\s*ساينس\b",
     r"\bprogramming\b", r"\bsoftware\b", r"\bdeveloper\b", r"\bcoding\b",
+    r"\b(?:ai|artificial\s+intelligence|machine\s+learning|deep\s+learning|data\s+science)\b",
     # Vehicles & Transportation
-    r"\b([وبك]?ل?)(?:ال)?سيار[ةه]\b", r"\b([وبك]?ل?)(?:ال)?عربيتي?\b", r"\b([وبك]?ل?)(?:ال)?موتوسيكل\b", r"\b([وبك]?ل?)(?:ال)?طيار[ةه]\b", r"\b([وبك]?ل?)(?:ال)?فندق\b", r"\b([وبك]?ل?)(?:ال)?حجز\b",
+    r"\b([وبك]?ل?)(?:ال)?(سيار[ةه]|عربيت?[ةه]|عربيتي)\b", r"\b([وبك]?ل?)(?:ال)?موتوسيكل\b", r"\b([وبك]?ل?)(?:ال)?طيار[ةه]\b", r"\b([وبك]?ل?)(?:ال)?فندق\b", r"\b([وبك]?ل?)(?:ال)?حجز\b",
     r"\b([وبك]?ل?)(?:ال)?وظائ?ف\b", r"\b([وبك]?ل?)(?:ال)?وظيفة\b", r"\b([وبك]?ل?)(?:ال)?شغل\b",
     # Academic / Science non-food
     r"\b([وبك]?ل?)(?:ال)?رياضيات\b", r"\b([وبك]?ل?)(?:ال)?فيزياء\b", r"\b([وبك]?ل?)(?:ال)?كيمياء\b", r"\b([وبك]?ل?)(?:ال)?تاريخ\b", r"\b([وبك]?ل?)(?:ال)?جغرافيا\b"
@@ -34,6 +38,7 @@ NON_FOOD_PATTERNS = [
 # Out-of-Catalog Food Categories (Food items not present in the current recipe catalog)
 OUT_OF_CATALOG_FOOD_PATTERNS = [
     # Sweets & Desserts
+    r"\b([وبك]?ل?)(?:ال)?(مسكر[ةه]?|حاج[ةه]\s+مسكر[ةه]?)\b",
     r"\bتشيز\s*كيك\b", r"\bكيك[ةه]?\b", r"\bتورت[ةه]\b", r"\bشوكولات[ةه]\b",
     r"\bحلويات\b", r"\bحلو[ىي]\b", r"\bبسبوس[ةه]\b", r"\bكناف[ةه]\b", r"\bقطايف\b", r"\bايس\s*كريم\b",
     r"\bدونات\b", r"\bدوناتس\b", r"\bوافل\b", r"\bبان\s*كيك\b", r"\bمهلبي[ةه]\b", r"\bام\s*علي\b",
@@ -47,9 +52,9 @@ OUT_OF_CATALOG_FOOD_PATTERNS = [
     r"\bشاورما\b", r"\bكريب\b", r"\bتاكو\b", r"\bshawarma\b", r"\bcrepe\b", r"\btaco\b",
     # Luxury / Gourmet Ingredients & Items
     r"\b([وبك]?ل?)(?:ال)?كافيار\b", r"\b([وبك]?ل?)(?:ال)?زعفران\b", r"\b([وبك]?ل?)(?:ال)?استاكوزا\b", r"\b([وبك]?ل?)(?:ال)?استكوزا\b", r"\b([وبك]?ل?)(?:ال)?كابوريا\b",
-    r"\b([وبك]?ل?)(?:ال)?كمأ[ةه]\b", r"\b([وبك]?ل?)(?:ال)?ترافل\b", r"\b([وبك]?ل?)(?:ال)?بطارخ\b", r"\b([وبك]?ل?)(?:ال)?ريزوتو\b", r"\b([وبك]?ل?)(?:ال)?بيتزا\b",
+    r"\b([وبك]?ل?)(?:ال)?كمأ[ةه]\b", r"\b([وبك]?ل?)(?:ال)?ترافل\b", r"\b([وبك]?ل?)(?:ال)?بطارخ\b", r"\b([وبك]?ل?)(?:ال)?ريزوتو\b",
     r"\bcaviar\b", r"\bsaffron\b", r"\btruffle\b", r"\blobster\b", r"\bcrab\b",
-    r"\brisotto\b", r"\bpizza\b"
+    r"\brisotto\b"
 ]
 
 # Contradictory / Mutually Incompatible Culinary Combinations
@@ -77,24 +82,33 @@ AMBIGUOUS_TOKENS = {
     "وجبه", "وجبة", "وجبات",
     "طبخه", "طبخة", "طبخات",
     "حاجه", "حاجة", "اي", "شيء", "شئ",
+    "خفيف", "خفيفه", "خفيفة", "وخفيف", "وخفيفه", "وخفيفة",
+    "عشا", "عشاء", "وللعشا", "وللعشاء", "للعشا", "للعشاء", "غدا", "غداء", "فطار",
+    "بتاع", "بتاعه", "بتاعة", "البيت", "بيت",
     "اعمللي", "اعملي", "اعمل", "سويلي", "طبخلي", "اطبخ", "رشحلي", "اقترحلي", "هاتلي",
-    "food", "foods", "meal", "meals", "dish", "dishes", "something", "anything"
+    "عايز", "عاوز", "اريد", "بدي", "محتاج",
+    "food", "foods", "meal", "meals", "dish", "dishes", "something", "anything",
+    "suggest", "need", "give", "traditional", "dinner", "lunch", "breakfast",
+    "مناسب", "مناسبه", "مناسبة", "ومناسب", "ومناسبه", "ومناسبة"
 }
 
 GENERIC_MODIFIERS = {
-    "سريع", "سريعه", "سريعة",
-    "صحي", "صحيه", "صحية",
-    "لذيذ", "لذيذه", "لذيذة",
-    "شهي", "شهيه", "شهية",
-    "طازج", "طازجه", "طازجة",
-    "سهل", "سهله", "سهلة",
-    "حلو", "حلوه", "حلوة",
-    "طيب", "طيبه", "طيبة",
-    "جميل", "جميله", "جميلة",
-    "كويس", "كويسه", "كويسة",
-    "جديد", "جديده", "جديدة",
-    "بسيط", "بسيطه", "بسيطة",
-    "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple"
+    "سريع", "سريعه", "سريعة", "وسريع", "وسريعه", "وسريعة",
+    "صحي", "صحيه", "صحية", "وصحي", "وصحيه", "وصحية",
+    "لذيذ", "لذيذه", "لذيذة", "ولذيذ", "ولذيذه", "ولذيذة",
+    "شهي", "شهيه", "شهية", "وشهي", "وشهيه", "وشهية",
+    "طازج", "طازجه", "طازجة", "وطازج", "وطازجه", "وطازجة",
+    "سهل", "سهله", "سهلة", "وسهل", "وسهله", "وسهلة",
+    "حلو", "حلوه", "حلوة", "وحلو", "وحلوه", "وحلوة",
+    "طيب", "طيبه", "طيبة", "وطيب", "وطيبه", "وطيبة",
+    "جميل", "جميله", "جميلة", "وجميل", "وجميله", "وجميلة",
+    "كويس", "كويسه", "كويسة", "وكويس", "وكويسه", "وكويسة",
+    "جديد", "جديده", "جديدة", "وجديد", "وجديده", "وجديدة",
+    "بسيط", "بسيطه", "بسيطة", "وبسيط", "وبسيطه", "وبسيطة",
+    "رخيص", "رخيصه", "رخيصة", "ورخيص", "ورخيصه", "ورخيصة",
+    "مختلف", "مختلفه", "مختلفة", "ومختلف", "ومختلفه", "ومختلفة", "تغيير", "وتغيير",
+    "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple",
+    "cheap", "inexpensive", "light", "different", "unique", "special"
 }
 
 
@@ -103,7 +117,7 @@ class DomainGuard:
         self.non_food_regex = re.compile("|".join(NON_FOOD_PATTERNS), re.IGNORECASE)
         self.out_catalog_regex = re.compile("|".join(OUT_OF_CATALOG_FOOD_PATTERNS), re.IGNORECASE)
 
-    def inspect(self, raw_query: str, normalized_query: str) -> Dict[str, Any]:
+    def inspect(self, raw_query: str, normalized_query: str, negation_info: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
         Evaluate query against domain boundaries.
         Returns:
@@ -113,6 +127,23 @@ class DomainGuard:
             reason_en: str
         """
         text = f"{raw_query} {normalized_query}".strip()
+
+        # 0. Pure Negation / Exclusion check without alternative
+        neg_info = negation_info
+        if neg_info is None:
+            from SILLA_NLP.preprocessing.query_preprocessor import parse_negation_intent
+            neg_info = parse_negation_intent(raw_query)
+
+        if neg_info.get("has_negation") and not neg_info.get("has_alternative"):
+            ex_items = neg_info.get("excluded_items", [])
+            ex_str = " أو ".join(ex_items) if ex_items else "مكون معين"
+            ex_str_en = " or ".join(ex_items) if ex_items else "specified ingredient"
+            return {
+                "is_valid": False,
+                "decision": "REQUEST_CLARIFICATION",
+                "reason_ar": f"لقد طلبت وصفة بدون ({ex_str}). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن).",
+                "reason_en": f"You requested a recipe without ({ex_str_en}). Please specify your preferred alternative ingredient (such as vegetables, lentils, or poultry)."
+            }
         
         # 1. Non-food products check
         if self.non_food_regex.search(text):
@@ -144,6 +175,7 @@ class DomainGuard:
             }
 
         # 4. Ambiguous / Generic query check (all tokens are ambiguous fillers or modifiers)
+        from SILLA_NLP.preprocessing.query_preprocessor import STOP_WORDS
         norm_tokens = [t.lower() for t in normalized_query.split() if len(t) > 1]
         raw_tokens = [t.lower() for t in raw_query.split() if len(t) > 1]
         all_tokens = norm_tokens or raw_tokens
@@ -154,7 +186,19 @@ class DomainGuard:
                 "reason_ar": "الطلب غامض أو عام جداً. يرجى تحديد مكون أو صنف طعام تفضله.",
                 "reason_en": "Query is too broad or ambiguous. Please specify a preferred ingredient or dish."
             }
-        is_purely_ambiguous = all(t in (AMBIGUOUS_TOKENS | GENERIC_MODIFIERS) for t in all_tokens)
+
+        def _is_token_ambiguous(tok: str) -> bool:
+            tok_norm = normalize_arabic(tok).lower()
+            if tok_norm in AMBIGUOUS_TOKENS or tok_norm in GENERIC_MODIFIERS:
+                return True
+            stemmed = stem_arabic_token(tok_norm)
+            if stemmed in AMBIGUOUS_TOKENS or stemmed in GENERIC_MODIFIERS:
+                return True
+            return False
+
+        content_tokens = [t for t in all_tokens if t not in STOP_WORDS]
+        tokens_to_check = content_tokens or all_tokens
+        is_purely_ambiguous = all(_is_token_ambiguous(t) for t in tokens_to_check)
         if is_purely_ambiguous:
             return {
                 "is_valid": False,

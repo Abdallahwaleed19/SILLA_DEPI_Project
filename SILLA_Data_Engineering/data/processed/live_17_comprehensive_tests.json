@@ -1,0 +1,936 @@
+[
+  {
+    "section": "1. Arabic",
+    "query_number": 1,
+    "query": "عايز أكلة سهلة بالبطاطس والطماطم.",
+    "normalized_query": "سهله بالبطاطس بطاطس والطماطم طماطم",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0164",
+        "recipe_name_ar": "بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+        "recipe_name_en": "Spicy Tomato Stew Potatoes",
+        "cuisine": "Spanish",
+        "category": "Vegetables",
+        "similarity_score": 0.6555,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: بطاطس, طماطم | تطابق المكونات المطلوبة معاً: بطاطس, طماطم",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0171",
+        "recipe_name_ar": "بطاطس محمرة بالفرن طاجن مغربي بالزيتون والليمون المعصفر",
+        "recipe_name_en": "Moroccan Tagine With Olives Potatoes",
+        "cuisine": "Greek",
+        "category": "Vegetables",
+        "similarity_score": 0.5502,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: بطاطس | تطابق المكونات المطلوبة معاً: بطاطس, طماطم",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0162",
+        "recipe_name_ar": "بطاطس محمرة بالفرن طاجن في الفرن بالصلصة",
+        "recipe_name_en": "Oven Baked Tagine Potatoes",
+        "cuisine": "Moroccan",
+        "category": "Vegetables",
+        "similarity_score": 0.5401,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: بطاطس | تطابق المكونات المطلوبة معاً: بطاطس, طماطم",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 34.3
+  },
+  {
+    "section": "1. Arabic",
+    "query_number": 2,
+    "query": "نفسي في وصفة مصرية بالفراخ.",
+    "normalized_query": "مصريه بالدجاج دجاج دجاج",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0003",
+        "recipe_name_ar": "ملوخية بالفراخ",
+        "recipe_name_en": "Molokhia With Chicken",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5794,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "دجاجة كاملة",
+          "ملوخية خضراء",
+          "ثوم",
+          "كزبرة جافة",
+          "سمن بلدي"
+        ],
+        "ingredients_sample_en": [
+          "Whole Chicken",
+          "Fresh Molokhia Leaves",
+          "Garlic",
+          "Dry Coriander",
+          "Ghee"
+        ]
+      },
+      {
+        "recipe_id": "R0047",
+        "recipe_name_ar": "اوراك دجاج متبلة كمونية بالبصل المكرمل",
+        "recipe_name_en": "Slow Braised With Onions Chicken Thighs",
+        "cuisine": "Egyptian",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.5177,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "أوراك دجاج",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Chicken Thighs",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0050",
+        "recipe_name_ar": "اوراك دجاج متبلة مسلوق في مرقة الكزبرة والحبهان",
+        "recipe_name_en": "Aromatic Coriander Broth Chicken Thighs",
+        "cuisine": "Mediterranean",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.5068,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "أوراك دجاج",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Chicken Thighs",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 16.67
+  },
+  {
+    "section": "1. Arabic",
+    "query_number": 3,
+    "query": "طريقة عمل مكرونة بالبشاميل.",
+    "normalized_query": "مكرونة بالبشاميل",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0001",
+        "recipe_name_ar": "مكرونة بشاميل",
+        "recipe_name_en": "Macaroni Béchamel",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5428,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: macaroni, pasta, بشاميل, مكرونه | تطابق المكونات المطلوبة معاً: macaroni, pasta, بشاميل, مكرونه | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "مكرونة فرن",
+          "لحم بقري مفروم",
+          "بصل أصفر",
+          "حليب كامل الدسم",
+          "دقيق أبيض فاخر"
+        ],
+        "ingredients_sample_en": [
+          "Penne Pasta",
+          "Ground Beef",
+          "Yellow Onion",
+          "Whole Milk",
+          "All-Purpose Flour"
+        ]
+      },
+      {
+        "recipe_id": "R0012",
+        "recipe_name_ar": "مكرونة الفريدو بالدجاج والكريمة",
+        "recipe_name_en": "Pasta Alfredo With Chicken",
+        "cuisine": "Italian",
+        "category": "Pasta",
+        "similarity_score": 0.3789,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: macaroni, pasta, مكرونه | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "مكرونة فيتوتشيني",
+          "صدور دجاج",
+          "كريمة طهي",
+          "زبدة",
+          "ثوم"
+        ],
+        "ingredients_sample_en": [
+          "Fettuccine Pasta",
+          "Chicken Breast",
+          "Heavy Cream",
+          "Butter",
+          "Garlic"
+        ]
+      },
+      {
+        "recipe_id": "R0184",
+        "recipe_name_ar": "مكرونة فرن ايطالي متبل بالبابريكا المدخنة والشطة",
+        "recipe_name_en": "Smoked Paprika Glaze Penne Pasta",
+        "cuisine": "Spanish",
+        "category": "Pasta And Grains",
+        "similarity_score": 0.3549,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: macaroni, pasta, مكرونه",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "مكرونة فرن",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Penne Pasta",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 17.09
+  },
+  {
+    "section": "1. Arabic",
+    "query_number": 4,
+    "query": "عايز أكلة باللحمة والأرز.",
+    "normalized_query": "باللحم لحم والارز",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0015",
+        "recipe_name_ar": "كاري دجاج بالارز البسمتي",
+        "recipe_name_en": "Classic Chicken Curry",
+        "cuisine": "Indian",
+        "category": "Main Course",
+        "similarity_score": 0.5191,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: ارز | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "صدور دجاج",
+          "أرز بسمتي",
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم"
+        ],
+        "ingredients_sample_en": [
+          "Chicken Breast",
+          "Basmati Rice",
+          "Potato",
+          "Yellow Onion",
+          "Garlic"
+        ]
+      },
+      {
+        "recipe_id": "R0007",
+        "recipe_name_ar": "كفتة الحاتي المشوية",
+        "recipe_name_en": "Egyptian Kofta Mashweya",
+        "cuisine": "Egyptian",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.4769,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "لحم بقري مفروم",
+          "بصل أصفر",
+          "بقدونس طازج",
+          "بيكنج بودر",
+          "نشا ذرة"
+        ],
+        "ingredients_sample_en": [
+          "Ground Beef",
+          "Yellow Onion",
+          "Fresh Parsley",
+          "Baking Powder",
+          "Cornstarch"
+        ]
+      },
+      {
+        "recipe_id": "R0017",
+        "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Beef Tenderloin",
+        "cuisine": "Egyptian",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.4719,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "فيليه بتلو بقري",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Beef Tenderloin",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 18.06
+  },
+  {
+    "section": "1. Arabic",
+    "query_number": 5,
+    "query": "ممكن وصفة بالخضار تكون صحية؟",
+    "normalized_query": "ممكن بالخضار خضار تكون صحيه",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0016",
+        "recipe_name_ar": "شوربة خضار مشكل صحية",
+        "recipe_name_en": "Country Style Vegetable Soup",
+        "cuisine": "International",
+        "category": "Soup",
+        "similarity_score": 0.4611,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: خضار, صحيه | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "جزر",
+          "كوسة",
+          "بطاطس",
+          "بسلة خضراء مجمدة",
+          "بصل أصفر"
+        ],
+        "ingredients_sample_en": [
+          "Carrot",
+          "Zucchini",
+          "Potato",
+          "Frozen Green Peas",
+          "Yellow Onion"
+        ]
+      },
+      {
+        "recipe_id": "R0009",
+        "recipe_name_ar": "شكشوكة مصرية بالبيض والخضار",
+        "recipe_name_en": "Shakshuka Egyptian Style",
+        "cuisine": "Egyptian",
+        "category": "Breakfast",
+        "similarity_score": 0.3318,
+        "match_reason": "تطابق في عنوان الوصفة: خضار | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "بيض",
+          "طماطم حمراء",
+          "بصل أصفر",
+          "فلفل رومي أخضر",
+          "ثوم"
+        ],
+        "ingredients_sample_en": [
+          "Eggs",
+          "Red Tomato",
+          "Yellow Onion",
+          "Green Bell Pepper",
+          "Garlic"
+        ]
+      },
+      {
+        "recipe_id": "R0004",
+        "recipe_name_ar": "محشي مشكل",
+        "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.2857,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "أرز مصري",
+          "كوسة",
+          "باذنجان أسود",
+          "فلفل رومي أخضر",
+          "صلصة طماطم"
+        ],
+        "ingredients_sample_en": [
+          "Egyptian White Rice",
+          "Zucchini",
+          "Black Eggplant",
+          "Green Bell Pepper",
+          "Tomato Sauce"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 12.76
+  },
+  {
+    "section": "2. English",
+    "query_number": 6,
+    "query": "I want an easy chicken recipe.",
+    "normalized_query": "I want an easy chicken recipe",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0015",
+        "recipe_name_ar": "كاري دجاج بالارز البسمتي",
+        "recipe_name_en": "Classic Chicken Curry",
+        "cuisine": "Indian",
+        "category": "Main Course",
+        "similarity_score": 0.5447,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "صدور دجاج",
+          "أرز بسمتي",
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم"
+        ],
+        "ingredients_sample_en": [
+          "Chicken Breast",
+          "Basmati Rice",
+          "Potato",
+          "Yellow Onion",
+          "Garlic"
+        ]
+      },
+      {
+        "recipe_id": "R0003",
+        "recipe_name_ar": "ملوخية بالفراخ",
+        "recipe_name_en": "Molokhia With Chicken",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.534,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "دجاجة كاملة",
+          "ملوخية خضراء",
+          "ثوم",
+          "كزبرة جافة",
+          "سمن بلدي"
+        ],
+        "ingredients_sample_en": [
+          "Whole Chicken",
+          "Fresh Molokhia Leaves",
+          "Garlic",
+          "Dry Coriander",
+          "Ghee"
+        ]
+      },
+      {
+        "recipe_id": "R0049",
+        "recipe_name_ar": "اوراك دجاج متبلة تشويح سريع مع فلفل الالوان",
+        "recipe_name_en": "Sautéed With Sweet Peppers Chicken Thighs",
+        "cuisine": "Levantine",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.4994,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "أوراك دجاج",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Chicken Thighs",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 18.82
+  },
+  {
+    "section": "2. English",
+    "query_number": 7,
+    "query": "Suggest an Egyptian rice dish.",
+    "normalized_query": "Suggest an Egyptian rice dish",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0185",
+        "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Egyptian Rice",
+        "cuisine": "Indian",
+        "category": "Pasta And Grains",
+        "similarity_score": 0.627,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian, rice",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "ارز مصري",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Egyptian Rice",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0005",
+        "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+        "recipe_name_en": "Egyptian Fattah",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5285,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "مكعبات لحم بقري",
+          "عيش بلدي مصري",
+          "أرز مصري",
+          "ثوم",
+          "خل أبيض"
+        ],
+        "ingredients_sample_en": [
+          "Beef Stew Cubes",
+          "Egyptian Baladi Bread",
+          "Egyptian White Rice",
+          "Garlic",
+          "White Vinegar"
+        ]
+      },
+      {
+        "recipe_id": "R0004",
+        "recipe_name_ar": "محشي مشكل",
+        "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.5128,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "أرز مصري",
+          "كوسة",
+          "باذنجان أسود",
+          "فلفل رومي أخضر",
+          "صلصة طماطم"
+        ],
+        "ingredients_sample_en": [
+          "Egyptian White Rice",
+          "Zucchini",
+          "Black Eggplant",
+          "Green Bell Pepper",
+          "Tomato Sauce"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 16.46
+  },
+  {
+    "section": "2. English",
+    "query_number": 8,
+    "query": "Can you suggest a recipe with potatoes and tomatoes?",
+    "normalized_query": "Can you suggest a recipe with potato and tomatoes",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0161",
+        "recipe_name_ar": "بطاطس محمرة بالفرن مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Potatoes",
+        "cuisine": "Greek",
+        "category": "Vegetables",
+        "similarity_score": 0.4302,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0169",
+        "recipe_name_ar": "بطاطس محمرة بالفرن تشويح سريع مع فلفل الالوان",
+        "recipe_name_en": "Sautéed With Sweet Peppers Potatoes",
+        "cuisine": "Levantine",
+        "category": "Vegetables",
+        "similarity_score": 0.4205,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0165",
+        "recipe_name_ar": "بطاطس محمرة بالفرن بصلصة الكريمة والاعشاب العطرية",
+        "recipe_name_en": "Creamy Herb Sauce Potatoes",
+        "cuisine": "Indian",
+        "category": "Vegetables",
+        "similarity_score": 0.4052,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "بطاطس",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Potato",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 20.35
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 9,
+    "query": "عايز أكلة من غير لحمة.",
+    "normalized_query": "غير لحم",
+    "status": "REQUEST_CLARIFICATION",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": null,
+    "clarification_message": "لقد طلبت وصفة بدون (لحمه). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن).",
+    "execution_time_ms": 2.26
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 10,
+    "query": "وصفة بدون فراخ.",
+    "normalized_query": "بدون دجاج",
+    "status": "REQUEST_CLARIFICATION",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": null,
+    "clarification_message": "لقد طلبت وصفة بدون (فراخ). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن).",
+    "execution_time_ms": 1.51
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 11,
+    "query": "أكلة خالية من السمك.",
+    "normalized_query": "خاليه من السمك",
+    "status": "REQUEST_CLARIFICATION",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": null,
+    "clarification_message": "لقد طلبت وصفة بدون (السمك). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن).",
+    "execution_time_ms": 0.0
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 12,
+    "query": "عايز وصفة من غير لحمة بالعدس.",
+    "normalized_query": "غير لحم بالعدس عدس",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0118",
+        "recipe_name_ar": "عدس بني بجبة مقرمش بالبقسماط والبهارات",
+        "recipe_name_en": "Crispy Breaded Pan-Fried Brown Lentils",
+        "cuisine": "Italian",
+        "category": "Legumes And Pulses",
+        "similarity_score": 0.3908,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: عدس | استبعاد مكون: لحمه",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "عدس بني",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Brown Lentils",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      },
+      {
+        "recipe_id": "R0008",
+        "recipe_name_ar": "شوربة عدس اصفر مصرية",
+        "recipe_name_en": "Egyptian Yellow Lentil Soup (Shorbet Ads)",
+        "cuisine": "Egyptian",
+        "category": "Soup",
+        "similarity_score": 0.3578,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: عدس | استبعاد مكون: لحمه | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "عدس أصفر",
+          "جزر",
+          "طماطم حمراء",
+          "بصل أصفر",
+          "ثوم"
+        ],
+        "ingredients_sample_en": [
+          "Red Split Lentils",
+          "Carrot",
+          "Red Tomato",
+          "Yellow Onion",
+          "Garlic"
+        ]
+      },
+      {
+        "recipe_id": "R0114",
+        "recipe_name_ar": "عدس بني بجبة طاجن في الفرن بالصلصة",
+        "recipe_name_en": "Oven Baked Tagine Brown Lentils",
+        "cuisine": "Spanish",
+        "category": "Legumes And Pulses",
+        "similarity_score": 0.3114,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: عدس | استبعاد مكون: لحمه",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "عدس بني",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Brown Lentils",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 15.44
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 13,
+    "query": "Suggest a recipe without chicken.",
+    "normalized_query": "Suggest a recipe without chicken",
+    "status": "REQUEST_CLARIFICATION",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": null,
+    "clarification_message": "You requested a recipe without (chicken). Please specify your preferred alternative ingredient (such as vegetables, lentils, or poultry).",
+    "execution_time_ms": 2.01
+  },
+  {
+    "section": "3. Negation",
+    "query_number": 14,
+    "query": "I want a meal without meat using vegetables.",
+    "normalized_query": "I want a meal without meat using vegetables",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0004",
+        "recipe_name_ar": "محشي مشكل",
+        "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.4024,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: vegetables | استبعاد مكون: meat | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "أرز مصري",
+          "كوسة",
+          "باذنجان أسود",
+          "فلفل رومي أخضر",
+          "صلصة طماطم"
+        ],
+        "ingredients_sample_en": [
+          "Egyptian White Rice",
+          "Zucchini",
+          "Black Eggplant",
+          "Green Bell Pepper",
+          "Tomato Sauce"
+        ]
+      },
+      {
+        "recipe_id": "R0016",
+        "recipe_name_ar": "شوربة خضار مشكل صحية",
+        "recipe_name_en": "Country Style Vegetable Soup",
+        "cuisine": "International",
+        "category": "Soup",
+        "similarity_score": 0.3921,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | استبعاد مكون: meat | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "ingredients_sample_ar": [
+          "جزر",
+          "كوسة",
+          "بطاطس",
+          "بسلة خضراء مجمدة",
+          "بصل أصفر"
+        ],
+        "ingredients_sample_en": [
+          "Carrot",
+          "Zucchini",
+          "Potato",
+          "Frozen Green Peas",
+          "Yellow Onion"
+        ]
+      },
+      {
+        "recipe_id": "R0155",
+        "recipe_name_ar": "باذنجان رومي مشوي كمونية بالبصل المكرمل",
+        "recipe_name_en": "Slow Braised With Onions Eggplant",
+        "cuisine": "Indian",
+        "category": "Vegetables",
+        "similarity_score": 0.366,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | استبعاد مكون: meat",
+        "is_core_recipe": false,
+        "ingredients_sample_ar": [
+          "باذنجان رومي",
+          "بصل أصفر",
+          "ثوم",
+          "زيت زيتون",
+          "فلفل أسود"
+        ],
+        "ingredients_sample_en": [
+          "Eggplant",
+          "Yellow Onion",
+          "Garlic",
+          "Olive Oil",
+          "Black Pepper"
+        ]
+      }
+    ],
+    "rejection_reason": null,
+    "clarification_message": null,
+    "execution_time_ms": 16.11
+  },
+  {
+    "section": "4. Unsupported",
+    "query_number": 15,
+    "query": "عايز أشتري موبايل جديد.",
+    "normalized_query": "عايز اشتري موبايل جديد",
+    "status": "REJECTED_OUT_OF_DOMAIN",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+    "clarification_message": null,
+    "execution_time_ms": 0.95
+  },
+  {
+    "section": "4. Unsupported",
+    "query_number": 16,
+    "query": "عايز وصفة بالسوشي الياباني.",
+    "normalized_query": "بالسوشي الياباني",
+    "status": "LOW_CONFIDENCE",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "لم يتم العثور على وصفة مطابقة بدرجة ثقة كافية (أعلى نتيجة: 0.197، الحد الأدنى: 0.280).",
+    "clarification_message": null,
+    "execution_time_ms": 12.68
+  },
+  {
+    "section": "4. Unsupported",
+    "query_number": 17,
+    "query": "اشرحلي قوانين الفيزياء.",
+    "normalized_query": "اشرحلي قوانين الفيزياء",
+    "status": "REJECTED_OUT_OF_DOMAIN",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+    "clarification_message": null,
+    "execution_time_ms": 0.0
+  }
+]

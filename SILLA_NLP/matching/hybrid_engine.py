@@ -65,12 +65,18 @@ class HybridEngine:
         self.recipes = self.sparse_engine.recipes
         self.recipe_ids = self.sparse_engine.recipe_ids
 
-        # Precompute title stems for all recipes
+        # Precompute title stems and full recipe content stems for all recipes
         self.title_stems_cache = {}
+        self.full_content_stems_cache = {}
         for rid, r in self.recipes.items():
             stems_ar = extract_content_stems(r["name_ar"])
             stems_en = extract_content_stems(r["name_en"])
-            self.title_stems_cache[rid] = stems_ar | stems_en
+            t_stems = stems_ar | stems_en
+            self.title_stems_cache[rid] = t_stems
+
+            ing_text = " ".join(r.get("ingredients_ar", [])) + " " + " ".join(r.get("ingredients_en", []))
+            desc_text = (r.get("desc_ar") or "") + " " + (r.get("desc_en") or "")
+            self.full_content_stems_cache[rid] = t_stems | extract_content_stems(ing_text) | extract_content_stems(desc_text)
 
     def search(
         self,
@@ -86,9 +92,13 @@ class HybridEngine:
         raw_query = bundle["raw_query"]
         norm_query = bundle["normalized_query"]
         q_stems = bundle["content_stems"]
+        neg_info = bundle.get("negation_info", {})
+        has_neg = neg_info.get("has_negation", False)
+        has_alt = neg_info.get("has_alternative", False)
+        excluded_stems = neg_info.get("excluded_stems", set())
 
         # Step 1: Domain & Intent Guard Check
-        guard_res = self.guard.inspect(raw_query, norm_query)
+        guard_res = self.guard.inspect(raw_query, norm_query, negation_info=neg_info)
         if not guard_res["is_valid"]:
             decision = guard_res["decision"]
             status = "REQUEST_CLARIFICATION" if decision == "REQUEST_CLARIFICATION" else "REJECTED_GUARD"
@@ -104,14 +114,53 @@ class HybridEngine:
                 "results": []
             }
 
-        # Step 2: Compute Sparse & Dense Similarity Scores
-        sparse_scores = dict(self.sparse_engine.search(norm_query, top_k=len(self.recipe_ids)))
-        dense_scores = self.dense_engine.get_all_scores(norm_query)
+        # Step 2: Determine Effective Retrieval Query Text
+        search_query = norm_query
+        effective_stems = q_stems
+        if has_neg and has_alt:
+            from SILLA_NLP.preprocessing.query_preprocessor import clean_query_text
+            search_query = clean_query_text(neg_info["positive_query"])
+            effective_stems = extract_content_stems(search_query)
 
-        # Step 3: Fusion and Re-ranking
+        # Step 3: Compute Sparse & Dense Similarity Scores
+        sparse_scores = dict(self.sparse_engine.search(search_query, top_k=len(self.recipe_ids)))
+        dense_scores = self.dense_engine.get_all_scores(search_query)
+
+        # Identify informative food ingredient stems (excluding conversational modifiers)
+        generic_tokens = {
+            "سهل", "سهله", "سهلة", "سريع", "سريعه", "سريعة", "صحي", "صحيه", "صحية",
+            "لذيذ", "لذيذه", "لذيذة", "شهي", "شهيه", "شهية", "طازج", "طازجه", "طازجة",
+            "جديد", "جديده", "جديدة", "بسيط", "بسيطه", "بسيطة", "حلو", "حلوه", "حلوة",
+            "ممكن", "عايز", "عاوز", "اريد", "محتاج", "وصفه", "وصفة", "اكله", "أكلة", "اكلة", "وجبه", "وجبة",
+            "عندي", "اقدر", "أقدر", "ايه", "إيه", "بيهم", "فيه", "فيها", "عليا", "مناسب", "مناسبة", "مناسبه",
+            "اقترح", "اقترحي", "عمل", "طريقة", "تحضير",
+            "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple",
+            "meal", "dish", "dishes", "meals", "something", "anything", "recipe", "suggest", "want", "need", "can", "you", "give"
+        }
+        q_food_stems = {s for s in effective_stems if s not in generic_tokens and len(s) > 1}
+
+        # Vegetarian Query Detection (Arabic & English)
+        is_veg_query = any(w in raw_query.lower() or w in search_query.lower() for w in ["نباتي", "نباتيه", "نباتية", "vegetarian", "vegan"])
+        veg_prohibited_stems = {
+            "لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "lamb", "mutton", "veal", "مفروم", "مفرومة",
+            "دجاج", "فراخ", "chicken", "اوراك", "صدور", "poultry", "سمك", "fish", "seafood", "جمبري", "shrimp",
+            "تونة", "تونه", "سالمون", "salmon", "tuna", "كفتة", "شاورما", "كباب",
+            "حبار", "كاليماري", "calamari", "squid", "اخطبوط", "octopus", "كابوريا", "crab", "استاكوزا", "lobster"
+        }
+
+        # Step 4: Fusion and Re-ranking
         candidates = []
         for rid in self.recipe_ids:
             r_info = self.recipes[rid]
+
+            # Hard Negative / Exclusion Filter: strictly disqualify recipes with excluded ingredient!
+            if has_neg and (excluded_stems & self.full_content_stems_cache[rid]):
+                continue
+
+            # Hard Vegetarian Filter: strictly disqualify recipes with any meat, poultry, or seafood!
+            if is_veg_query and (veg_prohibited_stems & self.full_content_stems_cache[rid]):
+                continue
+
             s_score = sparse_scores.get(rid, 0.0)
             d_score = dense_scores.get(rid, 0.0)
 
@@ -120,10 +169,10 @@ class HybridEngine:
 
             # Check Title Stem Overlap Bonus
             title_stems = self.title_stems_cache[rid]
-            overlap = q_stems & title_stems
+            overlap = effective_stems & title_stems
             overlap_bonus = 0.0
             if overlap:
-                overlap_ratio = len(overlap) / max(len(q_stems), 1)
+                overlap_ratio = len(overlap) / max(len(effective_stems), 1)
                 overlap_bonus = self.title_bonus * overlap_ratio
 
             # Core Recipe Boost (only for genuinely relevant core candidates)
@@ -132,8 +181,26 @@ class HybridEngine:
             if r_info["is_core"] and is_relevant:
                 core_applied = self.core_boost
 
+            # Multi-Ingredient Co-occurrence Coordination Bonus / Penalty
+            multi_ing_bonus = 0.0
+            matched_food = q_food_stems & self.full_content_stems_cache[rid]
+            if len(q_food_stems) >= 2:
+                cov = len(matched_food) / len(q_food_stems)
+                if cov == 1.0:
+                    multi_ing_bonus = 0.15
+                elif cov >= 0.5:
+                    multi_ing_bonus = -0.06
+                else:
+                    multi_ing_bonus = -0.15
+
+            # Ground / Minced meat penalty for whole meat cuts lacking minced meat
+            minced_penalty = 0.0
+            if "مفروم" in effective_stems or "مفرومة" in effective_stems:
+                if "مفروم" not in self.full_content_stems_cache[rid]:
+                    minced_penalty = -0.15
+
             # Final Hybrid Score
-            final_score = base_score + overlap_bonus + core_applied
+            final_score = base_score + overlap_bonus + core_applied + multi_ing_bonus + minced_penalty
 
             # Build Match Rationale
             rationales = []
@@ -143,6 +210,12 @@ class HybridEngine:
                 rationales.append("تشابه دلالي عالي مع موضوع الوصفة")
             if overlap:
                 rationales.append(f"تطابق في عنوان الوصفة: {', '.join(sorted(list(overlap)))}")
+            if multi_ing_bonus >= 0.08:
+                rationales.append(f"تطابق المكونات المطلوبة معاً: {', '.join(sorted(list(matched_food)))}")
+            if has_neg and neg_info.get("excluded_items"):
+                rationales.append(f"استبعاد مكون: {', '.join(neg_info['excluded_items'])}")
+            if is_veg_query:
+                rationales.append("وصفة نباتية معتمدة خالية من اللحوم والدواجن والأسماك")
             if core_applied > 0:
                 rationales.append("وصفة رئيسية أصيلة موثقة")
 
@@ -160,7 +233,7 @@ class HybridEngine:
                 "hybrid_score": round(float(final_score), 4),
                 "dense_score": round(float(d_score), 4),
                 "sparse_score": round(float(s_score), 4),
-                "boost_applied": round(float(core_applied + overlap_bonus), 4),
+                "boost_applied": round(float(core_applied + overlap_bonus + multi_ing_bonus), 4),
                 "match_rationale": rationale_str
             })
 
@@ -184,7 +257,7 @@ class HybridEngine:
                 "results": []
             }
 
-        has_lexical_grounding = (top["sparse_score"] >= 0.03) or (top["boost_applied"] > 0 and "تطابق في عنوان" in top["match_rationale"])
+        has_lexical_grounding = (top["sparse_score"] >= 0.03) or (top["boost_applied"] > 0 and "تطابق في عنوان" in top["match_rationale"]) or is_veg_query
         effective_tau = tau if has_lexical_grounding else max(tau, 0.28)
 
         if top_score < effective_tau:

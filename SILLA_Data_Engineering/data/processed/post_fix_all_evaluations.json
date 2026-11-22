@@ -1,0 +1,320 @@
+{
+  "five_queries": [
+    {
+      "label": "1. ممكن وصفة سهلة بالدجاج والبطاطس",
+      "query": "ممكن وصفة سهلة بالدجاج والبطاطس",
+      "normalized_query": "ممكن سهله بالدجاج دجاج والبطاطس بطاطس",
+      "status": "SUCCESS",
+      "matched_recipes_count": 3,
+      "matched_recipes": [
+        {
+          "recipe_id": "R0015",
+          "recipe_name_ar": "كاري دجاج بالارز البسمتي",
+          "recipe_name_en": "Classic Chicken Curry",
+          "cuisine": "Indian",
+          "category": "Main Course",
+          "similarity_score": 0.6091,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | تطابق المكونات المطلوبة معاً: بطاطس, دجاج | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "قطع من صدور الدجاج المطهوة مع مكعبات البطاطس والبصل والثوم ومتبلة ببهارات الكاري والكركم والكمون، وتقدم بجانب الأرز البسمتي.",
+          "description_en": "Tender chicken cooked in an aromatic curry sauce infused with turmeric, cumin, ginger, garlic, and coconut milk."
+        },
+        {
+          "recipe_id": "R0003",
+          "recipe_name_ar": "ملوخية بالفراخ",
+          "recipe_name_en": "Molokhia With Chicken",
+          "cuisine": "Egyptian",
+          "category": "Main Course",
+          "similarity_score": 0.5674,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+          "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+        },
+        {
+          "recipe_id": "R0046",
+          "recipe_name_ar": "اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+          "recipe_name_en": "Crispy Breaded Pan-Fried Chicken Thighs",
+          "cuisine": "French",
+          "category": "Meat And Poultry",
+          "similarity_score": 0.5151,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ الفرنسي يحضر من اوراك دجاج متبلة مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious French culinary preparation of chicken thighs crispy breaded pan-fried with fresh seasonings."
+        }
+      ],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": null,
+      "execution_time_ms": 19.79
+    },
+    {
+      "label": "2. I want an easy Egyptian rice recipe",
+      "query": "I want an easy Egyptian rice recipe",
+      "normalized_query": "I want an easy Egyptian rice recipe",
+      "status": "SUCCESS",
+      "matched_recipes_count": 3,
+      "matched_recipes": [
+        {
+          "recipe_id": "R0185",
+          "recipe_name_ar": "ارز مصري مفلفل مشوي على الفحم بالبهارات",
+          "recipe_name_en": "Charcoal Grilled Egyptian Rice",
+          "cuisine": "Indian",
+          "category": "Pasta And Grains",
+          "similarity_score": 0.7383,
+          "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian, rice | تطابق المكونات المطلوبة معاً: egyptian, rice",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ الهندي يحضر من ارز مصري مفلفل مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious Indian culinary preparation of egyptian rice charcoal grilled with fresh seasonings."
+        },
+        {
+          "recipe_id": "R0004",
+          "recipe_name_ar": "محشي مشكل",
+          "recipe_name_en": "Egyptian Stuffed Vegetables (Mahshi Mushakkal)",
+          "cuisine": "Egyptian",
+          "category": "Main Course",
+          "similarity_score": 0.6056,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | تطابق المكونات المطلوبة معاً: egyptian, rice | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "تشكيلة خضار تشمل الكوسة والباذنجان والفلفل الرومي، محشوة بخلطة الأرز المصري الطازجة مع الطماطم والأعشاب الخضراء كالشبت والبقدونس والكزبرة والنعناع المجفف، ومطبوخة في المرقة.",
+          "description_en": "Zucchini, eggplants, bell peppers, and cabbage leaves stuffed with spiced herb-infused Egyptian short-grain rice and simmered in broth."
+        },
+        {
+          "recipe_id": "R0005",
+          "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+          "recipe_name_en": "Egyptian Fattah",
+          "cuisine": "Egyptian",
+          "category": "Main Course",
+          "similarity_score": 0.5948,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: egyptian | تطابق المكونات المطلوبة معاً: egyptian, rice | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+          "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+        }
+      ],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": null,
+      "execution_time_ms": 20.22
+    },
+    {
+      "label": "3. عايز حاجة حلوة وسريعة",
+      "query": "عايز حاجة حلوة وسريعة",
+      "normalized_query": "حلوه وسريعه",
+      "status": "REQUEST_CLARIFICATION",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": "الطلب غامض أو عام جداً. يرجى تحديد مكون أو صنف طعام تفضله.",
+      "execution_time_ms": 2.01
+    },
+    {
+      "label": "4. اشرحلي الفيزياء",
+      "query": "اشرحلي الفيزياء",
+      "normalized_query": "اشرحلي الفيزياء",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+      "rejection_reason_en": "Out of domain: Non-food query detected.",
+      "clarification_message": null,
+      "execution_time_ms": 0.0
+    },
+    {
+      "label": "5. عايز سوشي بالدجاج",
+      "query": "عايز سوشي بالدجاج",
+      "normalized_query": "عايز سوشي بالدجاج دجاج",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": "صنف الطعام المطلوب (سوشي) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+      "rejection_reason_en": "Out of catalog: Food category 'سوشي' is not supported in the recipe database.",
+      "clarification_message": null,
+      "execution_time_ms": 0.0
+    }
+  ],
+  "eighteen_queries": [
+    {
+      "group": "1. Arabic",
+      "query": "عايز أكلة بالفراخ",
+      "status": "SUCCESS",
+      "hybrid_top": "R0003 - ملوخية بالفراخ",
+      "hybrid_score": 0.6457,
+      "sparse_top": "R0003 - ملوخية بالفراخ (0.1104)",
+      "dense_top": "R0011 - طعمية مصرية بالفول المدشوش والسمسم (0.5445)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "1. Arabic",
+      "query": "طريقة عمل كشري مصري",
+      "status": "SUCCESS",
+      "hybrid_top": "R0002 - كشري مصري",
+      "hybrid_score": 0.7301,
+      "sparse_top": "R0002 - كشري مصري (0.2153)",
+      "dense_top": "R0010 - فول مدمس اسكندراني بالطحينة والليمون (0.5998)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: كشري, مصري | تطابق المكونات المطلوبة معاً: كشري, مصري | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "1. Arabic",
+      "query": "وصفة بالبطاطس والطماطم",
+      "status": "SUCCESS",
+      "hybrid_top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+      "hybrid_score": 0.7084,
+      "sparse_top": "R0008 - شوربة عدس اصفر مصرية (0.0643)",
+      "dense_top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة (0.7603)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: بطاطس, طماطم | تطابق المكونات المطلوبة معاً: بطاطس, طماطم"
+    },
+    {
+      "group": "2. English",
+      "query": "Egyptian koshari recipe",
+      "status": "SUCCESS",
+      "hybrid_top": "R0002 - كشري مصري",
+      "hybrid_score": 0.6884,
+      "sparse_top": "R0002 - كشري مصري (0.1404)",
+      "dense_top": "R0002 - كشري مصري (0.7094)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: koshari | تطابق المكونات المطلوبة معاً: egyptian, koshari | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "2. English",
+      "query": "Chicken recipe",
+      "status": "SUCCESS",
+      "hybrid_top": "R0046 - اوراك دجاج متبلة مقرمش بالبقسماط والبهارات",
+      "hybrid_score": 0.6668,
+      "sparse_top": "R0034 - صدور دجاج مخلية مقرمش بالبقسماط والبهارات (0.1644)",
+      "dense_top": "R0046 - اوراك دجاج متبلة مقرمش بالبقسماط والبهارات (0.8059)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken"
+    },
+    {
+      "group": "2. English",
+      "query": "How to make bechamel pasta",
+      "status": "SUCCESS",
+      "hybrid_top": "R0001 - مكرونة بشاميل",
+      "hybrid_score": 0.658,
+      "sparse_top": "R0001 - مكرونة بشاميل (0.1623)",
+      "dense_top": "R0173 - مكرونة فرن ايطالي مشوي على الفحم بالبهارات (0.6536)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: bechamel, macaroni, pasta | تطابق المكونات المطلوبة معاً: bechamel, macaroni, pasta | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "3. Slang",
+      "query": "عايز وصفة بالفراخ",
+      "status": "SUCCESS",
+      "hybrid_top": "R0003 - ملوخية بالفراخ",
+      "hybrid_score": 0.6457,
+      "sparse_top": "R0003 - ملوخية بالفراخ (0.1104)",
+      "dense_top": "R0118 - عدس بني بجبة مقرمش بالبقسماط والبهارات (0.6075)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "3. Slang",
+      "query": "عايز وصفة بالدجاج",
+      "status": "SUCCESS",
+      "hybrid_top": "R0003 - ملوخية بالفراخ",
+      "hybrid_score": 0.635,
+      "sparse_top": "R0012 - مكرونة الفريدو بالدجاج والكريمة (0.1376)",
+      "dense_top": "R0046 - اوراك دجاج متبلة مقرمش بالبقسماط والبهارات (0.8123)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: دجاج | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "group": "3. Slang",
+      "query": "أكلة فيها قوطة",
+      "status": "SUCCESS",
+      "hybrid_top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+      "hybrid_score": 0.4793,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0118 - عدس بني بجبة مقرمش بالبقسماط والبهارات (0.488)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم"
+    },
+    {
+      "group": "3. Slang",
+      "query": "أكلة فيها طماطم",
+      "status": "SUCCESS",
+      "hybrid_top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة",
+      "hybrid_score": 0.4793,
+      "sparse_top": "R0092 - جمبري مقشر طازج يخنة طماطم مسبكة حارة (0.1416)",
+      "dense_top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة (0.6298)",
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: طماطم"
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "عايز أكلة حلوة",
+      "status": "REQUEST_CLARIFICATION",
+      "hybrid_top": "REQUEST_CLARIFICATION (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0009 - شكشوكة مصرية بالبيض والخضار (0.1113)",
+      "dense_top": "R0118 - عدس بني بجبة مقرمش بالبقسماط والبهارات (0.5385)",
+      "message": "الطلب غامض أو عام جداً. يرجى تحديد مكون أو صنف طعام تفضله."
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "اعمللي حاجة",
+      "status": "REQUEST_CLARIFICATION",
+      "hybrid_top": "REQUEST_CLARIFICATION (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0011 - طعمية مصرية بالفول المدشوش والسمسم (0.2718)",
+      "message": "الطلب غامض أو عام جداً. يرجى تحديد مكون أو صنف طعام تفضله."
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "أكلة",
+      "status": "REQUEST_CLARIFICATION",
+      "hybrid_top": "REQUEST_CLARIFICATION (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0011 - طعمية مصرية بالفول المدشوش والسمسم (0.5359)",
+      "message": "الطلب غامض أو عام جداً. يرجى تحديد مكون أو صنف طعام تفضله."
+    },
+    {
+      "group": "5. Out of Domain",
+      "query": "عايز شاحن موبايل",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "hybrid_top": "REJECTED_OUT_OF_DOMAIN (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0006 - حواوشي بلدي (0.1956)",
+      "message": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية)."
+    },
+    {
+      "group": "5. Out of Domain",
+      "query": "اشرحلي البرمجة",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "hybrid_top": "REJECTED_OUT_OF_DOMAIN (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0005 - فتة مصرية باللحمة والخل والثوم (0.2833)",
+      "message": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية)."
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "سوشي سلمون ياباني بالأفوكادو",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "hybrid_top": "REJECTED_OUT_OF_CATALOG (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0064 - كتف ضان بلدي متبل بالبابريكا المدخنة والشطة (0.3532)",
+      "message": "صنف الطعام المطلوب (سوشي) غير متوفر حالياً في كتالوج الوصفات المدعومة."
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "تاكو مكسيكي باللحمة المفرومة",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "hybrid_top": "REJECTED_OUT_OF_CATALOG (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0005 - فتة مصرية باللحمة والخل والثوم (0.0977)",
+      "dense_top": "R0124 - عدس بني بجبة متبل بالبابريكا المدخنة والشطة (0.2534)",
+      "message": "صنف الطعام المطلوب (تاكو) غير متوفر حالياً في كتالوج الوصفات المدعومة."
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "باستا بالزعفران والكافيار",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "hybrid_top": "REJECTED_OUT_OF_CATALOG (0 نتائج)",
+      "hybrid_score": 0.0,
+      "sparse_top": "R0185 - ارز مصري مفلفل مشوي على الفحم بالبهارات (0.0)",
+      "dense_top": "R0064 - كتف ضان بلدي متبل بالبابريكا المدخنة والشطة (0.4347)",
+      "message": "صنف الطعام المطلوب (بالزعفران) غير متوفر حالياً في كتالوج الوصفات المدعومة."
+    }
+  ]
+}

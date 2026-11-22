@@ -46,7 +46,7 @@
     "rejection_reason": null,
     "rejection_reason_en": null,
     "clarification_message": null,
-    "execution_time_ms": 47.07
+    "execution_time_ms": 34.58
   },
   {
     "label": "2. I want an easy Egyptian rice recipe",
@@ -95,7 +95,7 @@
     "rejection_reason": null,
     "rejection_reason_en": null,
     "clarification_message": null,
-    "execution_time_ms": 10.04
+    "execution_time_ms": 13.66
   },
   {
     "label": "3. عايز حاجة حلوة وسريعة",
@@ -107,7 +107,7 @@
     "rejection_reason": "لم يتم العثور على وصفة مطابقة بدرجة ثقة كافية (أعلى نتيجة: 0.171، الحد الأدنى: 0.180).",
     "rejection_reason_en": "No high-confidence recipe match found (top score: 0.171, threshold: 0.180).",
     "clarification_message": null,
-    "execution_time_ms": 5.77
+    "execution_time_ms": 13.2
   },
   {
     "label": "4. اشرحلي الفيزياء",
@@ -119,7 +119,7 @@
     "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
     "rejection_reason_en": "Out of domain: Non-food query detected.",
     "clarification_message": null,
-    "execution_time_ms": 0.0
+    "execution_time_ms": 2.01
   },
   {
     "label": "5. عايز سوشي بالدجاج",
@@ -131,6 +131,6 @@
     "rejection_reason": "صنف الطعام المطلوب (سوشي) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
     "rejection_reason_en": "Out of catalog: Food category 'سوشي' is not supported in the recipe database.",
     "clarification_message": null,
-    "execution_time_ms": 0.0
+    "execution_time_ms": 0.67
   }
 ]

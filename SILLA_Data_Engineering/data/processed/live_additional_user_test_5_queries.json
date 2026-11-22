@@ -1,0 +1,173 @@
+[
+  {
+    "label": "1. نفسي في أكلة مصرية باللحمة",
+    "query": "نفسي في أكلة مصرية باللحمة",
+    "normalized_query": "مصريه باللحم لحم",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0005",
+        "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+        "recipe_name_en": "Egyptian Fattah",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.6385,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: مصريه | تطابق المكونات المطلوبة معاً: لحم, مصريه | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+        "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+      },
+      {
+        "recipe_id": "R0017",
+        "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Beef Tenderloin",
+        "cuisine": "Egyptian",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.5428,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ المصري يحضر من لحم بتلو بقري مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Egyptian culinary preparation of beef tenderloin charcoal grilled with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0022",
+        "recipe_name_ar": "لحم بتلو بقري مقرمش بالبقسماط والبهارات",
+        "recipe_name_en": "Crispy Breaded Pan-Fried Beef Tenderloin",
+        "cuisine": "Moroccan",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.513,
+        "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ المغربي يحضر من لحم بتلو بقري مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Moroccan culinary preparation of beef tenderloin crispy breaded pan-fried with fresh seasonings."
+      }
+    ],
+    "rejection_reason": null,
+    "rejection_reason_en": null,
+    "clarification_message": null,
+    "execution_time_ms": 24.6
+  },
+  {
+    "label": "2. Can you suggest a chicken and tomato recipe?",
+    "query": "Can you suggest a chicken and tomato recipe?",
+    "normalized_query": "Can you suggest a chicken and tomato recipe",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0044",
+        "recipe_name_ar": "اوراك دجاج متبلة يخنة طماطم مسبكة حارة",
+        "recipe_name_en": "Spicy Tomato Stew Chicken Thighs",
+        "cuisine": "Spanish",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.5285,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken, tomato",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ الإسباني يحضر من اوراك دجاج متبلة يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Spanish culinary preparation of chicken thighs spicy tomato stew with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0032",
+        "recipe_name_ar": "صدور دجاج مخلية يخنة طماطم مسبكة حارة",
+        "recipe_name_en": "Spicy Tomato Stew Chicken Breast",
+        "cuisine": "Moroccan",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.5043,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken, tomato",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ المغربي يحضر من صدور دجاج مخلية يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Moroccan culinary preparation of chicken breast spicy tomato stew with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0003",
+        "recipe_name_ar": "ملوخية بالفراخ",
+        "recipe_name_en": "Molokhia With Chicken",
+        "cuisine": "Egyptian",
+        "category": "Main Course",
+        "similarity_score": 0.494,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken | وصفة رئيسية أصيلة موثقة",
+        "is_core_recipe": true,
+        "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+        "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+      }
+    ],
+    "rejection_reason": null,
+    "rejection_reason_en": null,
+    "clarification_message": null,
+    "execution_time_ms": 17.61
+  },
+  {
+    "label": "3. عايز حاجة من غير لحمة",
+    "query": "عايز حاجة من غير لحمة",
+    "normalized_query": "غير لحم",
+    "status": "SUCCESS",
+    "matched_recipes_count": 3,
+    "matched_recipes": [
+      {
+        "recipe_id": "R0022",
+        "recipe_name_ar": "لحم بتلو بقري مقرمش بالبقسماط والبهارات",
+        "recipe_name_en": "Crispy Breaded Pan-Fried Beef Tenderloin",
+        "cuisine": "Moroccan",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.481,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ المغربي يحضر من لحم بتلو بقري مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Moroccan culinary preparation of beef tenderloin crispy breaded pan-fried with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0017",
+        "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+        "recipe_name_en": "Charcoal Grilled Beef Tenderloin",
+        "cuisine": "Egyptian",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.478,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ المصري يحضر من لحم بتلو بقري مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious Egyptian culinary preparation of beef tenderloin charcoal grilled with fresh seasonings."
+      },
+      {
+        "recipe_id": "R0026",
+        "recipe_name_ar": "لحم بتلو بقري مسلوق في مرقة الكزبرة والحبهان",
+        "recipe_name_en": "Aromatic Coriander Broth Beef Tenderloin",
+        "cuisine": "French",
+        "category": "Meat And Poultry",
+        "similarity_score": 0.4733,
+        "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+        "is_core_recipe": false,
+        "description_ar": "طبق شهي من المطبخ الفرنسي يحضر من لحم بتلو بقري مسلوق في مرقة الكزبرة والحبهان مع التوابل والبهارات الطازجة.",
+        "description_en": "Delicious French culinary preparation of beef tenderloin aromatic coriander broth with fresh seasonings."
+      }
+    ],
+    "rejection_reason": null,
+    "rejection_reason_en": null,
+    "clarification_message": null,
+    "execution_time_ms": 15.27
+  },
+  {
+    "label": "4. عايز أشتري لابتوب جديد",
+    "query": "عايز أشتري لابتوب جديد",
+    "normalized_query": "عايز اشتري لابتوب جديد",
+    "status": "REJECTED_OUT_OF_DOMAIN",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+    "rejection_reason_en": "Out of domain: Non-food query detected.",
+    "clarification_message": null,
+    "execution_time_ms": 1.52
+  },
+  {
+    "label": "5. عايز وصفة بالكمأة السوداء",
+    "query": "عايز وصفة بالكمأة السوداء",
+    "normalized_query": "بالكماه السوداء",
+    "status": "REJECTED_OUT_OF_CATALOG",
+    "matched_recipes_count": 0,
+    "matched_recipes": [],
+    "rejection_reason": "صنف الطعام المطلوب (بالكمأة) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+    "rejection_reason_en": "Out of catalog: Food category 'بالكمأة' is not supported in the recipe database.",
+    "clarification_message": null,
+    "execution_time_ms": 0.0
+  }
+]

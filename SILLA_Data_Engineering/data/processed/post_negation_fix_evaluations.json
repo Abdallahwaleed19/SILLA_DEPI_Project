@@ -1,0 +1,306 @@
+{
+  "five_additional": [
+    {
+      "label": "1. نفسي في أكلة مصرية باللحمة",
+      "query": "نفسي في أكلة مصرية باللحمة",
+      "normalized_query": "مصريه باللحم لحم",
+      "status": "SUCCESS",
+      "matched_recipes_count": 3,
+      "matched_recipes": [
+        {
+          "recipe_id": "R0005",
+          "recipe_name_ar": "فتة مصرية باللحمة والخل والثوم",
+          "recipe_name_en": "Egyptian Fattah",
+          "cuisine": "Egyptian",
+          "category": "Main Course",
+          "similarity_score": 0.6385,
+          "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: مصريه | تطابق المكونات المطلوبة معاً: لحم, مصريه | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "طبقات من الخبز البلدي المحمص بالسمن مع الأرز المصري المطبوخ بمرقة اللحم، مسقى بصلصة الطماطم والخل والثوم، ويعلوه قطع اللحم البقري المسلوق.",
+          "description_en": "Celebration feast dish made of crispy toasted baladi bread, fluffy white rice, and tender boiled beef bathed in a punchy garlic vinegar tomato sauce."
+        },
+        {
+          "recipe_id": "R0017",
+          "recipe_name_ar": "لحم بتلو بقري مشوي على الفحم بالبهارات",
+          "recipe_name_en": "Charcoal Grilled Beef Tenderloin",
+          "cuisine": "Egyptian",
+          "category": "Meat And Poultry",
+          "similarity_score": 0.5428,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ المصري يحضر من لحم بتلو بقري مشوي على الفحم بالبهارات مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious Egyptian culinary preparation of beef tenderloin charcoal grilled with fresh seasonings."
+        },
+        {
+          "recipe_id": "R0022",
+          "recipe_name_ar": "لحم بتلو بقري مقرمش بالبقسماط والبهارات",
+          "recipe_name_en": "Crispy Breaded Pan-Fried Beef Tenderloin",
+          "cuisine": "Moroccan",
+          "category": "Meat And Poultry",
+          "similarity_score": 0.513,
+          "match_reason": "تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: لحم",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ المغربي يحضر من لحم بتلو بقري مقرمش بالبقسماط والبهارات مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious Moroccan culinary preparation of beef tenderloin crispy breaded pan-fried with fresh seasonings."
+        }
+      ],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": null,
+      "execution_time_ms": 56.53
+    },
+    {
+      "label": "2. Can you suggest a chicken and tomato recipe?",
+      "query": "Can you suggest a chicken and tomato recipe?",
+      "normalized_query": "Can you suggest a chicken and tomato recipe",
+      "status": "SUCCESS",
+      "matched_recipes_count": 3,
+      "matched_recipes": [
+        {
+          "recipe_id": "R0044",
+          "recipe_name_ar": "اوراك دجاج متبلة يخنة طماطم مسبكة حارة",
+          "recipe_name_en": "Spicy Tomato Stew Chicken Thighs",
+          "cuisine": "Spanish",
+          "category": "Meat And Poultry",
+          "similarity_score": 0.5285,
+          "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken, tomato",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ الإسباني يحضر من اوراك دجاج متبلة يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious Spanish culinary preparation of chicken thighs spicy tomato stew with fresh seasonings."
+        },
+        {
+          "recipe_id": "R0032",
+          "recipe_name_ar": "صدور دجاج مخلية يخنة طماطم مسبكة حارة",
+          "recipe_name_en": "Spicy Tomato Stew Chicken Breast",
+          "cuisine": "Moroccan",
+          "category": "Meat And Poultry",
+          "similarity_score": 0.5043,
+          "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken, tomato",
+          "is_core_recipe": false,
+          "description_ar": "طبق شهي من المطبخ المغربي يحضر من صدور دجاج مخلية يخنة طماطم مسبكة حارة مع التوابل والبهارات الطازجة.",
+          "description_en": "Delicious Moroccan culinary preparation of chicken breast spicy tomato stew with fresh seasonings."
+        },
+        {
+          "recipe_id": "R0003",
+          "recipe_name_ar": "ملوخية بالفراخ",
+          "recipe_name_en": "Molokhia With Chicken",
+          "cuisine": "Egyptian",
+          "category": "Main Course",
+          "similarity_score": 0.494,
+          "match_reason": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: chicken | وصفة رئيسية أصيلة موثقة",
+          "is_core_recipe": true,
+          "description_ar": "أوراق ملوخية طازجة مخروطة مطبوخة في مرقة الدجاج المتبلة، ومضاف إليها طشة الثوم والكزبرة الجافة بالسمن، وتقدم بجانب الدجاج المحمر.",
+          "description_en": "Finely minced fresh jute mallow leaves cooked in aromatic chicken broth and finished with the famous sizzled garlic and coriander ta'sha."
+        }
+      ],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": null,
+      "execution_time_ms": 34.64
+    },
+    {
+      "label": "3. عايز حاجة من غير لحمة",
+      "query": "عايز حاجة من غير لحمة",
+      "normalized_query": "غير لحم",
+      "status": "REQUEST_CLARIFICATION",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": null,
+      "rejection_reason_en": null,
+      "clarification_message": "لقد طلبت وصفة بدون (لحمه). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن).",
+      "execution_time_ms": 3.22
+    },
+    {
+      "label": "4. عايز أشتري لابتوب جديد",
+      "query": "عايز أشتري لابتوب جديد",
+      "normalized_query": "عايز اشتري لابتوب جديد",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": "الطلب خارج نطاق الطعام والطهي (منتجات وأجهزة غير غذائية).",
+      "rejection_reason_en": "Out of domain: Non-food query detected.",
+      "clarification_message": null,
+      "execution_time_ms": 3.07
+    },
+    {
+      "label": "5. عايز وصفة بالكمأة السوداء",
+      "query": "عايز وصفة بالكمأة السوداء",
+      "normalized_query": "بالكماه السوداء",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "matched_recipes_count": 0,
+      "matched_recipes": [],
+      "rejection_reason": "صنف الطعام المطلوب (بالكمأة) غير متوفر حالياً في كتالوج الوصفات المدعومة.",
+      "rejection_reason_en": "Out of catalog: Food category 'بالكمأة' is not supported in the recipe database.",
+      "clarification_message": null,
+      "execution_time_ms": 1.53
+    }
+  ],
+  "negation_variations": [
+    {
+      "label": "Negation No Alt (AR)",
+      "query": "عايز حاجة من غير لحمة",
+      "status": "REQUEST_CLARIFICATION",
+      "count": 0,
+      "recipes": [],
+      "message": "لقد طلبت وصفة بدون (لحمه). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن)."
+    },
+    {
+      "label": "Negation No Alt (AR)",
+      "query": "وصفة بدون فراخ",
+      "status": "REQUEST_CLARIFICATION",
+      "count": 0,
+      "recipes": [],
+      "message": "لقد طلبت وصفة بدون (فراخ). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن)."
+    },
+    {
+      "label": "Negation No Alt (AR)",
+      "query": "أكلة خالية من السمك",
+      "status": "REQUEST_CLARIFICATION",
+      "count": 0,
+      "recipes": [],
+      "message": "لقد طلبت وصفة بدون (السمك). يرجى تحديد الصنف أو المكون البديل المفضل لديك (مثل الخضار، البقوليات، أو الدواجن)."
+    },
+    {
+      "label": "Negation No Alt (EN)",
+      "query": "I want a recipe without meat",
+      "status": "REQUEST_CLARIFICATION",
+      "count": 0,
+      "recipes": [],
+      "message": "You requested a recipe without (meat). Please specify your preferred alternative ingredient (such as vegetables, lentils, or poultry)."
+    },
+    {
+      "label": "Negation With Alt (AR)",
+      "query": "عايز أكلة من غير لحمة بالخضار",
+      "status": "SUCCESS",
+      "count": 3,
+      "recipes": [
+        "R0016 - شوربة خضار مشكل صحية (0.5154)",
+        "R0009 - شكشوكة مصرية بالبيض والخضار (0.4491)",
+        "R0004 - محشي مشكل (0.3824)"
+      ],
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تشابه دلالي عالي مع موضوع الوصفة | تطابق في عنوان الوصفة: خضار | استبعاد مكون: لحمه | وصفة رئيسية أصيلة موثقة"
+    },
+    {
+      "label": "Negation With Alt (AR)",
+      "query": "وصفة بدون فراخ بالعدس",
+      "status": "SUCCESS",
+      "count": 3,
+      "recipes": [
+        "R0118 - عدس بني بجبة مقرمش بالبقسماط والبهارات (0.3908)",
+        "R0008 - شوربة عدس اصفر مصرية (0.3578)",
+        "R0114 - عدس بني بجبة طاجن في الفرن بالصلصة (0.3114)"
+      ],
+      "message": "مطابقة لفظية قوية للكلمات والمكونات | تطابق في عنوان الوصفة: عدس | استبعاد مكون: فراخ"
+    }
+  ],
+  "eighteen_benchmark": [
+    {
+      "group": "1. Arabic",
+      "query": "عايز أكلة بالفراخ",
+      "status": "SUCCESS",
+      "top": "R0003 - ملوخية بالفراخ (0.6457)"
+    },
+    {
+      "group": "1. Arabic",
+      "query": "طريقة عمل كشري مصري",
+      "status": "SUCCESS",
+      "top": "R0002 - كشري مصري (0.7301)"
+    },
+    {
+      "group": "1. Arabic",
+      "query": "وصفة بالبطاطس والطماطم",
+      "status": "SUCCESS",
+      "top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة (0.7084)"
+    },
+    {
+      "group": "2. English",
+      "query": "Egyptian koshari recipe",
+      "status": "SUCCESS",
+      "top": "R0002 - كشري مصري (0.6884)"
+    },
+    {
+      "group": "2. English",
+      "query": "Chicken recipe",
+      "status": "SUCCESS",
+      "top": "R0046 - اوراك دجاج متبلة مقرمش بالبقسماط والبهارات (0.6668)"
+    },
+    {
+      "group": "2. English",
+      "query": "How to make bechamel pasta",
+      "status": "SUCCESS",
+      "top": "R0001 - مكرونة بشاميل (0.658)"
+    },
+    {
+      "group": "3. Slang",
+      "query": "عايز وصفة بالفراخ",
+      "status": "SUCCESS",
+      "top": "R0003 - ملوخية بالفراخ (0.6457)"
+    },
+    {
+      "group": "3. Slang",
+      "query": "عايز وصفة بالدجاج",
+      "status": "SUCCESS",
+      "top": "R0003 - ملوخية بالفراخ (0.635)"
+    },
+    {
+      "group": "3. Slang",
+      "query": "أكلة فيها قوطة",
+      "status": "SUCCESS",
+      "top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة (0.4793)"
+    },
+    {
+      "group": "3. Slang",
+      "query": "أكلة فيها طماطم",
+      "status": "SUCCESS",
+      "top": "R0164 - بطاطس محمرة بالفرن يخنة طماطم مسبكة حارة (0.4793)"
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "عايز أكلة حلوة",
+      "status": "REQUEST_CLARIFICATION",
+      "top": "REQUEST_CLARIFICATION (0 نتائج)"
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "اعمللي حاجة",
+      "status": "REQUEST_CLARIFICATION",
+      "top": "REQUEST_CLARIFICATION (0 نتائج)"
+    },
+    {
+      "group": "4. Ambiguous",
+      "query": "أكلة",
+      "status": "REQUEST_CLARIFICATION",
+      "top": "REQUEST_CLARIFICATION (0 نتائج)"
+    },
+    {
+      "group": "5. Out of Domain",
+      "query": "عايز شاحن موبايل",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "top": "REJECTED_OUT_OF_DOMAIN (0 نتائج)"
+    },
+    {
+      "group": "5. Out of Domain",
+      "query": "اشرحلي البرمجة",
+      "status": "REJECTED_OUT_OF_DOMAIN",
+      "top": "REJECTED_OUT_OF_DOMAIN (0 نتائج)"
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "سوشي سلمون ياباني بالأفوكادو",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "top": "REJECTED_OUT_OF_CATALOG (0 نتائج)"
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "تاكو مكسيكي باللحمة المفرومة",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "top": "REJECTED_OUT_OF_CATALOG (0 نتائج)"
+    },
+    {
+      "group": "6. Out of Catalog",
+      "query": "باستا بالزعفران والكافيار",
+      "status": "REJECTED_OUT_OF_CATALOG",
+      "top": "REJECTED_OUT_OF_CATALOG (0 نتائج)"
+    }
+  ]
+}

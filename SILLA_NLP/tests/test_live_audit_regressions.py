@@ -79,6 +79,212 @@ class TestLiveAuditRegressions(unittest.TestCase):
         if resp["matched_recipes"]:
             self.assertNotEqual(resp["matched_recipes"][0]["recipe_id"], "R0004", "Mahshi incorrectly suggested for caviar pasta!")
 
+    def test_sweet_and_fast_clarification_no_savory(self):
+        """Verify 'عايز حاجة حلوة وسريعة' with coordinating waw triggers REQUEST_CLARIFICATION without savory dishes."""
+        resp = match_recipe("عايز حاجة حلوة وسريعة", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION", f"Expected REQUEST_CLARIFICATION, got {resp['status']}")
+        self.assertEqual(len(resp["matched_recipes"]), 0, "Ambiguous request must return 0 recipe candidates")
+        self.assertIsNotNone(resp["clarification_message"])
+
+    def test_chicken_and_potato_co_occurrence(self):
+        """Verify 'ممكن وصفة سهلة بالدجاج والبطاطس' benefits from co-occurrence and ranks R0015 at top."""
+        resp = match_recipe("ممكن وصفة سهلة بالدجاج والبطاطس", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top = resp["matched_recipes"][0]
+        self.assertEqual(top["recipe_id"], "R0015", f"Expected R0015 Classic Chicken Curry with potatoes, got {top['recipe_id']} - {top['recipe_name_ar']}")
+        self.assertIn("بطاطس", top["match_reason"])
+        self.assertIn("دجاج", top["match_reason"])
+
+    def test_negation_without_alternative_arabic(self):
+        """Verify 'عايز حاجة من غير لحمة' returns REQUEST_CLARIFICATION with 0 recipes."""
+        queries = ["عايز حاجة من غير لحمة", "وصفة بدون فراخ", "أكلة خالية من السمك"]
+        for q in queries:
+            resp = match_recipe(q, top_k=3)
+            self.assertEqual(resp["status"], "REQUEST_CLARIFICATION", f"Expected clarification for '{q}', got {resp['status']}")
+            self.assertEqual(len(resp["matched_recipes"]), 0, f"Expected 0 recipes for '{q}'")
+            self.assertIsNotNone(resp["clarification_message"])
+
+    def test_negation_without_alternative_english(self):
+        """Verify 'I want a recipe without meat' returns REQUEST_CLARIFICATION in English."""
+        resp = match_recipe("I want a recipe without meat", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+        self.assertIsNotNone(resp["clarification_message"])
+
+    def test_negation_with_alternative_vegetables(self):
+        """Verify 'عايز أكلة من غير لحمة بالخضار' returns vegetable dishes and strictly excludes meat."""
+        resp = match_recipe("عايز أكلة من غير لحمة بالخضار", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        for r in resp["matched_recipes"]:
+            self.assertNotIn("لحم", r["recipe_name_ar"])
+            self.assertNotIn("لحم", r["description_ar"])
+
+    def test_negation_with_alternative_lentils(self):
+        """Verify 'وصفة بدون فراخ بالعدس' returns lentil dishes and strictly excludes chicken."""
+        resp = match_recipe("وصفة بدون فراخ بالعدس", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        for r in resp["matched_recipes"]:
+            self.assertNotIn("دجاج", r["recipe_name_ar"])
+            self.assertNotIn("فراخ", r["recipe_name_ar"])
+            self.assertNotIn("Chicken", r["recipe_name_en"])
+
+    def test_compound_negation_meat_and_chicken(self):
+        """Verify 'عايز أكلة من غير لحمة ولا فراخ' returns REQUEST_CLARIFICATION and 0 recipes."""
+        resp = match_recipe("عايز أكلة من غير لحمة ولا فراخ", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+        self.assertIsNotNone(resp["clarification_message"])
+
+    def test_negation_dairy_and_cheese(self):
+        """Verify 'وصفة بدون لبن أو جبنة' returns REQUEST_CLARIFICATION and 0 recipes."""
+        resp = match_recipe("وصفة بدون لبن أو جبنة", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+        self.assertIsNotNone(resp["clarification_message"])
+
+    def test_vegetarian_no_meat(self):
+        """Verify 'عايز أكلة نباتية من غير أي لحوم' strictly returns meat-free recipes."""
+        resp = match_recipe("عايز أكلة نباتية من غير أي لحوم", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        for r in resp["matched_recipes"]:
+            combined_text = f"{r['recipe_name_ar']} {r['recipe_name_en']} {r['description_ar']}"
+            for m in ["لحم", "دجاج", "فراخ", "Beef", "Chicken", "بتلو", "ضان"]:
+                self.assertNotIn(m, combined_text)
+
+    def test_ground_beef_preference(self):
+        """Verify 'نفسي في أكلة باللحمة المفرومة' returns authentic ground beef recipes."""
+        resp = match_recipe("نفسي في أكلة باللحمة المفرومة", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top = resp["matched_recipes"][0]
+        self.assertIn(top["recipe_id"], ["R0007", "R0006", "R0001", "R0013"])
+
+    def test_english_chicken_and_potatoes(self):
+        """Verify 'I want a quick meal with chicken and potatoes' returns R0015 at rank 1."""
+        resp = match_recipe("I want a quick meal with chicken and potatoes", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top = resp["matched_recipes"][0]
+        self.assertEqual(top["recipe_id"], "R0015")
+
+    def test_english_potatoes_and_tomatoes(self):
+        """Verify 'Can you suggest a recipe with potatoes and tomatoes?' returns potato stew with tomatoes."""
+        resp = match_recipe("Can you suggest a recipe with potatoes and tomatoes?", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top = resp["matched_recipes"][0]
+        self.assertIn(top["recipe_id"], ["R0164", "R0162", "R0171"])
+
+    def test_vehicles_non_food_rejection(self):
+        """Verify 'عايز أشتري عربية' is rejected as out-of-domain non-food."""
+        resp = match_recipe("عايز أشتري عربية", top_k=3)
+        self.assertEqual(resp["status"], "REJECTED_OUT_OF_DOMAIN")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_ai_non_food_rejection(self):
+        """Verify 'اشرحلي الذكاء الاصطناعي' is rejected as out-of-domain non-food."""
+        resp = match_recipe("اشرحلي الذكاء الاصطناعي", top_k=3)
+        self.assertEqual(resp["status"], "REJECTED_OUT_OF_DOMAIN")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_sweets_craving_rejection(self):
+        """Verify 'نفسي في حاجة مسكرة' is rejected as out-of-catalog."""
+        resp = match_recipe("نفسي في حاجة مسكرة", top_k=3)
+        self.assertEqual(resp["status"], "REJECTED_OUT_OF_CATALOG")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_dinner_light_ambiguity_clarification(self):
+        """Verify 'عايز حاجة خفيفة وسريعة للعشا' returns REQUEST_CLARIFICATION."""
+        resp = match_recipe("عايز حاجة خفيفة وسريعة للعشا", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_pizza_in_catalog_match(self):
+        """Verify Arabic and English pizza queries match in-catalog recipe R0014 Pizza Margherita."""
+        queries = ["عايز بيتزا مارجريتا", "طريقة عمل البيتزا في البيت", "pizza recipe", "Could you suggest a pizza recipe?"]
+        for q in queries:
+            resp = match_recipe(q, top_k=3)
+            self.assertEqual(resp["status"], "SUCCESS", f"Query '{q}' should be accepted as in-catalog")
+            self.assertTrue(len(resp["matched_recipes"]) > 0, f"Query '{q}' should return results")
+            self.assertEqual(resp["matched_recipes"][0]["recipe_id"], "R0014", f"Query '{q}' should return R0014 at rank 1")
+
+    def test_english_modal_questions_clarification(self):
+        """Verify English modal questions with ambiguous intents trigger clarification."""
+        queries = [
+            "Could you suggest something healthy and cheap?",
+            "Would you give me something quick for dinner?",
+            "Can you suggest something light for lunch?"
+        ]
+        for q in queries:
+            resp = match_recipe(q, top_k=3)
+            self.assertEqual(resp["status"], "REQUEST_CLARIFICATION", f"Query '{q}' should request clarification")
+            self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_english_modal_questions_specific(self):
+        """Verify English modal questions with specific ingredients match recipes successfully."""
+        resp1 = match_recipe("Could you suggest a recipe with potatoes and tomatoes?", top_k=3)
+        self.assertEqual(resp1["status"], "SUCCESS")
+        self.assertTrue(len(resp1["matched_recipes"]) > 0)
+
+        resp2 = match_recipe("Would you suggest an Egyptian rice dish?", top_k=3)
+        self.assertEqual(resp2["status"], "SUCCESS")
+        self.assertTrue(len(resp2["matched_recipes"]) > 0)
+        self.assertEqual(resp2["matched_recipes"][0]["recipe_id"], "R0185")
+        self.assertIn("rice", resp2["matched_recipes"][0]["recipe_name_en"].lower())
+
+    def test_english_vegetarian_strict_exclusion(self):
+        """Verify 'Give me a vegetarian recipe without meat.' returns strictly vegetarian recipes with 0 poultry/seafood/meat."""
+        resp = match_recipe("Give me a vegetarian recipe without meat.", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        prohibited = {"chicken", "دجاج", "فراخ", "meat", "لحم", "beef", "fish", "سمك", "calamari", "حبار", "shrimp", "جمبري"}
+        for r in resp["matched_recipes"]:
+            name = (r["recipe_name_ar"] + " " + r["recipe_name_en"]).lower()
+            for p in prohibited:
+                self.assertNotIn(p, name, f"Vegetarian query returned prohibited item '{p}' in recipe: {name}")
+
+    def test_negation_without_alternative_with_directive(self):
+        """Verify 'اقترح وصفة من غير لحمة ولا فراخ.' requests clarification and returns 0 recipes."""
+        resp = match_recipe("اقترح وصفة من غير لحمة ولا فراخ.", top_k=3)
+        self.assertEqual(resp["status"], "REQUEST_CLARIFICATION")
+        self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_fridge_query_rice_tomato_onion(self):
+        """Verify 'عندي رز وطماطم وبصل، أقدر أعمل إيه؟' matches Mahshi or Koshari."""
+        resp = match_recipe("عندي رز وطماطم وبصل، أقدر أعمل إيه؟", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top_ids = [r["recipe_id"] for r in resp["matched_recipes"]]
+        self.assertTrue(any(rid in top_ids for rid in ["R0002", "R0004"]), f"Expected R0002 or R0004, got {top_ids}")
+
+    def test_fridge_query_lentils(self):
+        """Verify 'عندي عدس، اقترح عليا أكلة مناسبة.' matches lentil dishes."""
+        resp = match_recipe("عندي عدس، اقترح عليا أكلة مناسبة.", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        top = resp["matched_recipes"][0]
+        self.assertIn("عدس", top["recipe_name_ar"])
+
+    def test_novelty_and_sweets_ambiguity(self):
+        """Verify novelty and ambiguous descriptor queries trigger clarification."""
+        for q in ["نفسي في حاجة مختلفة.", "اقترح عليا أكلة حلوة."]:
+            resp = match_recipe(q, top_k=3)
+            self.assertEqual(resp["status"], "REQUEST_CLARIFICATION", f"Query '{q}' should trigger clarification")
+            self.assertEqual(len(resp["matched_recipes"]), 0)
+
+    def test_pasta_without_cheese_strict(self):
+        """Verify 'عايز مكرونة من غير جبنة.' returns pasta without cheese."""
+        resp = match_recipe("عايز مكرونة من غير جبنة.", top_k=3)
+        self.assertEqual(resp["status"], "SUCCESS")
+        self.assertTrue(len(resp["matched_recipes"]) > 0)
+        prohibited_ids = {"R0012", "R0013", "R0014"}  # Recipes with parmesan/mozzarella
+        for r in resp["matched_recipes"]:
+            self.assertNotIn(r["recipe_id"], prohibited_ids, f"Recipe {r['recipe_id']} has cheese!")
+
 
 if __name__ == "__main__":
     unittest.main()

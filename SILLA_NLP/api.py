@@ -121,7 +121,10 @@ class SillaRecipeMatcher:
             api_status = "REQUEST_CLARIFICATION"
             rejection_ar = None
             rejection_en = None
-            clarification = raw_res.get("rejection_reason_ar", "الطلب غير محدد بدرجة كافية، يرجى كتابة اسم مكون أو أكلة معينة.")
+            if detected_lang == "en":
+                clarification = raw_res.get("rejection_reason_en", "Query is too broad. Please specify your preferred ingredient or dish.")
+            else:
+                clarification = raw_res.get("rejection_reason_ar", "الطلب غير محدد بدرجة كافية، يرجى كتابة اسم مكون أو أكلة معينة.")
         else:
             api_status = "LOW_CONFIDENCE"
             rejection_ar = raw_res.get("rejection_reason_ar", "لم يتم العثور على وصفة مطابقة بدرجة ثقة كافية.")
