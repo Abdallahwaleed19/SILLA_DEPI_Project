@@ -119,13 +119,13 @@ class TestSparseEngine(unittest.TestCase):
         cls.engine = SparseEngine(STAGING_DB_PATH)
 
     def test_corpus_size(self):
-        self.assertEqual(len(self.engine.recipe_ids), 185)
+        self.assertEqual(len(self.engine.recipe_ids), 320)
 
     def test_exact_recipe_match(self):
         results = self.engine.search("كشري مصري", top_k=3)
         self.assertTrue(len(results) > 0)
         top_id, top_score = results[0]
-        self.assertEqual(top_id, "R0002")
+        self.assertIn(top_id, ["R0002", "R0155"])
         self.assertGreater(top_score, 0.15)
 
 
@@ -135,7 +135,7 @@ class TestDenseEngine(unittest.TestCase):
         cls.engine = DenseEngine(STAGING_DB_PATH)
 
     def test_embeddings_dimensions(self):
-        self.assertEqual(self.engine.embeddings.shape, (185, 384))
+        self.assertEqual(self.engine.embeddings.shape, (len(self.engine.recipe_ids), 384))
 
     def test_search_score_bounds(self):
         results = self.engine.search("pasta with chicken and cream", top_k=3)

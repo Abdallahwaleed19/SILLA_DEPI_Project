@@ -50,7 +50,7 @@ CONVERSATIONAL_PREFIXES = [
     r"\bازاي\s+اعمل\b",
     r"\bازاي\s+اطبخ\b",
     r"\bنفسي\s+في\b",
-    r"\bنفسي\s+اكل\b",
+    r"\bنفسي\s+آ?كل\b",
     r"\bطريق[ةه]\s+ال\b",
     r"\bكيفي[ةه]\s+عمل\b",
     r"\bاعمل[ل|ي]?\s*لي?\b",
@@ -60,9 +60,21 @@ CONVERSATIONAL_PREFIXES = [
     r"\bاطبخ\s*لي?\b",
     r"\bاقترح\s+علي[اى]\s+(?:وصف[ةه]|اكل[ةه]|طبخ[ةه])?\s*(?:مناسب[ةه])?\b",
     r"\bاقترح\s+(?:علين[اى]\s+)?(?:لي\s+)?(?:وصف[ةه]|اكل[ةه]|طبخ[ةه])\b",
+    r"\bاقترح\s+علي[اى]\b",
+    r"\bاقترح\s+علين[اى]\b",
+    r"\bهاتلي\b",
+    r"\bمعايا\b",
     r"\bعندي\b",
-    r"\bأ?قدر\s+أ?عمل\s+(?:بيهم\s+)?إ?يه\b",
-    r"\bأ?عمل\s+(?:بيهم\s+)?إ?يه\b",
+    r"\bبص\s*(?:يا\s+سيدي)?\b",
+    r"\bبص\b",
+    r"\bلو\s+سمحت\b",
+    r"\bمن\s+فضلك\b",
+    r"\bبعد\s+[إاأ]ذنك\b",
+    r"\b(?:انا|أنا)?\s*(?:معنديش|ماعنديش|مش\s+معايا)\s+غير\b",
+    r"\bممكن\s+[أا]?عمل\s+[إاأ]?يه\s*",
+    r"\b[أا]?قدر\s+[أا]?عمل\s+(?:بيهم\s+)?[إاأ]?يه\b",
+    r"\b[أا]?عمل\s+(?:بيهم\s+)?[إاأ]?يه\b",
+    r"\b[أا]?طبخ\s+[إاأ]?يه\b",
     r"\bhow\s+to\s+make\b",
     r"\bhow\s+to\s+cook\b",
     r"\bi\s+want\s+to\s+make\b",
@@ -85,10 +97,26 @@ COLLOQUIAL_FILLERS = [
     r"\bطعم\s+حكاي[ةه]\b",
     r"\bفي\s+البيت\b",
     r"\bمن\s+البيت\b",
+    r"\bاللي\s+عندي\b",
+    r"\bاللي\b",
+    r"\bتعتمد\s+عل[يى]\b",
+    r"\bينفع\s+[أا]?عمل\s+(?:بيهم\s+)?[إاأ]?يه\b",
+    r"\bتكون\s+(?:حلو[ةه]|سهل[ةه]|سريع[ةه]|مختلف[ةه]|جميل[ةه])\b",
+    r"\b(?:اللي\s+)?في\s+التلاج[ةه]\b",
+    r"\b[أا]?ستفيد\s+بيهم\s+[إاأ]?زاي\b",
+    r"\bشوي[ةه]\b",
+    r"\bتمام[اًا]?\b",
+    r"\bخالص\b",
+    r"\bنهائي[اًا]?\b",
+    r"\b[أا]?صل[اًا]?\b",
     r"\bأ?قدر\s+أ?عمل\s+(?:بيهم\s+)?إ?يه\b",
     r"\bأ?عمل\s+(?:بيهم\s+)?إ?يه\b",
+    r"\bأ?طبخ\s+إ?يه\b",
     r"\bمناسب[ةه]?\b",
-    r"\bو?خلاص\b"
+    r"\bو?خلاص\b",
+    r"\bكده\b",
+    r"\bكدا\b",
+    r"\bبيهم\b"
 ]
 
 # Egyptian Colloquial to Canonical Ingredient Mapping (with proclitic support: بـ, وـ, كـ, لـ, الـ)
@@ -160,8 +188,11 @@ STOP_WORDS = {
     "وصفه", "وصفة", "وصفات", "ممكن", "خفيف", "خفيفة", "خفيفه", "عشا", "عشاء",
     "عندي", "اقدر", "أقدر", "ايه", "إيه", "بيهم", "فيه", "فيها", "عليا", "علينا",
     "لي", "ليا", "لينا", "لنا", "لك", "لكم", "مناسب", "مناسبة", "مناسبه", "اقترح", "اقترحي",
+    "اللي", "الي", "اللى", "تعتمد", "يعتمد", "جعان", "جعانة", "جعانه", "جوعان", "جوعانة", "انا", "أنا", "معايا", "معي", "كده", "كدا", "اطبخ", "أطبخ", "اعمل", "أعمل", "اكل", "آكل", "أكل", "ناكل", "بها", "به", "حاجة", "حاجه", "شيء", "شئ", "مش", "ومش",
+    "ابحث", "أبحث", "بحث", "سيدي", "بص", "شوية", "شويه", "حاجات", "تلاجة", "تلاجه", "التلاجة", "التلاجه", "استفيد", "أستفيد", "ينفع", "غير", "معنديش", "ماعنديش", "تكون", "يكون", "مجهود", "تماما", "تماماً", "تمام", "خالص", "نهائيا", "نهائياً", "نهائي", "اصلا", "أصلا", "أصلاً",
     "with", "and", "in", "the", "for", "a", "an", "of", "to", "at", "by",
-    "how", "make", "cook", "recipe", "want", "meal", "dish", "dishes", "meals", "something", "anything", "suggest", "give", "need", "can", "could", "would", "you", "please", "i", "me"
+    "how", "make", "cook", "recipe", "want", "meal", "dish", "dishes", "meals", "something", "anything", "suggest", "give", "need", "can", "could", "would", "you", "please", "i", "me",
+    "idea", "ideas", "homemade", "affordable", "should", "what", "wanna", "somethin", "hungry"
 }
 
 # Arabic Nouns & Adjectives whose root begins with ב/و/ف/ك/ل - NEVER strip initial consonant!
@@ -286,12 +317,26 @@ def clean_query_text(query: str) -> str:
 # Negation & Exclusion Handling
 # ---------------------------------------------------------------------------
 NEGATION_PATTERNS = [
-    # Arabic: من غير, بدون, خالي من, بلا
+    # Colloquial Egyptian: مش عايز, مش عاوز, مش حابب, مش طالب, مش رايد, مش بحب
+    r"\bمش\s+(?:عايز[ةه]?|عاوز[ةه]?|حابب[ةه]?|طالب[ةه]?|رايد[ةه]?|بحب|بنحب)\b",
+    r"\bم[ا]?بحبش\b",
+    # Spicy / heat negation: مش حار, مش حارة, مش سبايسي, not spicy, non-spicy
+    r"\bمش\s+(?:حار[ةه]?|سبايسي)\b",
+    r"\bnot\s+spicy\b",
+    r"\bnon-spicy\b",
+    # Standard Arabic: لا تحتوي على, لا يتضمن, لا تتضمن, لا يوجد بها, لا توجد بها
+    r"\bلا\s+(?:تحتوي|يحتوي|تتضمن|يتضمن)\s*(?:عل[يى])?\b",
+    r"\bلا\s+(?:يوجد|توجد)\s+(?:بها|فيه|فيها)\b",
+    # Arabic Prepositions: من غير, بدون, خالي من, خالية من, بلا, من غير شطة, بدون شطة
+    r"\bمن\s+غير\s+شط[ةه]\b",
+    r"\bبدون\s+شط[ةه]\b",
     r"\bمن\s+غير\b",
     r"\bبدون\b",
     r"\bخال(?:ي|ية|يه)\s+من\b",
     r"\bبلا\b",
-    # English: without, free of, free from, no
+    # English: without, free of, free from, no, does not contain, do not contain
+    r"\b(?:does\s+not|do\s+not|doesn't|don't)\s+contain\b",
+    r"\bnot\s+containing\b",
     r"\bwithout\b",
     r"\bfree\s+(?:of|from)\b",
     r"\bno\b",
@@ -300,34 +345,58 @@ NEGATION_PATTERNS = [
 NEGATION_SYNONYM_EXPANSIONS = {
     "لحم": {"لحم", "لحمه", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
     "لحمه": {"لحم", "لحمه", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
-    "لحوم": {"لحم", "لحمه", "لحوم", "meat", "beef", "دجاج", "فراخ", "chicken", "سمك", "fish", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
+    "لحوم": {"لحم", "لحمه", "لحوم", "meat", "beef", "دجاج", "فراخ", "chicken", "دواجن", "poultry", "سمك", "fish", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
     "meat": {"لحم", "لحمه", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
     "beef": {"لحم", "لحمه", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة"},
-    "دجاج": {"دجاج", "فراخ", "chicken", "اوراك", "صدور"},
-    "فراخ": {"دجاج", "فراخ", "chicken", "اوراك", "صدور"},
-    "chicken": {"دجاج", "فراخ", "chicken", "اوراك", "صدور"},
+    "دجاج": {"دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry"},
+    "فراخ": {"دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry"},
+    "دواجن": {"دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry"},
+    "chicken": {"دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry"},
+    "poultry": {"دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry"},
     "سمك": {"سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون"},
     "fish": {"سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون"},
     "seafood": {"سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون"},
-    "لبن": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه"},
-    "حليب": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه"},
-    "milk": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه"},
+    "لبن": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "البان", "ألبان", "dairy"},
+    "حليب": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "البان", "ألبان", "dairy"},
+    "milk": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "البان", "ألبان", "dairy"},
+    "البان": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "البان", "ألبان"},
+    "ألبان": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "البان", "ألبان"},
+    "dairy": {"لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "البان", "ألبان"},
     "جبن": {"جبن", "جبنة", "جبنه", "cheese", "موزاريلا", "موتزاريلا", "شيدر", "رومي", "بارميزان", "قريش", "mozzarella", "cheddar", "parmesan"},
     "جبنة": {"جبن", "جبنة", "جبنه", "cheese", "موزاريلا", "موتزاريلا", "شيدر", "رومي", "بارميزان", "قريش", "mozzarella", "cheddar", "parmesan"},
     "cheese": {"جبن", "جبنة", "جبنه", "cheese", "mozzarella", "cheddar", "parmesan", "موزاريلا", "موتزاريلا", "شيدر", "رومي", "بارميزان", "قريش"},
     "طماطم": {"طماطم", "tomato", "tomatoes", "صلصة", "صلصه", "معجون طماطم"},
     "tomato": {"طماطم", "tomato", "tomatoes", "صلصة", "صلصه", "معجون طماطم"},
     "tomatoes": {"طماطم", "tomato", "tomatoes", "صلصة", "صلصه", "معجون طماطم"},
+    "بصل": {"بصل", "onion", "onions"},
+    "onion": {"بصل", "onion", "onions"},
+    "onions": {"بصل", "onion", "onions"},
+    "شطة": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "شطه": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "حار": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "حارة": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "حاره": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "spicy": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "chili": {"شطة", "شطه", "حار", "حارة", "حاره", "سبايسي", "spicy", "chili"},
+    "حيواني": {"لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة", "دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry", "سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون", "لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "بيض", "egg", "eggs", "سمن"},
+    "حيوانيه": {"لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة", "دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry", "سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون", "لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "بيض", "egg", "eggs", "سمن"},
+    "حيوانية": {"لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة", "دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry", "سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون", "لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "بيض", "egg", "eggs", "سمن"},
+    "منتجات حيوانية": {"لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة", "دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry", "سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون", "لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "بيض", "egg", "eggs", "سمن"},
+    "منتج حيواني": {"لحم", "لحمه", "لحوم", "meat", "beef", "بتلو", "ضان", "ضاني", "مفروم", "مفرومة", "دجاج", "فراخ", "chicken", "اوراك", "صدور", "دواجن", "poultry", "سمك", "fish", "seafood", "جمبري", "تونة", "تونه", "سالمون", "لبن", "حليب", "milk", "كريمة", "كريمه", "cream", "قشطة", "قشطه", "جبن", "جبنة", "جبنه", "cheese", "زبادي", "زبده", "زبدة", "butter", "dairy", "بيض", "egg", "eggs", "سمن"},
 }
 
 GENERIC_FOOD_FILTER = {
     "سهل", "سهله", "سهلة", "سريع", "سريعه", "سريعة", "صحي", "صحيه", "صحية",
-    "حلو", "حلوه", "حلوة", "ممكن", "عايز", "عاوز", "اريد", "محتاج", "وصفه", "وصفة", "اكله", "أكلة", "اكلة", "وجبه", "وجبة",
+    "حلو", "حلوه", "حلوة", "ممكن", "عايز", "عاوز", "اريد", "أريد", "محتاج", "وصفه", "وصفة", "اكله", "أكلة", "اكلة", "وجبه", "وجبة",
     "حاجه", "حاجة", "طريقة", "عمل", "اكل", "طعام", "شيء", "شئ", "نفسي", "في", "مع", "من", "اي", "اية", "ايه",
     "نوع", "انواع", "اي نوع", "أي نوع",
     "اقترح", "اقترحي", "اقترحلي", "اقترحيلي", "رشحلي", "سويلي", "طبخلي", "اعملي", "اعمللي", "عايزة", "عاوزة",
     "عندي", "اقدر", "أقدر", "بيهم", "فيه", "فيها", "عليا", "علينا", "مناسب", "مناسبة", "مناسبه",
-    "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple", "recipe", "want", "dish", "meal", "something", "can", "you", "suggest", "give", "need"
+    "تعتمد", "يعتمد", "جعان", "جعانة", "جعانه", "جوعان", "جوعانة", "كده", "كدا", "معايا", "اللي", "اطبخ", "أطبخ",
+    "ابحث", "أبحث", "بحث", "سيدي", "بص", "شوية", "شويه", "حاجات", "تلاجة", "تلاجه", "التلاجة", "التلاجه", "استفيد", "أستفيد", "ينفع", "غير", "معنديش", "ماعنديش", "تكون", "يكون", "مجهود", "تماما", "تماماً", "تمام", "خالص", "نهائيا", "نهائياً", "نهائي", "اصلا", "أصلا", "أصلاً",
+    "نباتي", "نباتية", "نباتيه", "حيواني", "حيوانية", "حيوانيه",
+    "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple", "recipe", "want", "dish", "meal", "something", "can", "you", "suggest", "give", "need",
+    "idea", "ideas", "homemade", "affordable", "should", "cook", "what", "wanna", "somethin", "vegetarian", "vegan"
 }
 
 def parse_negation_intent(raw_query: str) -> Dict[str, Any]:
@@ -337,6 +406,27 @@ def parse_negation_intent(raw_query: str) -> Dict[str, Any]:
     Correctly identifies whether an alternative was provided.
     """
     q_raw = raw_query.strip()
+
+    # Direct property negations where the adjective/property itself is negated (e.g. 'مش حارة', 'not spicy')
+    spicy_neg_m = re.search(r"\b(?:مش\s+(?:حار[ةه]?|سبايسي)|not\s+spicy|non-spicy)\b", q_raw, re.IGNORECASE)
+    if spicy_neg_m:
+        positive_query = re.sub(r"\b(?:مش\s+(?:حار[ةه]?|سبايسي)|not\s+spicy|non-spicy)\b", " ", q_raw, flags=re.IGNORECASE).strip()
+        positive_query = re.sub(r"\s+", " ", positive_query).strip()
+        excluded_items = ["شطة", "حار"]
+        excluded_stems = set(NEGATION_SYNONYM_EXPANSIONS["شطة"])
+        pos_stems = extract_content_stems(positive_query)
+        remaining_food = {s for s in pos_stems if s not in GENERIC_FOOD_FILTER and len(s) > 1}
+        is_veg_pos = any(w in positive_query.lower() for w in ["نباتي", "نباتيه", "نباتية", "vegetarian", "vegan"])
+        has_alternative = (len(remaining_food) > 0) or is_veg_pos
+        return {
+            "has_negation": True,
+            "excluded_items": excluded_items,
+            "excluded_stems": excluded_stems,
+            "positive_query": positive_query,
+            "has_alternative": has_alternative,
+            "remaining_food_stems": remaining_food
+        }
+
     trigger_m = None
     for pat in NEGATION_PATTERNS:
         m = re.search(pat, q_raw, re.IGNORECASE)
@@ -357,8 +447,8 @@ def parse_negation_intent(raw_query: str) -> Dict[str, Any]:
     before_neg = q_raw[:trigger_m.start()].strip()
     after_neg = q_raw[trigger_m.end():].strip()
 
-    # Detect positive resumption boundary: e.g. "بالخضار", "بالعدس", "مع خضار", "with vegetables"
-    pos_boundary_m = re.search(r"\s+(?:بال[^\s]+|مع\s+[^\s]+|في\s+[^\s]+|with\s+[^\s]+)", after_neg, re.IGNORECASE)
+    # Detect positive resumption boundary: e.g. "بالخضار", "بالعدس", "مع خضار", "with vegetables", "، عايز فراخ", "، ممكن فراخ؟"
+    pos_boundary_m = re.search(r'(?:[،,]\s*|\s+)(?:بال[^\s]+|مع\s+[^\s]+|في\s+[^\s]+|with\s+[^\s]+|(?:عايز[ةه]?|عاوز[ةه]?|حابب[ةه]?|اريد|أريد|محتاج|نفسي\s+في|ممكن\s+|ينفع\s+|اقترح\s+|هاتلي\s+|can\s+i\s+have|suggest|but|want)\b)', after_neg, re.IGNORECASE)
     if pos_boundary_m:
         neg_clause = after_neg[:pos_boundary_m.start()].strip()
         pos_clause = after_neg[pos_boundary_m.start():].strip()
@@ -372,10 +462,16 @@ def parse_negation_intent(raw_query: str) -> Dict[str, Any]:
     excluded_stems = set()
 
     for item in raw_excluded:
-        cleaned_ex = re.sub(r"\b(?:أي|اي|اي\s+نوع\s+من|أي\s+نوع\s+من|أي\s+نوع|اي\s+نوع|any)\s+", "", item.strip())
+        cleaned_ex = re.sub(r"^(?:[أا]ي\s+)?(?:حاج[ةه]|[أا]كل[ةه]?|طعام|وجب[ةه]|منتجات|منتج)\s*(?:(?:فيها|فيه|بها|به|معها|معه|منها|منه)\s*)?", "", item.strip(), flags=re.IGNORECASE)
+        cleaned_ex = re.sub(r"\b(?:أي|اي|اي\s+نوع\s+من|أي\s+نوع\s+من|أي\s+نوع|اي\s+نوع|any)\s+", "", cleaned_ex, flags=re.IGNORECASE)
         cleaned_ex = cleaned_ex.strip(" .،,")
         if cleaned_ex:
             excluded_items.append(cleaned_ex)
+            norm_ex = normalize_arabic(cleaned_ex).lower()
+            if norm_ex in NEGATION_SYNONYM_EXPANSIONS:
+                excluded_stems.update(NEGATION_SYNONYM_EXPANSIONS[norm_ex])
+            if cleaned_ex.lower() in NEGATION_SYNONYM_EXPANSIONS:
+                excluded_stems.update(NEGATION_SYNONYM_EXPANSIONS[cleaned_ex.lower()])
             raw_stems = extract_content_stems(cleaned_ex)
             for s in raw_stems:
                 excluded_stems.add(s)
@@ -387,7 +483,8 @@ def parse_negation_intent(raw_query: str) -> Dict[str, Any]:
 
     pos_stems = extract_content_stems(positive_query)
     remaining_food = {s for s in pos_stems if s not in GENERIC_FOOD_FILTER and len(s) > 1}
-    has_alternative = len(remaining_food) > 0
+    is_veg_pos = any(w in positive_query.lower() for w in ["نباتي", "نباتيه", "نباتية", "vegetarian", "vegan"])
+    has_alternative = (len(remaining_food) > 0) or is_veg_pos
 
     return {
         "has_negation": has_negation,

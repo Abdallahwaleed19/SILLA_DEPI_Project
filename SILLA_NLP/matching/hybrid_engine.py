@@ -131,11 +131,15 @@ class HybridEngine:
             "سهل", "سهله", "سهلة", "سريع", "سريعه", "سريعة", "صحي", "صحيه", "صحية",
             "لذيذ", "لذيذه", "لذيذة", "شهي", "شهيه", "شهية", "طازج", "طازجه", "طازجة",
             "جديد", "جديده", "جديدة", "بسيط", "بسيطه", "بسيطة", "حلو", "حلوه", "حلوة",
-            "ممكن", "عايز", "عاوز", "اريد", "محتاج", "وصفه", "وصفة", "اكله", "أكلة", "اكلة", "وجبه", "وجبة",
+            "ممكن", "عايز", "عاوز", "اريد", "أريد", "محتاج", "وصفه", "وصفة", "اكله", "أكلة", "اكلة", "وجبه", "وجبة",
             "عندي", "اقدر", "أقدر", "ايه", "إيه", "بيهم", "فيه", "فيها", "عليا", "مناسب", "مناسبة", "مناسبه",
             "اقترح", "اقترحي", "عمل", "طريقة", "تحضير",
+            "ابحث", "أبحث", "بحث", "سيدي", "بص", "شوية", "شويه", "حاجات", "تلاجة", "تلاجه", "التلاجة", "التلاجه", "استفيد", "أستفيد", "ينفع", "غير", "معنديش", "ماعنديش", "تكون", "يكون", "مجهود",
+            "تمام", "تماما", "تماماً", "خالص", "نهائي", "نهائيا", "نهائياً", "اصلا", "أصلا", "أصلاً",
+            "نباتي", "نباتيه", "نباتية", "حيواني", "حيوانيه", "حيوانية",
             "quick", "fast", "healthy", "fresh", "delicious", "easy", "good", "nice", "tasty", "simple",
-            "meal", "dish", "dishes", "meals", "something", "anything", "recipe", "suggest", "want", "need", "can", "you", "give"
+            "meal", "dish", "dishes", "meals", "something", "anything", "recipe", "suggest", "want", "need", "can", "you", "give",
+            "idea", "ideas", "homemade", "affordable", "budget", "should", "cook", "what", "wanna", "somethin", "vegetarian", "vegan"
         }
         q_food_stems = {s for s in effective_stems if s not in generic_tokens and len(s) > 1}
 
@@ -177,7 +181,7 @@ class HybridEngine:
 
             # Core Recipe Boost (only for genuinely relevant core candidates)
             core_applied = 0.0
-            is_relevant = (overlap_bonus > 0) or (s_score >= 0.05) or (d_score >= 0.48)
+            is_relevant = (overlap_bonus > 0) or (s_score >= 0.05) or (d_score >= 0.48) or (is_veg_query and r_info.get("category") in {"vegan", "vegetarian"})
             if r_info["is_core"] and is_relevant:
                 core_applied = self.core_boost
 
