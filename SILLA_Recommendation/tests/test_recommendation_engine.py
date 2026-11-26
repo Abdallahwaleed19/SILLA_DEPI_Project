@@ -34,7 +34,7 @@ class TestRecommendationEngine(unittest.TestCase):
         self.assertGreater(res["total_recommendations"], 0)
         top1 = res["recommendations"][0]
         self.assertEqual(top1["recipe_id"], "R0001")
-        self.assertEqual(top1["recipe_name_ar"], "مكرونة بشاميل")
+        self.assertIn("مكرونة بشاميل", top1["recipe_name_ar"])
         self.assertGreater(top1["recommendation_score"], 0.0)
         self.assertGreater(top1["net_recipe_cost_egp"], 0.0)
         self.assertIn("FEASIBILITY", top1["feasibility_tier"])

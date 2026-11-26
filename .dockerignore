@@ -1,0 +1,29 @@
+.git
+**/.git
+.gitignore
+.env
+.pytest_cache
+**/.pytest_cache
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints
+**/.ipynb_checkpoints
+node_modules
+**/node_modules
+dist
+**/dist
+.vscode
+.idea
+*.log
+scratch/
+*.mp4
+*.avi
+*.mov
+*.png
+*.jpg
+*.jpeg
+!silla-project (1)/silla/public/images/*.jpg
+!silla-project (1)/silla/public/images/*.png

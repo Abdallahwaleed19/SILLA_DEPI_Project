@@ -62,7 +62,7 @@ class TestSillaPublicAPI(unittest.TestCase):
         resp = match_recipe("pasta with chicken and cream", top_k=2)
         self.assertEqual(resp["status"], "SUCCESS")
         self.assertEqual(resp["language"], "en")
-        self.assertIn(resp["matched_recipes"][0]["recipe_id"], ["R0012", "R0195"])
+        self.assertIn(resp["matched_recipes"][0]["recipe_id"], ["R0195", "R0012"])
 
     def test_match_recipe_contradictory_koshari_fish(self):
         resp = match_recipe("كشري بالسمك")
