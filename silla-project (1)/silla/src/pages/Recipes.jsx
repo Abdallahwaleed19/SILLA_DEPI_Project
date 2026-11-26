@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Search, Clock, Users, Flame, BookOpen, Sparkles, ArrowUpRight } from "lucide-react";
 import { useSilla } from "../context";
 import { RECIPES } from "../data";
+import { getRecipeImageEntry } from "../recipeImages";
+import RecipeImage from "../components/RecipeImage";
 
 const CATEGORIES = [
   { id: "All", en: "All Dishes", ar: "جميع الأكلات" },
@@ -117,14 +119,15 @@ export default function Recipes() {
       </div>
 
       {/* Full-Bleed Background Dish Cards */}
-      <div className="cards" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(265px, 1fr))" }}>
+      <div className="cards recipe-grid">
         {list.map((r, idx) => {
           const title = lang === "ar" ? r.ar || r.recipe_name_ar : r.en || r.recipe_name_en;
           const prep = r.prep || 15;
           const cook = r.cook || 25;
           const totalTime = prep + cook;
           const servings = r.servings || 4;
-          const imgSrc = r.photo || r.image_url;
+          const imageEntry = getRecipeImageEntry(r.id);
+          const imgSrc = imageEntry?.image || r.photo || null;
 
           return (
             <Link
@@ -134,15 +137,14 @@ export default function Recipes() {
               style={{ animationDelay: `${Math.min(idx, 12) * 40}ms` }}
             >
               {/* Background Dish Photo */}
-              <img
-                src={imgSrc || "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg"}
+              <RecipeImage
+                src={imgSrc}
                 alt={title}
-                loading="lazy"
+                emoji={imageEntry?.fallbackEmoji || r.emoji}
+                recipeId={r.id}
+                reason={imageEntry?.reason}
                 className="dish-bg-img"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg";
-                }}
+                fallbackClassName="dish-bg-fallback"
               />
               <div className="dish-bg-overlay" />
 
@@ -174,6 +176,11 @@ export default function Recipes() {
                     <ArrowUpRight size={15} />
                   </span>
                 </div>
+                <span className="recipe-image-credit">
+                  {imageEntry?.status === "verified"
+                    ? `${imageEntry.attribution} · ${imageEntry.license}`
+                    : lang === "ar" ? "الصورة لم يتم التحقق منها بعد" : "Photo not verified yet"}
+                </span>
               </div>
             </Link>
           );

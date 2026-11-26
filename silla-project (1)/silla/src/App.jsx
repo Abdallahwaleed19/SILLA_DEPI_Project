@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, Route, Routes } from "react-router-dom";
-import { Home as HomeIcon, BookOpen, ShoppingCart, UtensilsCrossed, Archive, Globe } from "lucide-react";
+import { Home as HomeIcon, BookOpen, ShoppingCart, UtensilsCrossed, Archive, Globe, Menu, X } from "lucide-react";
 import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import RecipeDetail from "./pages/RecipeDetail";
@@ -13,6 +13,7 @@ import { useSilla } from "./context";
 export default function App() {
   const { cart, lang, setLang, backendReady } = useSilla();
   const [showSplash, setShowSplash] = useState(true);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <>
@@ -24,7 +25,7 @@ export default function App() {
         <span className="bg-blob blob-2" />
       </div>
 
-      <header className="nav">
+      <header className={`nav${mobileNavOpen ? " nav-open" : ""}`}>
         <Link to="/" className="logo" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <img
             src="/images/silla-logo.jpg"
@@ -39,25 +40,35 @@ export default function App() {
             </span>
           )}
         </Link>
-        <nav aria-label="Main">
-          <NavLink to="/" end className="nav-pill-link">
+        <nav id="primary-navigation" aria-label="Main">
+          <NavLink to="/" end className="nav-pill-link" onClick={() => setMobileNavOpen(false)}>
             <HomeIcon size={17} strokeWidth={2.2} />
             <span>{lang === "ar" ? "الرئيسية" : "Home"}</span>
           </NavLink>
-          <NavLink to="/recipes" className="nav-pill-link">
+          <NavLink to="/recipes" className="nav-pill-link" onClick={() => setMobileNavOpen(false)}>
             <BookOpen size={17} strokeWidth={2.1} />
             <span>{lang === "ar" ? "الأكلات" : "Recipes"}</span>
           </NavLink>
-          <NavLink to="/cook" className="nav-pill-link">
+          <NavLink to="/cook" className="nav-pill-link" onClick={() => setMobileNavOpen(false)}>
             <UtensilsCrossed size={17} strokeWidth={2.1} />
             <span>{lang === "ar" ? "المساعد الذكي" : "Let's Cook"}</span>
           </NavLink>
-          <NavLink to="/pantry" className="nav-pill-link">
+          <NavLink to="/pantry" className="nav-pill-link" onClick={() => setMobileNavOpen(false)}>
             <Archive size={17} strokeWidth={2.1} />
             <span>{lang === "ar" ? "مخزوني" : "My Pantry"}</span>
           </NavLink>
         </nav>
         <div className="nav-right">
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-label={mobileNavOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={mobileNavOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMobileNavOpen((open) => !open)}
+          >
+            {mobileNavOpen ? <X size={21} /> : <Menu size={21} />}
+          </button>
           <button
             className="lang"
             onClick={() => setLang(lang === "en" ? "ar" : "en")}
@@ -71,6 +82,7 @@ export default function App() {
             className="cart-link"
             aria-label={`Cart, ${cart.length} items`}
             style={{ display: "inline-flex", alignItems: "center" }}
+            onClick={() => setMobileNavOpen(false)}
           >
             <ShoppingCart size={22} strokeWidth={2.1} color="var(--green)" />
             <span className="count">{cart.length}</span>

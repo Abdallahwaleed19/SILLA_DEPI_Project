@@ -203,47 +203,51 @@ export default function Cart() {
                 : `Cheapest store: ${dbStoreComparisons.cheapest_store} saves up to ${dbStoreComparisons.potential_store_savings_egp.toFixed(0)} EGP!`}
             </p>
           )}
+          <div className="table-wrap" role="region" aria-label="Store comparison" tabIndex={0}>
+            <table className="tbl">
+              <tbody>
+                {dbStoreComparisons.store_rankings?.map((sr) => (
+                  <tr key={sr.store_name} className={sr.store_id === store ? "sel" : ""}>
+                    <td>
+                      <b>{sr.store_name}</b>
+                      <small className="muted" style={{ display: "block" }}>
+                        {lang === "ar" ? "توفر المنتجات" : "Coverage"}: {(sr.coverage_ratio * 100).toFixed(0)}%
+                      </small>
+                    </td>
+                    <td>
+                      <b>{sr.total_cart_cost_egp.toFixed(0)} EGP</b>
+                    </td>
+                    <td>
+                      {sr.missing_items_count === 0 ? (
+                        <span className="ok" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                          <CheckCircle size={14} /> {lang === "ar" ? "كل الأصناف متوفرة" : "All items in stock"}
+                        </span>
+                      ) : (
+                        <span className="warn" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                          <AlertTriangle size={14} /> {sr.missing_items_count} {lang === "ar" ? "نواقص" : "missing"}
+                        </span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      ) : (
+        <div className="table-wrap" role="region" aria-label="Store comparison" tabIndex={0} style={{ marginTop: "0.5rem" }}>
           <table className="tbl">
             <tbody>
-              {dbStoreComparisons.store_rankings?.map((sr) => (
-                <tr key={sr.store_name} className={sr.store_id === store ? "sel" : ""}>
-                  <td>
-                    <b>{sr.store_name}</b>
-                    <small className="muted" style={{ display: "block" }}>
-                      {lang === "ar" ? "توفر المنتجات" : "Coverage"}: {(sr.coverage_ratio * 100).toFixed(0)}%
-                    </small>
-                  </td>
-                  <td>
-                    <b>{sr.total_cart_cost_egp.toFixed(0)} EGP</b>
-                  </td>
-                  <td>
-                    {sr.missing_items_count === 0 ? (
-                      <span className="ok" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                        <CheckCircle size={14} /> {lang === "ar" ? "كل الأصناف متوفرة" : "All items in stock"}
-                      </span>
-                    ) : (
-                      <span className="warn" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                        <AlertTriangle size={14} /> {sr.missing_items_count} {lang === "ar" ? "نواقص" : "missing"}
-                      </span>
-                    )}
-                  </td>
+              {compare.map((c) => (
+                <tr key={c.s} className={c.s === store ? "sel" : ""}>
+                  <td>{label(c.s)}</td>
+                  <td>{c.total} EGP</td>
+                  <td>{c.issues ? `⚠ ${c.issues}` : "✓"}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
-      ) : (
-        <table className="tbl" style={{ marginTop: "0.5rem" }}>
-          <tbody>
-            {compare.map((c) => (
-              <tr key={c.s} className={c.s === store ? "sel" : ""}>
-                <td>{label(c.s)}</td>
-                <td>{c.total} EGP</td>
-                <td>{c.issues ? `⚠ ${c.issues}` : "✓"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       )}
     </section>
   );

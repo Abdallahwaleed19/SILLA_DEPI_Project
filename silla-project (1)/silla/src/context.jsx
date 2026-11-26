@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { P, RECIPES, STORES, UI } from "./data";
+import { getRecipeImageEntry } from "./recipeImages";
 import api from "./services/api";
 
 const Ctx = createContext();
@@ -94,7 +95,7 @@ export function SillaProvider({ children }) {
             prep: r.prep_time_min,
             cook: r.cook_time_min,
             difficulty: r.difficulty || "Medium",
-            photo: r.image_url,
+            photo: getRecipeImageEntry(r.recipe_id)?.image || null,
             emoji: "🍲",
             estimated_cost: r.estimated_cost_egp || 85,
             ing: {},
@@ -135,7 +136,7 @@ export function SillaProvider({ children }) {
           cat: m.category || "Main",
           cuisine: m.cuisine || "Egyptian",
           emoji: "🍲",
-          photo: m.image_url,
+          photo: getRecipeImageEntry(m.recipe_id)?.image || null,
           score: m.similarity_score,
           servings: defServ,
           ing: {},
