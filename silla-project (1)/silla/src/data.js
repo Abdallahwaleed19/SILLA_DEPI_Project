@@ -24,13 +24,13 @@ export const P = {
 };
 
 export const RECIPES = [
-  { id: "bechamel", photo: "/images/bechamel.jpg", emoji: "🍲", cat: "Pasta", steps: ["Boil the macaroni until al dente, then drain.", "Brown the minced meat with salt.", "Make the béchamel: melt butter, stir in flour, then add milk slowly until thick.", "Layer macaroni, meat and sauce, top with mozzarella and bake until golden."], en: "Macaroni béchamel", ar: "مكرونة بشاميل", servings: 4, veg: false,
+  { id: "bechamel", photo: "/images/recipes/R0001.jpg", emoji: "🍲", cat: "Pasta", steps: ["Boil the macaroni until al dente, then drain.", "Brown the minced meat with salt.", "Make the béchamel: melt butter, stir in flour, then add milk slowly until thick.", "Layer macaroni, meat and sauce, top with mozzarella and bake until golden."], en: "Macaroni béchamel", ar: "مكرونة بشاميل", servings: 4, veg: false,
     alias: "pasta bechamel baked macaroni", ing: { macaroni: 500, mince: 500, milk: 1000, flour: 100, butter: 100, mozzarella: 200, salt: 5 } },
-  { id: "koshari", photo: "/images/Authentic Egyptian Kushari 🇪🇬.jpg", emoji: "🍚", cat: "Vegetarian", steps: ["Cook rice, lentils and macaroni separately.", "Simmer tomato sauce with garlic and salt.", "Fry sliced onions in oil until crisp.", "Layer everything in a bowl and top with chickpeas and sauce."], en: "Koshari", ar: "كشري", servings: 4, veg: true,
+  { id: "koshari", photo: "/images/recipes/R0002.jpg", emoji: "🍚", cat: "Vegetarian", steps: ["Cook rice, lentils and macaroni separately.", "Simmer tomato sauce with garlic and salt.", "Fry sliced onions in oil until crisp.", "Layer everything in a bowl and top with chickpeas and sauce."], en: "Koshari", ar: "كشري", servings: 4, veg: true,
     alias: "kushari koshary", ing: { rice: 300, lentils: 200, macaroni: 200, chickpeas: 200, tomatosauce: 400, onion: 500, oil: 100, salt: 5 } },
-  { id: "molokhia", photo:"/images/32 Egyptian Foods Worth Trying.jpg", emoji: "🥣", cat: "Classics", steps: ["Simmer the chicken until tender and keep the broth.", "Fry garlic until golden.", "Add molokhia to the hot broth, then stir in the garlic.", "Serve over rice."], en: "Molokhia", ar: "ملوخية", servings: 4, veg: false,
+  { id: "molokhia", photo: "/images/recipes/R0003.jpg", emoji: "🥣", cat: "Classics", steps: ["Simmer the chicken until tender and keep the broth.", "Fry garlic until golden.", "Add molokhia to the hot broth, then stir in the garlic.", "Serve over rice."], en: "Molokhia", ar: "ملوخية", servings: 4, veg: false,
     alias: "mulukhiyah jute chicken", ing: { molokhia: 400, chicken: 800, garlic: 50, rice: 300, salt: 5 } },
-  { id: "hawawshi", photo:"/images/hawawshi.jpg", emoji: "🥙", cat: "Street food", steps: ["Knead flour, oil and salt into a dough and rest it.", "Mix minced meat with chopped onion and salt.", "Stuff the dough with the meat mix.", "Bake until crisp and golden."], en: "Hawawshi", ar: "حواوشي", servings: 4, veg: false,
+  { id: "hawawshi", photo: "/images/recipes/R0006.jpg", emoji: "🥙", cat: "Street food", steps: ["Knead flour, oil and salt into a dough and rest it.", "Mix minced meat with chopped onion and salt.", "Stuff the dough with the meat mix.", "Bake until crisp and golden."], en: "Hawawshi", ar: "حواوشي", servings: 4, veg: false,
     alias: "hawawshy stuffed bread meat", ing: { flour: 500, mince: 600, onion: 300, oil: 50, salt: 5 } },
 ];
 

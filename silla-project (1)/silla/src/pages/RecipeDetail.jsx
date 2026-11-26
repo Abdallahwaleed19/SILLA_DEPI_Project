@@ -3,7 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { ChevronLeft, Plus, Minus, ShoppingCart, Check, Clock, Users, Flame, Utensils } from "lucide-react";
 import { useSilla } from "../context";
 import { P, RECIPES } from "../data";
+import { getRecipeImageEntry } from "../recipeImages";
 import api from "../services/api";
+import RecipeImage from "../components/RecipeImage";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -67,6 +69,8 @@ export default function RecipeDetail() {
   const added = plan.some((x) => x.id === id);
 
   const title = lang === "ar" ? r.recipe_name_ar || r.ar : r.recipe_name_en || r.en;
+  const imageEntry = getRecipeImageEntry(id);
+  const imageSrc = imageEntry?.image || localR?.photo || null;
   const baseServings = r.base_servings || r.servings || 4;
   const prep = r.prep_time_min || r.prep || 15;
   const cook = r.cook_time_min || r.cook || 25;
@@ -117,24 +121,30 @@ export default function RecipeDetail() {
       </Link>
 
       <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start", flexWrap: "wrap" }}>
-        {r.image_url && (
-          <img
-            src={r.image_url}
+        <figure className="recipe-figure">
+          <RecipeImage
+            src={imageSrc}
             alt={title}
-            style={{
-              width: "100%",
-              maxWidth: "380px",
-              aspectRatio: "4/3",
-              objectFit: "cover",
-              borderRadius: "22px",
-              boxShadow: "0 10px 28px rgba(36,74,58,.16)",
-            }}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80";
-            }}
+            emoji={imageEntry?.fallbackEmoji || r.emoji}
+            recipeId={id}
+            reason={imageEntry?.reason}
+            className="recipe-detail-image"
+            fallbackClassName="recipe-detail-image-fallback"
+            loading="eager"
           />
-        )}
+          {imageEntry?.status === "verified" ? (
+            <figcaption className="recipe-photo-credit">
+              Photo by {imageEntry.attribution} ·{" "}
+              <a href={imageEntry.sourceUrl} target="_blank" rel="noreferrer">source</a>
+              {" · "}
+              {imageEntry.licenseUrl ? (
+                <a href={imageEntry.licenseUrl} target="_blank" rel="noreferrer">{imageEntry.license}</a>
+              ) : imageEntry.license}
+            </figcaption>
+          ) : (
+            <figcaption className="recipe-photo-credit">{imageEntry?.reason || "No verified photo is available yet."}</figcaption>
+          )}
+        </figure>
         <div style={{ flex: 1, minWidth: "280px" }}>
           <h1 className="h1" style={{ margin: "0 0 0.5rem" }}>
             {r.emoji || "🍲"} {title}
